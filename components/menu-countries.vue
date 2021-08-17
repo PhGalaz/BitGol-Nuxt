@@ -1,12 +1,11 @@
-
 <template>
   <v-row
     class="ma-0 pa-0"
-    style="position:absolute;width:100%;max-height:70vh;overflow:auto;background-color:#272727;border-top:1px solid #ccc"
-    :class="{'d-none' : !$store.state.showleagues}"
+    style="position:absolute;width:100%;max-height:70vh;overflow:auto;background-color:#272727"
+    :class="{'d-none' : !$store.state.showcountries}"
   >
     <v-col
-      class="ma-0 pa-0"
+      class="ma-0 mt-3 pa-0"
       v-for="column in columns" :key="column.index"
     >
       <v-row
@@ -16,17 +15,17 @@
       >
         <v-row
           class="ma-0 pa-0"
-          :class="{'item' : league.name != ''}"
-          @click="method(league.name)"
+          :class="{'item' : country.name != ''}"
+          @click="method(country.name)"
           style="color:#ccc"
         >
           <v-row
             class="ma-0 pa-0"
             style="max-width:60px"
-            v-if="league.name != ''"
+            v-if="country.name != ''"
           >
             <v-img
-              :src="league.logo"
+              :src="country.flag"
               class="ma-0 mt-1 ml-16 pa-0 flag"
               max-width="24px"
               max-height="16px"
@@ -34,9 +33,9 @@
           </v-row>
           <v-row
             class="ma-0 ml-12 pa-0 name"
-            v-if="league.name != ''"
+            v-if="country.name != ''"
           >
-            {{ league.name }}
+            {{ country.name }}
           </v-row>
           <br v-else>
         </v-row>
@@ -49,7 +48,7 @@
   export default {
     data () {
       return {
-        cols: 4
+        cols: 5
       }
     },
     // async fetch() {
@@ -67,31 +66,25 @@
         var letter = 'A'
         var res = []
         var bul = []
-        var items = this.$store.state.leagues
+        var items = this.$store.state.countries
         let columns = [];
 
-        // console.log(items[0].name)
-        for(var x in items[0]){
-          // console.log(x)
-          // console.log(items[0][x])
+        for(var x in items){
+          var country = items[x]
+          if(country.name.charAt(0) != letter){
+            var el = {name: ''}
+            bul.push(el)
+          }
+          letter = country.name.charAt(0)
+          bul.push(country)
         }
 
-        // for(var x in items){
-        //   var league = items[x]
-        //   if(league.name.charAt(0) != letter){
-        //     var el = {name: ''}
-        //     bul.push(el)
-        //   }
-        //   letter = league.name.charAt(0)
-        //   bul.push(league)
-        // }
-        //
-        // let mid = Math.ceil(Object.keys(bul).length / this.cols);
-        // for (let col = 0; col < this.cols; col++) {
-        //     columns.push(Object.entries(bul).slice(col * mid, col * mid + mid).map(entry => entry[1]));
-        // }
-        // console.log(columns[0][0])
-        // return columns;
+        let mid = Math.ceil(Object.keys(bul).length / this.cols);
+        for (let col = 0; col < this.cols; col++) {
+            columns.push(Object.entries(bul).slice(col * mid, col * mid + mid).map(entry => entry[1]));
+        }
+
+        return columns;
       }
     }
   }

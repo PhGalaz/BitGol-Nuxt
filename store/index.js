@@ -1,7 +1,13 @@
 
 export const state = () => ({
   bch_price: null,
-  info: []
+  showleagues: false,
+  showcups: false,
+  showteams: false,
+  showcountries: false,
+  info: [],
+  leagues: [],
+  countries: []
 })
 
 export const mutations = {
@@ -14,8 +20,99 @@ export const mutations = {
       state.bch_price = cont[0].data.price.toFixed(2)
     }
   },
-  initdata(state, data) {
+  bchprice(state, data) {
     state.bch_price = data.price.toFixed(2)
+  },
+  getleagues(state, data) {
+    var leagues = []
+    var cups = []
+    for(var x in data){
+      if(data[x].type == 'League'){
+        leagues.push(data[x])
+        console.log(leagues[0].name)
+      } else if(data[x].type == 'Cup') {
+        cups.push(data[x])
+      }
+    }
+    state.leagues = leagues
+    state.cups = cups
+  },
+  getcountries(state, data) {
+    state.countries = data.countries
+  },
+  setshowleagues(state, value){
+    state.showleagues = value
+  },
+  setshowcups(state, value){
+    state.showcups = value
+  },
+  setshowteams(state, value){
+    state.showteams = value
+  },
+  setshowcountries(state, value){
+    state.showcountries = value
+  },
+  leaveOver(state, x){
+    if(x == 0){
+      state.showleagues == false
+      state.showcups == false
+      state.showteams == false
+      state.showcountries == false
+    }
+    if(x == 1){
+      if (state.showleagues == true){
+        state.showleagues = false;
+        document.getElementById("tab1").style.background = ""
+      }
+    }
+    else if (x == 2) {
+      if (state.showcups == true){
+        state.showcups = false;
+        document.getElementById("tab2").style.background = ""
+      }
+    }
+    else if (x == 3) {
+      if (state.showteams == true){
+        state.showteams = false;
+        document.getElementById("tab3").style.background = ""
+      }
+    }
+    else if (x == 4) {
+      if (state.showcountries == true){
+        state.showcountries = false;
+        document.getElementById("tab4").style.background = ""
+      }
+    }
+  },
+  mouseOver(state, x){
+    if(x == 1){
+      if (state.showleagues == true){
+        document.getElementById("tab1").style.background = "rgba(255,255,255,.05)"
+      } else {
+        state.showleagues = !state.showleagues;
+      }
+    }
+    else if (x == 2) {
+      if (state.showcups == true){
+        document.getElementById("tab2").style.background = "rgba(255,255,255,.05)"
+      } else {
+        state.showcups = !state.showcups;
+      }
+    }
+    else if (x == 3) {
+      if (state.showteams == true){
+        document.getElementById("tab3").style.background = "rgba(255,255,255,.05)"
+      } else {
+        state.showteams = !state.showteams;
+      }
+    }
+    else if (x == 4) {
+      if (state.showcountries == true){
+        document.getElementById("tab4").style.background = "rgba(255,255,255,.05)"
+      } else {
+        state.showcountries = !state.showcountries;
+      }
+    }
   }
 }
 

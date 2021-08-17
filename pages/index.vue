@@ -5,25 +5,54 @@
   >
     <v-row
       class="ma-0 pa-0"
-      style="background-color:#121212;width:100%;height:70vh"
+      style="background-color:#121212;width:100%;max-height:70vh;z-index:5"
     >
-      <cover />
+      <cover/>
+      <menu-leagues
+        @mouseover.native="$store.commit('mouseOver', 1)"
+        @mouseleave.native="$store.commit('leaveOver', 1)"
+      />
+      <menu-countries
+        @mouseover.native="$store.commit('mouseOver', 4)"
+        @mouseleave.native="$store.commit('leaveOver', 4)"
+      />
     </v-row>
+
     <v-row
       class="ma-0 pa-0"
-      style="background-color:red;width:100%;position:absolute;z-index=1"
-    >
-      <menu-leagues />
-    </v-row>
-    <v-row
-      class="ma-0 pa-0"
-      style="background-color:blue;width:100%;height:20vh"
+      style="width:100%;height:20vh"
     >
       Hola
     </v-row>
-    <v-row class="ma-0 pa-0 item" v-for="t in 100" key=t style="width:100%" @click="getMessage()">
-      <v-spacer></v-spacer>{{ t }}
-      {{ messageRxd }}
+    <v-row
+      class="ma-0 pa-0"
+      style="width:100%;height:20vh"
+    >
+      Hola
+    </v-row>
+    <v-row
+      class="ma-0 pa-0"
+      style="width:100%;height:20vh"
+    >
+      Hola
+    </v-row>
+    <v-row
+      class="ma-0 pa-0"
+      style="width:100%;height:20vh"
+    >
+      Hola
+    </v-row>
+    <v-row
+      class="ma-0 pa-0"
+      style="width:100%;height:20vh"
+    >
+      Hola
+    </v-row>
+    <v-row
+      class="ma-0 pa-0"
+      style="width:100%;height:20vh"
+    >
+      Hola
     </v-row>
   </v-row>
 </template>
@@ -32,10 +61,6 @@
   export default {
     data () {
       return {
-        message: '',
-        messageRxd: '',
-        n: 0,
-        info: []
       }
     },
 }
@@ -44,6 +69,4 @@
 <style lang="sass">
 
 
-  .item:hover
-    color: red
 </style>

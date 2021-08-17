@@ -34,7 +34,7 @@
       :clipped-left="clipped"
       fixed
       app
-      style=""
+      style="z-index:10"
       :class="{ 'shrinked': !deployed }"
       :dense="!deployed"
     >
@@ -78,9 +78,8 @@
 
             src="logo.png"
             class="ma-0 ml-16 pa-0"
-            :max-width= "deployed ? '180' : '150'"
-
-            :class="{ 'mt-n3': !deployed }"
+            :max-width= "deployed ? '220' : '150'"
+            :class= "deployed ? 'mt-1' : 'mt-n3'"
           ></v-img>
         </v-col>
         <v-col
@@ -180,7 +179,7 @@
                   style="color:white"
                   @mouseover="$store.commit('mouseOver', 2)"
                   @mouseleave="$store.commit('leaveOver', 2)"
-                >Tournaments</v-tab>
+                >Cups</v-tab>
 
                 <v-tab
                   class="ma-0 mx-5 pa-0"
@@ -203,7 +202,7 @@
             </v-row>
             <v-row
               class="ma-0 pa-0"
-              style="max-height:100% !important;margin-top:6px !important"
+              style="max-height:100% !important"
               align="center"
             >
               <v-spacer/>
@@ -217,14 +216,15 @@
                   solo
                   dense
                   append-icon="mdi-magnify"
-                  style="width:10vw,margin-top:10px !important"
+                  :style="deployed ? 'width:10vw;margin-top:0px !important' : 'width:10vw;margin-top:4px !important'"
                   flat
                   clearable
                 ></v-text-field>
               </v-row>
               <v-spacer/>
               <v-btn
-                class="ma-0 mt-n1 mr-7 pa-0"
+                class="ma-0 mr-7 pa-0"
+                :class="deployed ? 'mt-n1' : 'mt-1'"
                 icon
                 small
                 @click.stop="drawerright = !drawerright"
@@ -237,9 +237,24 @@
       </v-row>
     </v-app-bar>
     <v-main>
-
-        <Nuxt />
-
+      <!-- <menu-leagues
+        class="ma-0 pa-0"
+        :class="{'d-none' : !$store.state.showleagues}"
+        style="position:fixed;z-index:5"
+        :style="deployed ? '' : 'margin-top:-10px !important'"
+        @mouseover.native="$store.commit('mouseOver', 1)"
+        @mouseleave.native="$store.commit('leaveOver', 1)"
+        app
+      /> -->
+      <!-- <menu-countries
+        class="ma-0 pa-0"
+        :class="{'d-none' : !$store.state.showcountries}"
+        style="position:fixed;z-index:5"
+        :style="deployed ? '' : 'margin-top:-10px !important'"
+        @mouseover.native="$store.commit('mouseOver', 4)"
+        @mouseleave.native="$store.commit('leaveOver', 4)"
+      /> -->
+      <Nuxt />
     </v-main>
 
     <v-navigation-drawer
@@ -274,127 +289,138 @@
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      deployed: true,
-      clipped: true,
-      drawerleft: false,
-      drawerright: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
-    }
-  },
-  // async fetch() {
-  //   this.currentbchprice = await fetch(
-  //     'url'
-  //   ).then(res => res.json())
-  // },
-  computed: {
-    // product() {
-    //   return this.store.getters['getProductById(this.$route.params.id)']
-    // },
-    //   works with:
-    //   {{ $route.params.(name of .vue file on pages>products>_id.vue) }}
-    // },
-    current_bch_price() {
-      return this.$store.getters['getCurrentPrice']
-    }
-  },
-  mounted () {
-      window.addEventListener('scroll', this.onScroll)
+  export default {
+    data () {
+      return {
+        deployed: true,
+        clipped: true,
+        drawerleft: false,
+        drawerright: false,
+        fixed: false,
+        items: [
+          {
+            icon: 'mdi-apps',
+            title: 'Welcome',
+            to: '/'
+          },
+          {
+            icon: 'mdi-chart-bubble',
+            title: 'Inspire',
+            to: '/inspire'
+          }
+        ],
+        miniVariant: false,
+        right: true,
+        rightDrawer: false,
+        title: 'Vuetify.js'
+      }
     },
-  beforeDestroy () {
-    window.removeEventListener('scroll', this.onScroll)
-  },
-  created() {
-    this.initdata()
-    // let res = await this.$http.get('http://localhost:3000/leagues');
-    // console.log(res)
-    // this.$store.commit('leagues', res);
+    // async fetch() {
+    //   this.currentbchprice = await fetch(
+    //     'url'
+    //   ).then(res => res.json())
+    // },
+    computed: {
+      // product() {
+      //   return this.store.getters['getProductById(this.$route.params.id)']
+      // },
+      //   works with:
+      //   {{ $route.params.(name of .vue file on pages>products>_id.vue) }}
+      // },
+      current_bch_price() {
+        return this.$store.getters['getCurrentPrice']
+      }
+    },
+    mounted () {
+        window.addEventListener('scroll', this.onScroll)
+      },
+    beforeDestroy () {
+      window.removeEventListener('scroll', this.onScroll)
+    },
+    created() {
+      this.initdata()
+      // let res = await this.$http.get('http://localhost:3000/leagues');
+      // console.log(res)
+      // this.$store.commit('leagues', res);
 
 
-    // this.socket = this.$nuxtSocket({
-    //   // nuxt-socket-io opts:
-    //   name: 'home', // Use socket "home"
-    //   channel: '/', // connect to '/index'
-    //
-    //   // socket.io-client opts:
-    //   reconnection: false
-    // })
-  },
-  methods: {
-    async initdata() {
-      const info = await this.$axios.$get('http://localhost:3000/bch')
-      var data = info.info[0]
-      this.$store.commit('initdata', data);
+      // this.socket = this.$nuxtSocket({
+      //   // nuxt-socket-io opts:
+      //   name: 'home', // Use socket "home"
+      //   channel: '/', // connect to '/index'
+      //
+      //   // socket.io-client opts:
+      //   reconnection: false
+      // })
     },
-    getMessage() {
-      this.socket.emit('getMessage', { id: 'abc123' }, (resp) => {
-        this.messageRxd = resp
-      })
-    },
-    onScroll () {
-        const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
-        if (currentScrollPosition > 0) {
-          this.deployed = false
-          console.log(this.deployed)
-        } else {
-          this.deployed = true
-          console.log(this.deployed)
-        }
-        //   return
-        // }
-        // // Stop executing this function if the difference between
-        // // current scroll position and last scroll position is less than some offset
-        // if (Math.abs(currentScrollPosition - this.lastScrollPosition) < 60) {
-        //   return
-        // }
-        // this.showNavbar = currentScrollPosition < this.lastScrollPosition
-        // this.lastScrollPosition = currentScrollPosition
+    methods: {
+      async initdata() {
+        const info = await this.$axios.$get('http://localhost:3000/bch')
+        var data = info.info[0]
+        this.$store.commit('bchprice', data);
+        const leagues = await this.$axios.$get('http://localhost:3000/leagues')
+        this.$store.commit('getleagues', leagues);
+        const countries = await this.$axios.$get('http://localhost:3000/countries')
+        this.$store.commit('getcountries', countries);
+      },
+      getMessage() {
+        this.socket.emit('getMessage', { id: 'abc123' }, (resp) => {
+          this.messageRxd = resp
+        })
+      },
+      onScroll () {
+          const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+          if (currentScrollPosition > 0) {
+            this.deployed = false
+          } else {
+            this.deployed = true
+          }
+          //   return
+          // }
+          // // Stop executing this function if the difference between
+          // // current scroll position and last scroll position is less than some offset
+          // if (Math.abs(currentScrollPosition - this.lastScrollPosition) < 60) {
+          //   return
+          // }
+          // this.showNavbar = currentScrollPosition < this.lastScrollPosition
+          // this.lastScrollPosition = currentScrollPosition
+      }
     }
   }
-}
 </script>
 
 <style lang="sass">
-html
-  overflow: auto
 
-::-webkit-scrollbar
-  border-radius: 0 3px 3px 0
-  background: #272727
-  width: 8px
-::-webkit-scrollbar-thumb
-  background-color: white
-  border: 2px solid #121212
-  border-radius: 45px
+  .v-btn:before
+     opacity: 0 !important
+  .v-ripple__container
+    opacity: 0 !important
 
-.v-toolbar__content, .v-toolbar__extension
-  padding: 0px
+  html
+    overflow: auto
 
-.v-text-field .v-input__control .v-input__slot
-  min-height: auto !important
-  display: flex !important
-  align-items: center !important
+  ::-webkit-scrollbar
+    border-radius: 0 3px 3px 0
+    background: #272727
+    width: 8px
+  ::-webkit-scrollbar-thumb
+    background-color: white
+    border: 2px solid #121212
+    border-radius: 45px
 
-.shrinked
-  max-height: 38px
+  .v-toolbar__content, .v-toolbar__extension
+    padding: 0px
+
+  .v-text-field .v-input__control .v-input__slot
+    min-height: auto !important
+    display: flex !important
+    align-items: center !important
+
+  .shrinked
+    max-height: 38px
+
+  .ajust
+    margin-top: 20px !important
 
 
 </style>
