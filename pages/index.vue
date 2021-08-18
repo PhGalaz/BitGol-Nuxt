@@ -12,7 +12,12 @@
         @mouseover.native="$store.commit('mouseOver', 1)"
         @mouseleave.native="$store.commit('leaveOver', 1)"
       />
+      <menu-cups
+        @mouseover.native="$store.commit('mouseOver', 2)"
+        @mouseleave.native="$store.commit('leaveOver', 2)"
+      />
       <menu-countries
+        style="position:fixed"
         @mouseover.native="$store.commit('mouseOver', 4)"
         @mouseleave.native="$store.commit('leaveOver', 4)"
       />

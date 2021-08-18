@@ -3,7 +3,7 @@
   <v-row
     class="ma-0 pa-0"
     style="position:absolute;width:100%;max-height:70vh;overflow:auto;background-color:#272727;border-top:0px solid #ccc"
-    :class="{'d-none' : !$store.state.showleagues}"
+    :class="{'d-none' : !$store.state.showcups}"
   >
     <v-row
       class="ma-0 pa-0"
@@ -17,12 +17,14 @@
           class="ma-0 pa-0"
           v-for="country in column"  :key="country.name"
           style="width:100%"
+          justify="center"
         >
           <v-row
-            class="ma-0 ml-8 mr-8 pa-0"
-            style="border-bottom:0px solid #ccc"
+            v-if="leagues(country.name).length"
+            class="ma-0 ml-7 pa-0"
+            style="border-bottom:1px solid #ccc;max-width:50%"
           >
-            <h5 style="color:#ccc">
+            <h5>
               {{ country.name }}
             </h5>
           </v-row>
@@ -38,86 +40,33 @@
               <v-row
                 class="ma-0 pa-0"
                 :class="{'item' : league.name != ''}"
-                @click="method(league.league_id)"
-                style="color:#ccc;width:100%"
+                @click="method(league.name)"
+                style="color:#ccc"
                 align="center"
                 v-if="league.country"
               >
                 <v-row
                   class="ma-0 pa-0"
-                  style=""
-                  align="center"
+                  style="max-width:60px"
                 >
                   <v-img
-                    v-if="league.logo"
                     :src="league.logo"
-                    class="ma-0 ml-8 pa-0 flag"
+                    class="ma-0 mt-1 ml-16 pa-0 flag"
                     max-width="20px"
                     max-height="30px"
                   ></v-img>
-                  <v-row
-                    class="ma-0 ml-4 pa-0 name text-wrap"
-                    style=""
-                    align="center"
-                  >
-                    {{ league.name }}
-                  </v-row>
                 </v-row>
-              </v-row>
-              <v-row
-                class="ma-0 ml-16 mt-2 mb-2 pa-0"
-                v-else
-              >
-                <br>
+                <v-row
+                  class="ma-0 ml-12 pa-0 name"
+                >
+                  {{ league.name }}
+                </v-row>
               </v-row>
             </v-row>
           </v-row>
         </v-row>
       </v-col>
     </v-row>
-    <!-- <v-col
-      class="ma-0 mt-3 pa-0"
-      v-for="column in columns" :key="column.index"
-    >
-      <v-row
-        class="ma-0 pa-0"
-        style="width:100%"
-        v-for="league in column"
-      >
-        <v-row
-          class="ma-0 pa-0"
-          :class="{'item' : league.name != ''}"
-          @click="method(league.name)"
-          style="color:#ccc"
-          align="center"
-        >
-          <v-row
-            class="ma-0 pa-0"
-            style="max-width:60px"
-            v-if="league.country"
-          >
-            <v-img
-              :src="league.logo"
-              class="ma-0 mt-1 ml-16 pa-0 flag"
-              max-width="20px"
-              max-height="30px"
-            ></v-img>
-          </v-row>
-          <v-row
-            class="ma-0 ml-12 pa-0 name"
-            v-if="league.country"
-          >
-            {{ league.name }}
-          </v-row>
-          <v-row
-            class="ma-0 ml-16 mt-2 mb-2 pa-0"
-            v-else
-          >
-            <br>
-          </v-row>
-        </v-row>
-      </v-row>
-    </v-col> -->
   </v-row>
 </template>
 
@@ -129,11 +78,6 @@
         temp_country: 'Albania'
       }
     },
-    // async fetch() {
-    //   this.currentbchprice = await fetch(
-    //     'url'
-    //   ).then(res => res.json())
-    // },
     methods: {
       method(data) {
         console.log(data)
@@ -142,7 +86,7 @@
         this.temp_country = data
       },
       leagues(name){
-        var test = this.$store.state.leagues
+        var test = this.$store.state.cups
         test = test.filter(item => item.country.name === name)
 
         return test
@@ -153,7 +97,7 @@
         var curr = 'Albania'
         var res = []
         var bul = []
-        var items = this.$store.state.leagues
+        var items = this.$store.state.cups
         let columns = [];
 
         for(var x in items){
@@ -175,11 +119,6 @@
       columns: function() {
         let columns = [];
         var items = this.$store.state.countries
-
-        for(var x in items){
-
-
-        }
 
         let mid = Math.ceil(Object.keys(items).length / this.cols);
         for (let col = 0; col < this.cols; col++) {

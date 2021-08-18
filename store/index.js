@@ -26,16 +26,22 @@ export const mutations = {
   getleagues(state, data) {
     var leagues = []
     var cups = []
-    for(var x in data){
-      if(data[x].type == 'League'){
-        leagues.push(data[x])
-        console.log(leagues[0].name)
-      } else if(data[x].type == 'Cup') {
-        cups.push(data[x])
+    // console.log('data1', data)
+    for(var x in data.leagues){
+      // console.log('data2', data.leagues[x].type)
+      if(data.leagues[x].type == 'League'){
+        leagues.push(data.leagues[x])
+      } else if(data.leagues[x].type == 'Cup') {
+        cups.push(data.leagues[x])
       }
     }
+    leagues = leagues.sort((a, b) => a.country.name.localeCompare(b.country.name))
     state.leagues = leagues
+    // console.log('leagues', leagues)
+    console.log('sleagues',state.leagues[0].name)
     state.cups = cups
+    // console.log('cups',cups)
+    console.log('scups',state.cups[0].name)
   },
   getcountries(state, data) {
     state.countries = data.countries

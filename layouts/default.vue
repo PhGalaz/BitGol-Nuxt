@@ -208,7 +208,7 @@
               <v-spacer/>
               <v-row
                 class="ma-0 pa-0"
-                style="height:100% !important;height:30px"
+                style="max-height:30px;z-index:-4"
 
               >
                 <v-text-field

@@ -2,7 +2,10 @@
   <v-row
     class="ma-0 pa-0"
     style="position:absolute;width:100%;max-height:70vh;overflow:auto;background-color:#272727"
-    :class="{'d-none' : !$store.state.showcountries}"
+    :class="{
+        'd-none' : !$store.state.showcountries,
+        'mt-16' : deployed
+      }"
   >
     <v-col
       class="ma-0 mt-3 pa-0"
@@ -37,7 +40,12 @@
           >
             {{ country.name }}
           </v-row>
-          <br v-else>
+          <v-row
+            class="ma-0 pa-0"
+            v-else
+          >
+            <br><br>
+          </v-row>
         </v-row>
       </v-row>
     </v-col>
@@ -92,7 +100,7 @@
 
 <style lang="sass">
   .flag
-    opacity: .5
+    opacity: .65
 
   .item:hover
     cursor: pointer
