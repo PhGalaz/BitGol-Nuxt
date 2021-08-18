@@ -3,6 +3,7 @@
   <v-row
     class="ma-0 pa-0"
     style="position:absolute;width:100%;max-height:70vh;overflow:auto;background-color:#272727;border-top:0px solid #ccc"
+    :style="$store.state.deployed ? 'margin-top:0px !important' : 'margin-top:-30px !important'"
     :class="{'d-none' : !$store.state.showleagues}"
   >
     <v-row

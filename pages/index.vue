@@ -9,10 +9,12 @@
     >
       <cover/>
       <menu-leagues
+        style="position:fixed"
         @mouseover.native="$store.commit('mouseOver', 1)"
         @mouseleave.native="$store.commit('leaveOver', 1)"
       />
       <menu-cups
+        style="position:fixed"
         @mouseover.native="$store.commit('mouseOver', 2)"
         @mouseleave.native="$store.commit('leaveOver', 2)"
       />

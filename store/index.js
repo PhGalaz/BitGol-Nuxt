@@ -1,5 +1,7 @@
 
 export const state = () => ({
+  deployed: true,
+
   bch_price: null,
   showleagues: false,
   showcups: false,
@@ -57,6 +59,9 @@ export const mutations = {
   },
   setshowcountries(state, value){
     state.showcountries = value
+  },
+  deploying(state, value){
+    state.deployed = value
   },
   leaveOver(state, x){
     if(x == 0){

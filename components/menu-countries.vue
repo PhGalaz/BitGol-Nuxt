@@ -2,10 +2,8 @@
   <v-row
     class="ma-0 pa-0"
     style="position:absolute;width:100%;max-height:70vh;overflow:auto;background-color:#272727"
-    :class="{
-        'd-none' : !$store.state.showcountries,
-        'mt-16' : deployed
-      }"
+    :style="$store.state.deployed ? 'margin-top:0px !important' : 'margin-top:-10px !important'"
+    :class="{'d-none' : !$store.state.showcountries}"
   >
     <v-col
       class="ma-0 mt-3 pa-0"
@@ -20,32 +18,46 @@
           class="ma-0 pa-0"
           :class="{'item' : country.name != ''}"
           @click="method(country.name)"
-          style="color:#ccc"
+          style="color:#ccc;max-width:100%"
+          v-if="country.name != ''"
         >
           <v-row
-            class="ma-0 pa-0"
-            style="max-width:60px"
-            v-if="country.name != ''"
+            class="ma-0 pa-0 d-flex"
+            style="max-width:100%"
           >
             <v-img
               :src="country.flag"
-              class="ma-0 mt-1 ml-16 pa-0 flag"
+              class="ma-0 mt-1 ml-8 pa-0 flag"
               max-width="24px"
               max-height="16px"
             ></v-img>
+            <v-row
+              class="ma-0 pa-0 name d-inline-flex"
+              style="max-width:140px"
+            >
+              <v-row
+                class="ma-0 ml-4 pa-0"
+              >
+                {{ country.name }}
+              </v-row>
+            </v-row>
           </v-row>
-          <v-row
-            class="ma-0 ml-12 pa-0 name"
-            v-if="country.name != ''"
+          <!-- <v-row
+            class="ma-0 pa-0 d-inline-flex"
+            style="background-color:yellow"
           >
-            {{ country.name }}
-          </v-row>
-          <v-row
-            class="ma-0 pa-0"
-            v-else
-          >
-            <br><br>
-          </v-row>
+            <v-row
+              class="ma-0 ml-12 pa-0 name"
+            >
+              {{ country.name }}
+            </v-row>
+          </v-row> -->
+        </v-row>
+        <v-row
+          class="ma-0 pa-0"
+          v-else
+        >
+          <br><br>
         </v-row>
       </v-row>
     </v-col>

@@ -35,8 +35,8 @@
       fixed
       app
       style="z-index:10"
-      :class="{ 'shrinked': !deployed }"
-      :dense="!deployed"
+      :class="{ 'shrinked': !$store.state.deployed }"
+      :dense="!$store.state.deployed"
     >
       <!-- <v-btn
         icon
@@ -69,7 +69,7 @@
       >
         <v-col
           class="ma-0 pa-0 col-3"
-          :class="{ 'shrinked': !deployed }"
+          :class="{ 'shrinked': !$store.state.deployed }"
           style="height:64px"
         >
           <!-- LOGO HERE! -->
@@ -78,8 +78,8 @@
 
             src="logo.png"
             class="ma-0 ml-16 pa-0"
-            :max-width= "deployed ? '220' : '150'"
-            :class= "deployed ? 'mt-1' : 'mt-n3'"
+            :max-width= "$store.state.deployed ? '220' : '150'"
+            :class= "$store.state.deployed ? 'mt-1' : 'mt-n3'"
           ></v-img>
         </v-col>
         <v-col
@@ -89,7 +89,7 @@
           <v-row
             class="ma-0 pa-0"
             style="width:100%; height:40%"
-            :class="{ 'd-none': !deployed }"
+            :class="{ 'd-none': !$store.state.deployed }"
           >
             <v-row
               class="ma-0 pa-0"
@@ -216,7 +216,7 @@
                   solo
                   dense
                   append-icon="mdi-magnify"
-                  :style="deployed ? 'width:10vw;margin-top:0px !important' : 'width:10vw;margin-top:4px !important'"
+                  :style="$store.state.deployed ? 'width:10vw;margin-top:0px !important' : 'width:10vw;margin-top:4px !important'"
                   flat
                   clearable
                 ></v-text-field>
@@ -224,7 +224,7 @@
               <v-spacer/>
               <v-btn
                 class="ma-0 mr-7 pa-0"
-                :class="deployed ? 'mt-n1' : 'mt-1'"
+                :class="$store.state.deployed ? 'mt-n1' : 'mt-1'"
                 icon
                 small
                 @click.stop="drawerright = !drawerright"
@@ -292,7 +292,6 @@
   export default {
     data () {
       return {
-        deployed: true,
         clipped: true,
         drawerleft: false,
         drawerright: false,
@@ -371,9 +370,9 @@
       onScroll () {
           const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
           if (currentScrollPosition > 0) {
-            this.deployed = false
+            this.$store.commit('deploying', false);
           } else {
-            this.deployed = true
+            this.$store.commit('deploying', true);
           }
           //   return
           // }
