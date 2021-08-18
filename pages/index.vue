@@ -5,21 +5,21 @@
   >
     <v-row
       class="ma-0 pa-0"
-      style="background-color:#121212;width:100%;max-height:70vh;z-index:5"
+      style="background-color:#121212;width:100%;max-height:70vh"
     >
       <cover/>
       <menu-leagues
-        style="position:fixed"
+        style="position:fixed;z-index:50"
         @mouseover.native="$store.commit('mouseOver', 1)"
         @mouseleave.native="$store.commit('leaveOver', 1)"
       />
       <menu-cups
-        style="position:fixed"
+        style="position:fixed;z-index:50"
         @mouseover.native="$store.commit('mouseOver', 2)"
         @mouseleave.native="$store.commit('leaveOver', 2)"
       />
       <menu-countries
-        style="position:fixed"
+        style="position:fixed;z-index:50"
         @mouseover.native="$store.commit('mouseOver', 4)"
         @mouseleave.native="$store.commit('leaveOver', 4)"
       />

@@ -12,14 +12,14 @@
       <v-row
         class="ma-0 pa-0"
         style="width:100%"
-        v-for="country in column"
+        v-for="(country, index) in column" :key="index"
       >
         <v-row
           class="ma-0 pa-0"
           :class="{'item' : country.name != ''}"
           @click="method(country.name)"
           style="color:#ccc;max-width:100%"
-          v-if="country.name != ''"
+          v-if="country.name != undefined"
         >
           <v-row
             class="ma-0 pa-0 d-flex"
@@ -57,7 +57,18 @@
           class="ma-0 pa-0"
           v-else
         >
-          <br><br>
+          <v-row
+            class="ma-0 ml-8 mb-1 pa-0"
+            v-if="index == 0"
+          >
+            <h5>{{ country.title.charAt(0) }}</h5>
+          </v-row>
+          <v-row
+            class="ma-0 mt-5 ml-8 mb-1 pa-0"
+            v-else
+          >
+            <h5>{{ country.title.charAt(0) }}</h5>
+          </v-row>
         </v-row>
       </v-row>
     </v-col>
@@ -89,14 +100,20 @@
         var items = this.$store.state.countries
         let columns = [];
 
+        var title = {title: 'Albania'}
+        bul.push(title)
+
         for(var x in items){
           var country = items[x]
-          if(country.name.charAt(0) != letter){
-            var el = {name: ''}
-            bul.push(el)
+          if(country.name.charAt(0) != title.title.charAt(0)){
+            title = {title: country.name}
+            bul.push(title)
           }
-          letter = country.name.charAt(0)
           bul.push(country)
+        }
+
+        for(var x in bul){
+          console.log(bul[x])
         }
 
         let mid = Math.ceil(Object.keys(bul).length / this.cols);
