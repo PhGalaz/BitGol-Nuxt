@@ -44,8 +44,8 @@
         style="max-height:100%;overflow:hidden"
       >
         <v-img
-          :width="!$store.state.deployed ? '185px' : '230px'"
-          :position="!$store.state.deployed ? '0 -25px' : '-10px -25px'"
+          :width="!$store.state.deployed ? '170px' : '230px'"
+          :position="!$store.state.deployed ? '0 -22px' : '-10px -25px'"
           height="80px"
           src="logo.png"
           class="ma-0 pa-0"
@@ -144,7 +144,7 @@
               <v-spacer/>
 
               <v-tab
-                class="ma-0 mx-1 pa-0"
+                class="ma-0 mx-2 pa-0"
                 id="tab1"
                 style="color:white"
                 @mouseover="$store.commit('mouseOver', 1)"
@@ -152,7 +152,7 @@
               >Leagues</v-tab>
 
               <v-tab
-                class="ma-0 mx-1 pa-0"
+                class="ma-0 mx-2 pa-0"
                 id="tab2"
                 style="color:white"
                 @mouseover="$store.commit('mouseOver', 2)"
@@ -160,7 +160,7 @@
               >Cups</v-tab>
 
               <v-tab
-                class="ma-0 mx-1 pa-0"
+                class="ma-0 mx-2 pa-0"
                 id="tab3"
                 style="color:white"
                 @mouseover="$store.commit('mouseOver', 3)"
@@ -168,7 +168,7 @@
               >Teams</v-tab>
 
               <v-tab
-                class="ma-0 mx-1 pa-0"
+                class="ma-0 mx-2 pa-0"
                 id="tab4"
                 style="color:white;min-height:100%"
                 @mouseover="$store.commit('mouseOver', 4)"
@@ -380,6 +380,8 @@
         this.$store.commit('getleagues', leagues);
         const countries = await this.$axios.$get('http://localhost:3000/countries')
         this.$store.commit('getcountries', countries);
+        const teams = await this.$axios.$get('http://localhost:3000/teams')
+        this.$store.commit('getteams', teams);
       },
       getMessage() {
         this.socket.emit('getMessage', { id: 'abc123' }, (resp) => {

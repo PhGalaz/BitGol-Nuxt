@@ -34,7 +34,7 @@
             <v-row
               class="ma-0 pa-0"
               style="width:100%"
-              v-for="league in leagues(country.name)"
+              v-for="(league, index) in leagues(country.name)" :key="index"
             >
               <v-row
                 class="ma-0 pa-0"
@@ -127,7 +127,6 @@
     data () {
       return {
         cols: 4,
-        temp_country: 'Albania'
       }
     },
     // async fetch() {
@@ -138,9 +137,6 @@
     methods: {
       method(data) {
         console.log(data)
-      },
-      temp_country(data) {
-        this.temp_country = data
       },
       leagues(name){
         var test = this.$store.state.leagues

@@ -3,7 +3,7 @@
     class="ma-0 pa-0"
     style="position:absolute;max-height:70vh;overflow:auto;background-color:#272727"
     :style="$store.state.drawerright ? 'width:80%' : 'width:100%'"
-    :class="{'d-none' : !$store.state.showcountries}"
+    :class="{'d-none' : !$store.state.showteams}"
   >
     <v-col
       class="ma-0 mt-3 pa-0"
@@ -12,25 +12,18 @@
       <v-row
         class="ma-0 pa-0"
         style="width:100%"
-        v-for="(country, index) in column" :key="index"
+        v-for="(team, index) in column" :key="index"
       >
         <v-row
           class="ma-0 pa-0"
-          :class="{'item' : country.name != ''}"
-          @click="method(country.name)"
+          :class="{'item' : team.name != ''}"
           style="color:#ccc;max-width:100%"
-          v-if="country.name != undefined"
+          v-if="team.name != undefined"
         >
           <v-row
             class="ma-0 pa-0 d-flex"
             style="max-width:100%"
           >
-            <v-img
-              :src="country.flag"
-              class="ma-0 mt-1 ml-8 pa-0 flag"
-              max-width="24px"
-              max-height="16px"
-            ></v-img>
             <v-row
               class="ma-0 pa-0 name d-inline-flex"
               style="max-width:140px"
@@ -38,7 +31,7 @@
               <v-row
                 class="ma-0 ml-4 pa-0"
               >
-                {{ country.name }}
+                {{ team.name }}
               </v-row>
             </v-row>
           </v-row>
@@ -53,7 +46,7 @@
             </v-row>
           </v-row> -->
         </v-row>
-        <v-row
+        <!-- <v-row
           class="ma-0 pa-0"
           v-else
         >
@@ -69,7 +62,7 @@
           >
             <h5>{{ country.title.charAt(0) }}</h5>
           </v-row>
-        </v-row>
+        </v-row> -->
       </v-row>
     </v-col>
   </v-row>
@@ -82,46 +75,19 @@
         cols: 5
       }
     },
-    // async fetch() {
-    //   this.currentbchprice = await fetch(
-    //     'url'
-    //   ).then(res => res.json())
-    // },
-    methods: {
-      method(data) {
-        console.log(data)
-      }
-    },
     computed: {
       columns: function() {
         var letter = 'A'
         var res = []
-        var bul = []
-        var items = this.$store.state.countries
+        var bul = this.$store.state.teams
         let columns = [];
 
-        var title = {}
-
-        for(var x in items){
-          var country = items[x]
-          if(Object.keys(title).length === 0){
-            title = {title: country.name}
-            bul.push(title)
-            bul.push(country)
-          } else {
-            if((country.name.charAt(0) != title.title.charAt(0)) || (title.length == 0)){
-              title = {title: country.name}
-              bul.push(title)
-            }
-          bul.push(country)
-          }
-        }
-
+        console.log(bul)
         let mid = Math.ceil(Object.keys(bul).length / this.cols);
         for (let col = 0; col < this.cols; col++) {
             columns.push(Object.entries(bul).slice(col * mid, col * mid + mid).map(entry => entry[1]));
         }
-
+        console.log(columns)
         return columns;
       }
     }

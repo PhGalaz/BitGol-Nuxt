@@ -10,7 +10,8 @@ export const state = () => ({
   showcountries: false,
   info: [],
   leagues: [],
-  countries: []
+  countries: [],
+  teams: []
 })
 
 export const mutations = {
@@ -44,14 +45,13 @@ export const mutations = {
     }
     leagues = leagues.sort((a, b) => a.country.name.localeCompare(b.country.name))
     state.leagues = leagues
-    // console.log('leagues', leagues)
-    console.log('sleagues',state.leagues[0].name)
     state.cups = cups
-    // console.log('cups',cups)
-    console.log('scups',state.cups[0].name)
   },
   getcountries(state, data) {
     state.countries = data.countries
+  },
+  getteams(state, data) {
+    state.teams = data.teams
   },
   setshowleagues(state, value){
     state.showleagues = value
