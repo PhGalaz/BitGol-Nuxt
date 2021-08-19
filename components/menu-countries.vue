@@ -1,8 +1,8 @@
 <template>
   <v-row
     class="ma-0 pa-0"
-    style="position:absolute;width:100%;max-height:70vh;overflow:auto;background-color:#272727"
-    :style="$store.state.deployed ? 'margin-top:0px !important' : 'margin-top:-10px !important'"
+    style="position:absolute;max-height:70vh;overflow:auto;background-color:#272727"
+    :style="$store.state.drawerright ? 'width:80%' : 'width:100%'"
     :class="{'d-none' : !$store.state.showcountries}"
   >
     <v-col

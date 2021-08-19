@@ -34,10 +34,191 @@
       :clipped-left="clipped"
       fixed
       app
-      style="z-index:10"
       :class="{ 'shrinked': !$store.state.deployed }"
       :dense="!$store.state.deployed"
+      style="z-index:51"
     >
+      <v-col
+        class="ma-0 pa-0 col-3"
+        :class="{ 'shrinked': !$store.state.deployed }"
+        style="max-height:100%;overflow:hidden"
+      >
+        <v-img
+          :width="!$store.state.deployed ? '185px' : '230px'"
+          :position="!$store.state.deployed ? '0 -25px' : '-10px -25px'"
+          height="80px"
+          src="logo.png"
+          class="ma-0 pa-0"
+          style="margin-top:-5px !important"
+        ></v-img>
+      </v-col>
+      <v-col
+        class="ma-0 pa-0 col-9"
+        style="height:100%"
+      >
+        <v-row
+          class="ma-0 pa-0"
+          style="width:100%;height:40%"
+          :class="{ 'd-none': !$store.state.deployed }"
+        >
+          <v-row
+            class="ma-0 pa-0"
+            style="margin-left:25% !important"
+            align="center"
+          >
+            <v-img
+              max-height="19"
+              max-width="19"
+              src="bitcoin-cash-circle.png"
+              class="ma-0 pa-0"
+            ></v-img>
+            <p
+              class="ma-1"
+              style="color:white;font-size:13px"
+            >
+              BCH
+            </p>
+            <p
+              class="font-weight-black ma-1 mt-1"
+              style="color:white;font-size:13px"
+            >
+              ${{ $store.state.bch_price }}
+            </p>
+            <v-spacer></v-spacer>
+
+            <v-btn
+              style="text-transform: none;font-size:11px"
+              text
+              x-small
+              dark
+              class="mx-2 appbar0"
+            >
+              help
+            </v-btn>
+            <v-btn
+              style="text-transform: none;font-size:11px"
+              text
+              x-small
+              dark
+              class="mx-2 appbar0"
+            >
+              cancel bet
+            </v-btn>
+            <v-btn
+              style="text-transform: none;font-size:11px"
+              text
+              x-small
+              dark
+              class="mx-2 mr-5 appbar0"
+            >
+              sign in
+            </v-btn>
+          </v-row>
+        </v-row>
+
+
+
+
+
+
+
+        <v-row
+          class="ma-0 pa-0"
+          style="width:100%;height:60%"
+        >
+          <v-row
+            class="ma-0 pa-0"
+            style="height:100%;max-width:70%"
+          >
+            <v-tabs
+              class="ma-0 pa-0"
+              inactive
+              background-color="transparent"
+              centered
+              optional
+              height="38px"
+              width="10%"
+              hide-slider
+              fluid
+            >
+              <v-spacer/>
+
+              <v-tab
+                class="ma-0 mx-1 pa-0"
+                id="tab1"
+                style="color:white"
+                @mouseover="$store.commit('mouseOver', 1)"
+                @mouseleave="$store.commit('leaveOver', 1)"
+              >Leagues</v-tab>
+
+              <v-tab
+                class="ma-0 mx-1 pa-0"
+                id="tab2"
+                style="color:white"
+                @mouseover="$store.commit('mouseOver', 2)"
+                @mouseleave="$store.commit('leaveOver', 2)"
+              >Cups</v-tab>
+
+              <v-tab
+                class="ma-0 mx-1 pa-0"
+                id="tab3"
+                style="color:white"
+                @mouseover="$store.commit('mouseOver', 3)"
+                @mouseleave="$store.commit('leaveOver', 3)"
+              >Teams</v-tab>
+
+              <v-tab
+                class="ma-0 mx-1 pa-0"
+                id="tab4"
+                style="color:white;min-height:100%"
+                @mouseover="$store.commit('mouseOver', 4)"
+                @mouseleave="$store.commit('leaveOver', 4)"
+              >Countries</v-tab>
+
+              <v-spacer/>
+            </v-tabs>
+          </v-row>
+
+
+
+          <v-row
+            class="ma-0 pa-0"
+            style="max-height:100% !important"
+            align="center"
+          >
+            <v-spacer/>
+            <v-row
+              class="ma-0 pa-0"
+              style="max-height:30px;z-index:-4"
+
+            >
+              <v-text-field
+                class="ma-0 pa-0"
+                solo
+                dense
+                append-icon="mdi-magnify"
+                :style="$store.state.deployed ? 'width:10vw;margin-top:0px !important' : 'width:10vw;margin-top:5px !important'"
+                flat
+                clearable
+              ></v-text-field>
+            </v-row>
+            <v-spacer/>
+            <v-btn
+              class="ma-0 mr-7 pa-0"
+              :class="$store.state.deployed ? 'mt-n1' : 'mt-1'"
+              icon
+              small
+              @click.stop="drawer1"
+            >
+              <v-icon style="transform:rotate(180deg)">mdi-{{ `${drawerright ? 'menu-open' : 'menu'}` }}</v-icon>
+            </v-btn>
+          </v-row>
+        </v-row>
+      </v-col>
+
+
+
+
       <!-- <v-btn
         icon
         @click.stop="drawerleft = !drawerleft"
@@ -63,178 +244,16 @@
         <v-icon>mdi-minus</v-icon>
       </v-btn> -->
       <!-- <v-toolbar-title v-text="title" /> -->
-      <v-row
+
+
+
+      <!-- <v-row
         class="ma-0 pa-0"
-        style="width:100%;height:100%"
+        style="width:100%;background-color:red"
+        :class="{ 'shrinked': !$store.state.deployed }"
       >
-        <v-col
-          class="ma-0 pa-0 col-3"
-          :class="{ 'shrinked': !$store.state.deployed }"
-          style="height:64px"
-        >
-          <!-- LOGO HERE! -->
-          <v-img
-            max-height="65"
 
-            src="logo.png"
-            class="ma-0 ml-16 pa-0"
-            :max-width= "$store.state.deployed ? '220' : '150'"
-            :class= "$store.state.deployed ? 'mt-1' : 'mt-n3'"
-          ></v-img>
-        </v-col>
-        <v-col
-          class="ma-0 pa-0 col-9"
-          style=""
-        >
-          <v-row
-            class="ma-0 pa-0"
-            style="width:100%; height:40%"
-            :class="{ 'd-none': !$store.state.deployed }"
-          >
-            <v-row
-              class="ma-0 pa-0"
-              style="margin-left:25% !important"
-              align="center"
-            >
-              <v-img
-                max-height="19"
-                max-width="19"
-                src="bitcoin-cash-circle.png"
-                class="ma-0 pa-0"
-              ></v-img>
-              <p
-                class="ma-1"
-                style="color:white;font-size:13px"
-              >
-                BCH
-              </p>
-              <p
-                class="font-weight-black ma-1 mt-1"
-                style="color:white;font-size:13px"
-              >
-                ${{ $store.state.bch_price }}
-              </p>
-              <v-spacer></v-spacer>
-
-              <v-btn
-                style="text-transform: none;font-size:11px"
-                text
-                x-small
-                dark
-                class="mx-2 appbar0"
-              >
-                help
-              </v-btn>
-              <v-btn
-                style="text-transform: none;font-size:11px"
-                text
-                x-small
-                dark
-                class="mx-2 appbar0"
-              >
-                cancel bet
-              </v-btn>
-              <v-btn
-                style="text-transform: none;font-size:11px"
-                text
-                x-small
-                dark
-                class="mx-2 mr-5 appbar0"
-              >
-                sign in
-              </v-btn>
-            </v-row>
-          </v-row>
-          <v-row
-            class="ma-0 pa-0"
-            style="width:100%;height:60%"
-          >
-            <v-row
-              class="ma-0 pa-0"
-              style="height:100%;max-width:70%"
-            >
-              <v-tabs
-                class="ma-0 pa-0"
-                inactive
-                background-color="transparent"
-                centered
-                optional
-                height="38px"
-                hide-slider
-                fluid
-              >
-                <v-spacer></v-spacer>
-
-                <v-tab
-                  class="ma-0 mx-5 pa-0"
-                  id="tab1"
-                  style="color:white"
-                  @mouseover="$store.commit('mouseOver', 1)"
-                  @mouseleave="$store.commit('leaveOver', 1)"
-                >Leagues</v-tab>
-
-                <v-tab
-                  class="ma-0 mx-5 pa-0"
-                  id="tab2"
-                  style="color:white"
-                  @mouseover="$store.commit('mouseOver', 2)"
-                  @mouseleave="$store.commit('leaveOver', 2)"
-                >Cups</v-tab>
-
-                <v-tab
-                  class="ma-0 mx-5 pa-0"
-                  id="tab3"
-                  style="color:white"
-                  @mouseover="$store.commit('mouseOver', 3)"
-                  @mouseleave="$store.commit('leaveOver', 3)"
-                >Teams</v-tab>
-
-                <v-tab
-                  class="ma-0 mx-5 pa-0"
-                  id="tab4"
-                  style="color:white"
-                  @mouseover="$store.commit('mouseOver', 4)"
-                  @mouseleave="$store.commit('leaveOver', 4)"
-                >Countries</v-tab>
-                <v-spacer></v-spacer>
-
-              </v-tabs>
-            </v-row>
-            <v-row
-              class="ma-0 pa-0"
-              style="max-height:100% !important"
-              align="center"
-            >
-              <v-spacer/>
-              <v-row
-                class="ma-0 pa-0"
-                style="max-height:30px;z-index:-4"
-
-              >
-                <v-text-field
-                  class="ma-0 pa-0"
-                  solo
-                  dense
-                  append-icon="mdi-magnify"
-                  :style="$store.state.deployed ? 'width:10vw;margin-top:0px !important' : 'width:10vw;margin-top:4px !important'"
-                  flat
-                  clearable
-                ></v-text-field>
-              </v-row>
-              <v-spacer/>
-              <v-btn
-                class="ma-0 mr-7 pa-0"
-                :class="$store.state.deployed ? 'mt-n1' : 'mt-1'"
-                icon
-                small
-                @click.stop="drawerright = !drawerright"
-              >
-                <v-icon style="transform:rotate(180deg)">mdi-{{ `${drawerright ? 'menu-open' : 'menu'}` }}</v-icon>
-              </v-btn>
-            </v-row>
-          </v-row>
-        </v-col>
-      </v-row>
+      </v-row> -->
     </v-app-bar>
     <v-main>
       <!-- <menu-leagues
@@ -367,6 +386,10 @@
           this.messageRxd = resp
         })
       },
+      drawer1() {
+        this.drawerright = !this.drawerright,
+        this.$store.commit('drawer1', this.drawerright)
+      },
       onScroll () {
           const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
           if (currentScrollPosition > 0) {
@@ -421,5 +444,6 @@
   .ajust
     margin-top: 20px !important
 
-
+  .v-toolbar__content
+    max-height: 100%
 </style>

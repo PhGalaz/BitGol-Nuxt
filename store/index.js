@@ -1,6 +1,7 @@
 
 export const state = () => ({
   deployed: true,
+  drawerright: false,
 
   bch_price: null,
   showleagues: false,
@@ -24,6 +25,10 @@ export const mutations = {
   },
   bchprice(state, data) {
     state.bch_price = data.price.toFixed(2)
+  },
+  drawer1(state, data) {
+    console.log(data)
+    state.drawerright = data
   },
   getleagues(state, data) {
     var leagues = []
