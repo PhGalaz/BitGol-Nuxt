@@ -1,72 +1,78 @@
-
 <template>
   <v-row
     class="ma-0 pa-0"
-    style="position:absolute;width:100%;max-height:70vh;overflow:auto;background-color:#272727;border-top:0px solid #ccc"
+    style="position:absolute;max-height:70vh;overflow:auto;background-color:#272727"
+    :style="$store.state.drawerright ? 'width:80%' : 'width:100%'"
     :class="{'d-none' : !$store.state.showcups}"
   >
-    <v-row
-      class="ma-0 pa-0"
-      style="width:100%º"
+    <v-col
+      class="ma-0 mt-3 pa-0"
+      v-for="column in columns" :key="column.index"
     >
-      <v-col
-        class="ma-0 mt-3 pa-0"
-        v-for="column in columns" :key="column.index"
+      <v-row
+        class="ma-0 pa-0"
+        style="width:100%"
+        v-for="(cup, index) in column" :key="index"
       >
         <v-row
           class="ma-0 pa-0"
-          v-for="country in column"  :key="country.name"
-          style="width:100%"
-          justify="center"
+          :class="{'item' : cup.name != ''}"
+          @click="method(cup.name)"
+          style="color:#ccc;max-width:100%"
+          v-if="cup.name != undefined"
         >
           <v-row
-            v-if="leagues(country.name).length"
-            class="ma-0 ml-7 pa-0"
-            style="border-bottom:1px solid #ccc;max-width:50%"
+            class="ma-0 pa-0 d-flex"
+            style="max-width:100%"
           >
-            <h5>
-              {{ country.name }}
-            </h5>
-          </v-row>
-          <v-row
-            class="ma-0 mt-2 mb-8 pa-0"
-            style="width:100%"
-          >
+            <v-img
+              :src="cup.logo"
+              @error="$event.target.src='bitcoin-cash-circle.png'"
+              class="ma-0 mt-1 ml-8 pa-0 flag"
+              max-width="24px"
+              max-height="16px"
+            ></v-img>
             <v-row
-              class="ma-0 pa-0"
-              style="width:100%"
-              v-for="(league, index) in leagues(country.name)" :key="index"
+              class="ma-0 pa-0 name d-inline-flex"
+              style="max-width:250px"
             >
               <v-row
-                class="ma-0 pa-0"
-                :class="{'item' : league.name != ''}"
-                @click="method(league.name)"
-                style="color:#ccc"
-                align="center"
-                v-if="league.country"
+                class="ma-0 ml-4 pa-0"
               >
-                <v-row
-                  class="ma-0 pa-0"
-                  style="max-width:60px"
-                >
-                  <v-img
-                    :src="league.logo"
-                    class="ma-0 mt-1 ml-16 pa-0 flag"
-                    max-width="20px"
-                    max-height="30px"
-                  ></v-img>
-                </v-row>
-                <v-row
-                  class="ma-0 ml-12 pa-0 name"
-                >
-                  {{ league.name }}
-                </v-row>
+                {{ cup.name }}
               </v-row>
             </v-row>
           </v-row>
+          <!-- <v-row
+            class="ma-0 pa-0 d-inline-flex"
+            style="background-color:yellow"
+          >
+            <v-row
+              class="ma-0 ml-12 pa-0 name"
+            >
+              {{ country.name }}
+            </v-row>
+          </v-row> -->
         </v-row>
-      </v-col>
-    </v-row>
+        <v-row
+          class="ma-0 pa-0"
+          v-else
+        >
+          <v-row
+            class="ma-0 ml-8 mb-1 pa-0"
+            v-if="index == 0"
+          >
+            <h5>{{ cup.title }}</h5>
+          </v-row>
+          <v-row
+            class="ma-0 mt-6 ml-8 mb-1 pa-0"
+            v-else
+          >
+            <h5>{{ cup.title }}</h5>
+          </v-row>
+        </v-row>
+      </v-row>
+    </v-col>
   </v-row>
 </template>
 
@@ -77,49 +83,43 @@
         cols: 4
       }
     },
+    // async fetch() {
+    //   this.currentbchprice = await fetch(
+    //     'url'
+    //   ).then(res => res.json())
+    // },
     methods: {
       method(data) {
         console.log(data)
-      },
-      leagues(name){
-        var test = this.$store.state.cups
-        test = test.filter(item => item.country.name === name)
-
-        return test
       }
     },
     computed: {
-      columns_countries: function() {
-        var curr = 'Albania'
+      columns: function() {
+        var letter = 'A'
         var res = []
         var bul = []
-        var items = this.$store.state.cups
+        var countries = this.$store.state.countries
+        var cups = this.$store.state.cups
         let columns = [];
 
-        for(var x in items){
-          var league = items[x]
-          if(items[x].country.name != curr){
-            var el = {}
-            bul.push(el)
-          }
-          curr = league.country.name
-          bul.push(league)
-        }
+        var title = {}
 
+        for(var x in countries){
+          if(Object.keys(countries[x].cups).length > 0){
+            title = {title: countries[x].name.toUpperCase()}
+            bul.push(title)
+          }
+          for(var y in cups){
+            if(cups[y].country.name == countries[x].name){
+              bul.push(cups[y])
+            }
+          }
+        }
         let mid = Math.ceil(Object.keys(bul).length / this.cols);
         for (let col = 0; col < this.cols; col++) {
             columns.push(Object.entries(bul).slice(col * mid, col * mid + mid).map(entry => entry[1]));
         }
-        return columns;
-      },
-      columns: function() {
-        let columns = [];
-        var items = this.$store.state.countries
 
-        let mid = Math.ceil(Object.keys(items).length / this.cols);
-        for (let col = 0; col < this.cols; col++) {
-            columns.push(Object.entries(items).slice(col * mid, col * mid + mid).map(entry => entry[1]));
-        }
         return columns;
       }
     }
@@ -128,7 +128,7 @@
 
 <style lang="sass">
   .flag
-    opacity: .5
+    opacity: .65
 
   .item:hover
     cursor: pointer

@@ -159,13 +159,13 @@
                 @mouseleave="$store.commit('leaveOver', 2)"
               >Cups</v-tab>
 
-              <v-tab
+              <!-- <v-tab
                 class="ma-0 mx-2 pa-0"
                 id="tab3"
                 style="color:white"
                 @mouseover="$store.commit('mouseOver', 3)"
                 @mouseleave="$store.commit('leaveOver', 3)"
-              >Teams</v-tab>
+              >Teams</v-tab> -->
 
               <v-tab
                 class="ma-0 mx-2 pa-0"
@@ -189,14 +189,16 @@
             <v-spacer/>
             <v-row
               class="ma-0 pa-0"
-              style="max-height:30px;z-index:-4"
+              style="max-height:30px;z-index:0"
 
             >
               <v-text-field
                 class="ma-0 pa-0"
                 solo
                 dense
+                color="#272727"
                 append-icon="mdi-magnify"
+                style="z-index:100;overflow:hidden"
                 :style="$store.state.deployed ? 'width:10vw;margin-top:0px !important' : 'width:10vw;margin-top:5px !important'"
                 flat
                 clearable
@@ -256,23 +258,6 @@
       </v-row> -->
     </v-app-bar>
     <v-main>
-      <!-- <menu-leagues
-        class="ma-0 pa-0"
-        :class="{'d-none' : !$store.state.showleagues}"
-        style="position:fixed;z-index:5"
-        :style="deployed ? '' : 'margin-top:-10px !important'"
-        @mouseover.native="$store.commit('mouseOver', 1)"
-        @mouseleave.native="$store.commit('leaveOver', 1)"
-        app
-      /> -->
-      <!-- <menu-countries
-        class="ma-0 pa-0"
-        :class="{'d-none' : !$store.state.showcountries}"
-        style="position:fixed;z-index:5"
-        :style="deployed ? '' : 'margin-top:-10px !important'"
-        @mouseover.native="$store.commit('mouseOver', 4)"
-        @mouseleave.native="$store.commit('leaveOver', 4)"
-      /> -->
       <Nuxt />
     </v-main>
 
@@ -448,4 +433,8 @@
 
   .v-toolbar__content
     max-height: 100%
+
+  .v-input__control
+    max-height: 0px
+
 </style>
