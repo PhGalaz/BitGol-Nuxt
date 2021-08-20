@@ -257,7 +257,9 @@
 
       </v-row> -->
     </v-app-bar>
-    <v-main>
+    <v-main
+      style="background-color:#121212"
+    >
       <Nuxt />
     </v-main>
 

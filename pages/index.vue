@@ -5,74 +5,61 @@
   >
     <v-row
       class="ma-0 pa-0"
-      style="background-color:#121212;width:100%;max-height:70vh"
+      style="width:100%;max-height:70vh"
     >
       <cover/>
-      <menu-leagues
-        class="ma-0 pa-0"
-        style="position:fixed;z-index:50"
-        :style="$store.state.deployed ? 'margin-top:0px !important' : 'margin-top:-10px !important'"
-        @mouseover.native="$store.commit('mouseOver', 1)"
-        @mouseleave.native="$store.commit('leaveOver', 1)"
+      <app-bar-tabs
+        style="position:absolute"
       />
-      <menu-cups
-        class="ma-0 pa-0"
-        style="position:fixed;z-index:50"
-        :style="$store.state.deployed ? 'margin-top:0px !important' : 'margin-top:-10px !important'"
-        @mouseover.native="$store.commit('mouseOver', 2)"
-        @mouseleave.native="$store.commit('leaveOver', 2)"
-      />
-      <!-- <menu-teams
-        class="ma-0 pa-0"
-        style="position:fixed;z-index:50"
-        :style="$store.state.deployed ? 'margin-top:0px !important' : 'margin-top:-10px !important'"
-        @mouseover.native="$store.commit('mouseOver', 3)"
-        @mouseleave.native="$store.commit('leaveOver', 3)"
-      /> -->
-      <menu-countries
-        class="ma-0 pa-0"
-        style="position:fixed;z-index:50"
-        :style="$store.state.deployed ? 'margin-top:0px !important' : 'margin-top:-10px !important'"
-        @mouseover.native="$store.commit('mouseOver', 4)"
-        @mouseleave.native="$store.commit('leaveOver', 4)"
-      />
+
     </v-row>
+    <play-resp
+      style="width:100%;box-shadow:0px 5px 20px -10px #121212"
+    />
+
+
+    <!-- Body -->
 
     <v-row
-      class="ma-0 pa-0"
-      style="width:100%;height:20vh"
+      class="ma-0 mt-8 pa-0"
+      style=""
     >
-      Hola
-    </v-row>
-    <v-row
-      class="ma-0 pa-0"
-      style="width:100%;height:20vh"
-    >
-      Hola
-    </v-row>
-    <v-row
-      class="ma-0 pa-0"
-      style="width:100%;height:20vh"
-    >
-      Hola
-    </v-row>
-    <v-row
-      class="ma-0 pa-0"
-      style="width:100%;height:20vh"
-    >
-      Hola
-    </v-row>
-    <v-row
-      class="ma-0 pa-0"
-      style="width:100%;height:20vh"
-    >
-      Hola
-    </v-row>
-    <v-row
-      class="ma-0 pa-0"
-      style="width:100%;height:20vh"
-    >
-      Hola
+      <v-row
+        class="ma-0 mx-5 pa-0"
+      >
+        <v-col
+          class="ma-0 pa-0"
+          cols="5"
+          style=""
+        >
+          <v-row
+            class="ma-0 pa-0"
+            style="width:90%;margin-left:5% !important;border-radius:3px"
+          >
+            <lives
+              class="ma-0 pa-0"
+            />
+          </v-row>
+        </v-col>
+        <v-col
+          class="ma-0 pa-0"
+          cols="7"
+        >
+          <v-row
+            class="ma-0 pa-0"
+            style="width:100%"
+          >
+            <v-row
+              class="ma-0 pa-0"
+              style="width:100%;margin-right:4% !important;border-radius:3px"
+            >
+              <open-bets
+                class="ma-0 pa-0"
+              />
+            </v-row>
+          </v-row>
+        </v-col>
+      </v-row>
     </v-row>
   </v-row>
 </template>
