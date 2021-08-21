@@ -75,11 +75,11 @@
             class="ma-0 pa-0"
             x-small
             color= "white"
+            style="transform:scale(.7)"
           >
             mdi-copyright
           </v-icon>
           {{ new Date().getFullYear() }} BitGol<br>Av. Libertador Bernardo O'Higgins 351 of. 309A<br>SANTIAGO - CHILE <br>
-
         </p>
       </v-row>
       <v-row

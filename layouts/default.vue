@@ -67,10 +67,10 @@
             align="center"
           >
             <v-img
-              max-height="19"
-              max-width="19"
+              max-height="14"
+              max-width="14"
               src="bitcoin-cash-circle.png"
-              class="ma-0 pa-0"
+              class="ma-0 mr-1 pa-0"
             ></v-img>
             <p
               class="ma-1"

@@ -1,16 +1,115 @@
 <template>
   <v-row
-    class="ma-0 ml-1 mt-1 mr-1 pa-0"
+    class="ma-0 pa-0"
     justify="center"
     align="center"
-    style="width:100%;height:35px;background-color:#272727;border-radius:3px"
+    style="width:100%;height:25px;background-color:#272727;border-radius:0 3px 3px 0"
   >
-
+    <v-row
+      class="ma-0 pa-0"
+      style="width:100%"
+    >
+      <v-row
+        class="ma-0 pa-0"
+      >
+        <v-spacer></v-spacer>
+        <h5
+          class="ma-0 mr-2 mt-1 pa-0 text-right"
+          style="width:150px;font-weight:normal"
+          align="center"
+        >
+          {{ fixture.homeTeam[0].team_name }}
+        </h5>
+      </v-row>
+      <v-row
+        class="ma-0 pa-0"
+        style="max-width:20px"
+        align="center"
+      >
+        <v-img
+          :src="fixture.homeTeam[0].logo"
+          class="ma-0 pa-0"
+          max-width="20px"
+          max-height="25px"
+        ></v-img>
+      </v-row>
+      <v-row
+        class="ma-0 pa-0"
+        style="width:20px;font-weight:bold"
+        align="center"
+        justify="center"
+      >
+        <p
+          class="ma-0 pa-0"
+          align="center"
+        >
+          {{ fixture.goalsHomeTeam }}
+        </p>
+      </v-row>
+      <v-row
+        class="ma-0 pa-0"
+        style="max-width:5px;color:#121212"
+        align="center"
+      >
+        |
+      </v-row>
+      <v-row
+        class="ma-0 pa-0"
+        style="width:20px;font-weight:bold"
+        align="center"
+        justify="center"
+      >
+        <p
+          class="ma-0 pa-0"
+          align="center"
+        >
+          {{ fixture.goalsAwayTeam }}
+        </p>
+      </v-row>
+      <v-row
+        class="ma-0 pa-0"
+        style="max-width:20px"
+        align="center"
+      >
+        <v-img
+          :src="fixture.awayTeam[0].logo"
+          class="ma-0 pa-0"
+          max-width="20px"
+          max-height="25px"
+        ></v-img>
+        <v-spacer></v-spacer>
+      </v-row>
+      <v-row
+        class="ma-0 pa-0"
+      >
+        <h5
+          class="ma-0 ml-2 mt-1 pa-0 text-left"
+          style="width:150px;font-weight:normal"
+          align="center"
+        >
+          {{ fixture.awayTeam[0].team_name }}
+        </h5>
+        <v-spacer></v-spacer>
+      </v-row>
+      <v-row
+        class="ma-0 mt-1 pa-0"
+        style="max-width:30px"
+      >
+        <h5 style="font-weight:normal">{{ fixture.elapsed }}'</h5>
+      </v-row>
+    </v-row>
   </v-row>
 </template>
 
 <script>
-
+  export default {
+    props: {
+      fixture: {
+        type: Object,
+        default: () => ({})
+      }
+    }
+  }
 </script>
 
 <style lang="sass">

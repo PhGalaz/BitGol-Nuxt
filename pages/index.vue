@@ -34,7 +34,7 @@
         >
           <v-row
             class="ma-0 pa-0"
-            style="width:90%;margin-left:5% !important;border-radius:3px"
+            style="width:95%;margin-left:1% !important;border-radius:3px"
           >
             <lives
               class="ma-0 pa-0"

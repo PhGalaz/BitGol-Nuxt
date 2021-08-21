@@ -11,7 +11,8 @@ export const state = () => ({
   info: [],
   leagues: [],
   countries: [],
-  teams: []
+  teams: [],
+  lives: []
 })
 
 export const mutations = {
@@ -23,20 +24,23 @@ export const mutations = {
     if(cont[0].event == "bchinfo") {
       state.bch_price = cont[0].data.price.toFixed(2)
     }
+    if(cont[0].event == "lives") {
+      console.log(state.lives)
+      console.log(cont[0].data)
+      state.lives = cont[0].data
+
+    }
   },
   bchprice(state, data) {
     state.bch_price = data.price.toFixed(2)
   },
   drawer1(state, data) {
-    console.log(data)
     state.drawerright = data
   },
   getleagues(state, data) {
     var leagues = []
     var cups = []
-    // console.log('data1', data)
     for(var x in data.leagues){
-      // console.log('data2', data.leagues[x].type)
       if(data.leagues[x].type == 'League'){
         leagues.push(data.leagues[x])
       } else if(data.leagues[x].type == 'Cup') {
@@ -52,6 +56,9 @@ export const mutations = {
   },
   getteams(state, data) {
     state.teams = data.teams
+  },
+  getlives(state, data) {
+    state.lives = data.livegames
   },
   setshowleagues(state, value){
     state.showleagues = value
