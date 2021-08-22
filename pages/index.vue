@@ -29,12 +29,11 @@
       >
         <v-col
           class="ma-0 pa-0"
-          cols="5"
-          style=""
+          style="min-width:25%"
         >
           <v-row
             class="ma-0 pa-0"
-            style="width:95%;margin-left:1% !important;border-radius:3px"
+            style="width:100%;border-radius:3px"
           >
             <lives
               class="ma-0 pa-0"
@@ -43,21 +42,42 @@
         </v-col>
         <v-col
           class="ma-0 pa-0"
-          cols="7"
+          style="min-width:1%"
+        >
+
+        </v-col>
+        <v-col
+          class="ma-0 pa-0"
+
+          style="min-width:74%"
         >
           <v-row
             class="ma-0 pa-0"
-            style="width:100%"
+            style="width:100%;border-radius:3px"
           >
-            <v-row
+            <v-col
               class="ma-0 pa-0"
-              style="width:100%;margin-right:4% !important;border-radius:3px"
+              style="max-width:80%"
             >
               <open-bets
                 class="ma-0 pa-0"
               />
-            </v-row>
+              <locked-bets
+                class="ma-0 mt-4 pa-0"
+              />
+            </v-col>
+            <v-col
+              class="ma-0 ml-5 pa-0"
+              style="max-width:20%;border-radius:2px"
+            >
+              <stats
+                class="ma-0 pa-0"
+                style=""
+              />
+            </v-col>
+
           </v-row>
+
         </v-col>
       </v-row>
     </v-row>

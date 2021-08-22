@@ -2,9 +2,9 @@
   <v-row
     class="ma-0 pa-0"
     align="center"
-    style="width:100%;height:35px;border-radius:3px;font-weight:bold"
+    style="width:100%;max-height:25px;border-radius:3px;font-weight:bold"
   >
-    <h3 class="ma-0 ml-5 pa-0">{{ title }}</h3>
+    <h4 class="ma-0 ml-5 pa-0">{{ title }}</h4>
   </v-row>
 </template>
 

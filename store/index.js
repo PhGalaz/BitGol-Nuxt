@@ -27,7 +27,7 @@ export const mutations = {
     if(cont[0].event == "lives") {
       console.log(state.lives)
       console.log(cont[0].data)
-      state.lives = cont[0].data
+      // state.lives = cont[0].data
 
     }
   },
