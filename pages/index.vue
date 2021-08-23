@@ -21,7 +21,7 @@
     <!-- Body -->
 
     <v-row
-      class="ma-0 mt-8 pa-0"
+      class="ma-0 mt-4 pa-0"
       style=""
     >
       <v-row
