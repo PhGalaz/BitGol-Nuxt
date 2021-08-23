@@ -24,7 +24,7 @@
       >ABOUT BITGOL</h5>
       <v-icon
         class="ma-0 mr-4 pa-0"
-        color="#2AC28F"
+        color="green"
       >mdi-chevron-down</v-icon>
     </v-btn>
     <v-btn
@@ -39,7 +39,7 @@
       >CONTACT US</h5>
       <v-icon
         class="ma-0 mr-4 pa-0"
-        color="#2AC28F"
+        color="green"
       >mdi-chevron-down</v-icon>
     </v-btn>
     <v-btn

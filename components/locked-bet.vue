@@ -7,7 +7,7 @@
   >
     <v-row
       class="ma-0 pa-0"
-      style="width:100%"
+      style="width:100%;height:100%"
     >
       Hola
     </v-row>

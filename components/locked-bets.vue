@@ -1,34 +1,40 @@
 <template>
   <v-row
-    class="ma-0 pa-0"
-    style="width:100%"
+    class="ma-0 mt-4 pa-0"
+    style="width:100%;background-color:green;border-radius:2px"
   >
     <subtitle
-      title='LOCKED BETS'
+      class="ma-0 mt-1 pa-0"
+      title='MATCHED BETS'
+      style="height:100%"
     />
     <v-row
-      class="ma-0 mt-4 pa-0 sbar"
+      class="ma-0 ml-1 mb-1 pa-0 sbar"
       style="max-height:504px;max-width:100%;overflow:auto"
     >
-      <locked-bet class="ma-0 mx-1 mb-1 pa-0"/>
-      <locked-bet class="ma-0 mx-1 mb-1 pa-0"/>
-      <locked-bet class="ma-0 mx-1 mb-1 pa-0"/>
-      <locked-bet class="ma-0 mx-1 mb-1 pa-0"/>
-      <locked-bet class="ma-0 mx-1 mb-1 pa-0"/>
-      <locked-bet class="ma-0 mx-1 mb-1 pa-0"/>
-      <locked-bet class="ma-0 mx-1 mb-1 pa-0"/>
-      <locked-bet class="ma-0 mx-1 mb-1 pa-0"/>
-      <locked-bet class="ma-0 mx-1 mb-1 pa-0"/>
-      <locked-bet class="ma-0 mx-1 mb-1 pa-0"/>
-      <locked-bet class="ma-0 mx-1 mb-1 pa-0"/>
-      <locked-bet class="ma-0 mx-1 mb-1 pa-0"/>
-      <locked-bet class="ma-0 mx-1 mb-1 pa-0"/>
-      <locked-bet class="ma-0 mx-1 mb-1 pa-0"/>
-      <locked-bet class="ma-0 mx-1 mb-1 pa-0"/>
-      <locked-bet class="ma-0 mx-1 mb-1 pa-0"/>
-      <locked-bet class="ma-0 mx-1 mb-1 pa-0"/>
-      <locked-bet class="ma-0 mx-1 mb-1 pa-0"/>
-
+      <v-row
+        class="ma-0 pa-0"
+        style="background-color:#121212;border-radius:2px"
+      >
+        <latest-bet class="ma-0 mx-1 mt-1 mb-1 pa-0"/>
+        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
+        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
+        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
+        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
+        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
+        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
+        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
+        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
+        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
+        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
+        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
+        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
+        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
+        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
+        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
+        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
+        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
+      </v-row>
     </v-row>
   </v-row>
 </template>
@@ -39,10 +45,12 @@
 
 <style lang="sass">
   .sbar::-webkit-scrollbar
-    border-radius: 0 2px 2px 0
-    background: #2AC28F
+    border-radius: 3px
+    background-color: green
     width: 8px
   .sbar::-webkit-scrollbar-thumb
-    background-color: #272727
-    border-radius: 0 2px 2px 0 !important
+    background-color: white
+    border-radius: 3px !important
+    border-color: green
+
 </style>
