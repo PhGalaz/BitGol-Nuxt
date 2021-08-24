@@ -67,8 +67,8 @@
             align="center"
           >
             <v-img
-              max-height="14"
-              max-width="14"
+              max-height="13"
+              max-width="13"
               src="bitcoin-cash-circle.png"
               class="ma-0 mr-1 pa-0"
             ></v-img>
@@ -109,7 +109,7 @@
               text
               x-small
               dark
-              class="mx-2 mr-5 appbar0"
+              class="mx-2 mr-2 appbar0"
             >
               sign in
             </v-btn>
@@ -206,7 +206,7 @@
             </v-row>
             <v-spacer/>
             <v-btn
-              class="ma-0 mr-7 pa-0"
+              class="ma-0 mr-3 pa-0"
               :class="$store.state.deployed ? 'mt-n1' : 'mt-1'"
               icon
               small

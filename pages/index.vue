@@ -29,11 +29,11 @@
       >
         <v-col
           class="ma-0 pa-0"
-          style="min-width:25%"
+          style="max-width:20%"
         >
           <v-row
             class="ma-0 pa-0"
-            style="width:100%;border-radius:3px"
+            style="width:100%;border-radius:2px"
           >
             <lives
               class="ma-0 pa-0"
@@ -41,14 +41,8 @@
           </v-row>
         </v-col>
         <v-col
-          class="ma-0 pa-0"
-          style="min-width:1%"
-        >
-
-        </v-col>
-        <v-col
-          class="ma-0 pa-0"
-          style="min-width:74%"
+          class="ma-0 ml-3 pa-0"
+          style="min-width:80%"
         >
           <v-row
             class="ma-0 pa-0"

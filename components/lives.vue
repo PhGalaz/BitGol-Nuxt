@@ -8,92 +8,69 @@
 
       <ticle title='LIVE GAMES'/>
       <v-row
-        class="ma-0 ml-1 mt-4 pa-0"
+        class="ma-0 mx-1 mt-4 pa-0"
+        v-if="leagues.length > 0"
       >
         <v-row
           class="ma-0 pa-0"
-          style="width:100%;border-radius:2px"
-          v-for="(league, index) in leagues"  :key="index"
-          align="center"
         >
-          <v-col
-            @click="method(league.id)"
-            class="ma-0 pa-0 live"
-            style="max-width:25px;height:100%;opacity:.75"
-            v-if="index == 0"
+          <v-row
+            class="ma-0  pa-0"
+            style="width:100%;border-radius:2px"
+            v-for="(league, index) in leagues"  :key="index"
+            align="center"
           >
             <v-row
-              class="ma-0 pa-0"
-              style="height:100%"
+              class="ma-0 mb-1 pa-0"
+              style="border-radius:2px;background-color:#272727"
               justify="center"
             >
-              <live
-                class="ma-0 mb-1 pa-0"
+              <league-title
+                class="ma-0 mt-1 ml-2 pa-0"
+                style="height:25px;background-color:#272727"
                 :fixture=league
               />
-            </v-row>
-          </v-col>
-          <v-col
-            @click="method(league.id)"
-            class="ma-0 pa-0 live"
-            style="max-width:25px;height:100%;opacity:.75"
-            v-else-if="leagues[index].id != leagues[index - 1].id"
-          >
-            <v-row
-              class="ma-0 pa-0"
-              style="height:100%"
-              justify="center"
-            >
-              <live
-                class="ma-0 mb-1 pa-0"
-                :fixture=league
-              />
-            </v-row>
-          </v-col>
-          <v-col
-            class="ma-0 pa-0"
-            style="height:100%"
-            v-if="index == 0"
-          >
-            <v-row
-              class="ma-0 pa-0 live"
-              style="width:100%;border-radius:2px;opacity:0.75"
-              v-for="(live, index) in $store.state.lives"  :key="index"
-            >
-              <v-row
-                class="ma-0 pa-0"
-                style="width:100%"
-                v-if="live.league_id == league.id"
-              >
-                <live2
+                <v-row
                   class="ma-0 mb-1 mx-1 pa-0"
-                  :fixture=live
-                />
+                  style="width:100%;max-height:100%;border-radius:2px"
+                >
+                  <v-row
+                    class="ma-0 pa-0"
+                    style="width:100%;border-radius:2px"
+                    v-for="(live, index) in $store.state.lives"  :key="index"
+                  >
+                    <v-row
+                      class="ma-0 pa-0"
+                      style="width:100%"
+                      v-if="live.league_id == league.id"
+                    >
+                      <live
+                        class="ma-0 mt-1 pa-0 live"
+                        style="opacity:.75;background-color:#1C1C1C"
+                        :fixture=live
+                      />
+                    </v-row>
+                  </v-row>
+                </v-row>
               </v-row>
             </v-row>
-          </v-col>
-          <v-col
-            class="ma-0 pa-0"
-            style="height:100%"
-            v-else-if="leagues[index].id != leagues[index - 1].id"
-          >
-            <v-row
-              class="ma-0 pa-0 live"
-              style="width:100%;border-radius:2px;opacity:0.75"
-              v-for="(live, index) in $store.state.lives"  :key="index"
-            >
-              <v-row
-                class="ma-0 pa-0"
-                style="width:100%"
-                v-if="live.league_id == league.id"
-              >
-                <live2
-                  class="ma-0 mb-1 mx-1 pa-0"
-                  :fixture=live
-                />
-              </v-row>
-            </v-row>
-          </v-col>
+          </v-row>
+
+
+        </v-row>
+        <v-row
+          class="ma-1 mt-4 pa-0"
+          v-else
+          align="center"
+          justify="center"
+          style="height:100px;border-radius:2px;opacity:.75;color:#1C1C1C;background-color:#272727"
+        >
+          <v-icon
+            class="ma-0 mb-n3 mt-2 pa-0"
+            color="#1C1C1C"
+            style="width:100%"
+          >mdi-sleep</v-icon>
+          <h5 style="height:50%">NO LIVE GAMES <br>AT THIS HOURS</h5>
         </v-row>
       </v-row>
     </v-row>
@@ -122,7 +99,9 @@
         for(var x in lives){
           var league = {
             logo: lives[x].league[0].logo,
-            id: lives[x].league_id
+            id: lives[x].league_id,
+            name: lives[x].league[0].name,
+            flag: lives[x].league[0].flag
           }
           leagues.indexOf(league) === -1 ? leagues.push(league) : '';
         }
