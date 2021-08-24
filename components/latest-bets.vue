@@ -10,7 +10,7 @@
     />
     <v-row
       class="ma-0 ml-1 mb-1 pa-0 lbar"
-      style="max-height:504px;max-width:100%;overflow:auto"
+      style="max-height:504px;max-width:100%;overflow:auto;border-radius:2px"
     >
       <v-row
         class="ma-0 pa-0"

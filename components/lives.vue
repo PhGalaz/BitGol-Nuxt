@@ -20,7 +20,9 @@
             v-for="(league, index) in leagues"  :key="index"
             align="center"
           >
+
             <v-row
+              v-if="index == 0"
               class="ma-0 mb-1 pa-0"
               style="border-radius:2px;background-color:#272727"
               justify="center"
@@ -37,7 +39,7 @@
                   <v-row
                     class="ma-0 pa-0"
                     style="width:100%;border-radius:2px"
-                    v-for="(live, index) in $store.state.lives"  :key="index"
+                    v-for="(live, indexe) in $store.state.lives"  :key="index"
                   >
                     <v-row
                       class="ma-0 pa-0"
@@ -53,6 +55,40 @@
                   </v-row>
                 </v-row>
               </v-row>
+              <v-row
+                v-else-if="league.id != leagues[index-1].id"
+                class="ma-0 mb-1 pa-0"
+                style="border-radius:2px;background-color:#272727"
+                justify="center"
+              >
+                <league-title
+                  class="ma-0 mt-1 ml-2 pa-0"
+                  style="height:25px;background-color:#272727"
+                  :fixture=league
+                />
+                  <v-row
+                    class="ma-0 mb-1 mx-1 pa-0"
+                    style="width:100%;max-height:100%;border-radius:2px"
+                  >
+                    <v-row
+                      class="ma-0 pa-0"
+                      style="width:100%;border-radius:2px"
+                      v-for="(live, indexe) in $store.state.lives"  :key="index"
+                    >
+                      <v-row
+                        class="ma-0 pa-0"
+                        style="width:100%"
+                        v-if="live.league_id == league.id"
+                      >
+                        <live
+                          class="ma-0 mt-1 pa-0 live"
+                          style="opacity:.75;background-color:#1C1C1C"
+                          :fixture=live
+                        />
+                      </v-row>
+                    </v-row>
+                  </v-row>
+                </v-row>
             </v-row>
           </v-row>
 

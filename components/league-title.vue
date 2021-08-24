@@ -28,7 +28,7 @@
         <v-spacer></v-spacer>
         <v-img
           :src="fixture.logo"
-          class="ma-0 pa-0"
+          class="ma-0 mr-1 spa-0"
           max-width="17px"
           max-height="17px"
         ></v-img>
