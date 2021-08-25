@@ -28,8 +28,8 @@
             <v-img
               :src="cup.logo"
               class="ma-0 mt-1 ml-8 pa-0 flag"
-              max-width="24px"
-              max-height="16px"
+              max-width="17px"
+              max-height="17px"
             ></v-img>
             <v-row
               class="ma-0 pa-0 name d-inline-flex"
