@@ -11,26 +11,27 @@
 
     >
       <v-row
-        class="ma-0 mr-1 pa-0"
-        style="width:100%"
+        class="ma-0 mr-1 pa-0 d-flex"
+        style="max-width:100%"
         align="center"
       >
         <!-- {{ fixture }} -->
+
+
         <v-img
-          :src="fixture.flag"
-          class="ma-0 pa-0"
-          max-width="17px"
-          max-height="17px"
+          :src="fixture.logo"
+          class="ma-0 ml-1 spa-0"
+          max-width="15px"
+          max-height="15px"
         ></v-img>
-
-
         <h6 class="ma-0 ml-1 pa-0" style="opacity:.75">{{ fixture.name }}</h6>
         <v-spacer></v-spacer>
         <v-img
-          :src="fixture.logo"
-          class="ma-0 mr-1 spa-0"
-          max-width="17px"
-          max-height="17px"
+          :src="fixture.flag"
+          style="border-radius:2px"
+          class="ma-0 mr-1 pa-0"
+          max-width="20px"
+          height="15px"
         ></v-img>
       </v-row>
     </v-row>

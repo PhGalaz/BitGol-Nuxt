@@ -27,9 +27,10 @@
           >
             <v-img
               :src="country.flag"
-              class="ma-0 mt-1 ml-8 pa-0 flag"
-              max-width="24px"
-              max-height="16px"
+              class="ma-0 ml-8 mt-1 pa-0 flag"
+              style="border-radius:2px"
+              max-width="20px"
+              max-height="15px"
             ></v-img>
             <v-row
               class="ma-0 pa-0 name d-inline-flex"

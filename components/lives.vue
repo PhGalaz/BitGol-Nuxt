@@ -23,7 +23,7 @@
 
             <v-row
               v-if="index == 0"
-              class="ma-0 mb-1 pa-0"
+              class="ma-0 mb-2 pa-0"
               style="border-radius:2px;background-color:#272727"
               justify="center"
             >
@@ -57,7 +57,7 @@
               </v-row>
               <v-row
                 v-else-if="league.id != leagues[index-1].id"
-                class="ma-0 mb-1 pa-0"
+                class="ma-0 mb-2 pa-0"
                 style="border-radius:2px;background-color:#272727"
                 justify="center"
               >

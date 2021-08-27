@@ -357,13 +357,13 @@ export default {
     >
       <v-row
         class="ma-0 pa-0"
-        style="width:100%;height:70%;background-color:blue"
+        style="width:50%;height:100%;background-color:#272727"
       >
 
       </v-row>
       <v-row
         class="ma-0 pa-0"
-        style="width:100%;height:30%;background-color:green"
+        style="width:50%;height:100%;background-color:#272727"
       >
 
       </v-row>

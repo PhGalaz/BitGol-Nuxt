@@ -1,6 +1,6 @@
 <template>
   <v-row
-    class="ma-0  pa-0"
+    class="ma-0 pa-0"
     justify="center"
     align="center"
     style="width:100%;background-color:#191919;border-radius:2px"
@@ -17,7 +17,7 @@
       </h5>
     </v-col>
     <v-col
-      class="ma-0 pa-0"
+      class="ma-0 my-1 pa-0"
       style=""
     >
       <v-row
