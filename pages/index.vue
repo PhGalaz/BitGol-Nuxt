@@ -13,9 +13,12 @@
       />
 
     </v-row>
-    <play-resp
-      style="width:100%;box-shadow:0px 5px 20px -10px #121212"
-    />
+    <client-only>
+      <play-resp
+        style="width:100%;box-shadow:0px 5px 20px -10px #121212"
+      />
+    </client-only>
+
 
 
     <!-- Body -->

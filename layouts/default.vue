@@ -369,6 +369,8 @@
         this.$store.commit('getcountries', countries);
         const teams = await this.$axios.$get('http://localhost:3000/teams')
         this.$store.commit('getteams', teams);
+        const bets = await this.$axios.$get('http://localhost:3000/bets')
+        this.$store.commit('getbets', bets);
       },
       getMessage() {
         this.socket.emit('getMessage', { id: 'abc123' }, (resp) => {

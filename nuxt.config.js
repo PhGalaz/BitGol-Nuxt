@@ -85,11 +85,14 @@ export default {
   build: {
     extend (config, { isDev, isClient }) {
 
-       config.node = {
-            fs: 'empty'
-        }
+      config.node = {
+          fs: 'empty'
+      }
 
-       // ....
+      config.resolve.symlinks = false
+
+
+      // ....
     },
     babel: {
       plugins: [

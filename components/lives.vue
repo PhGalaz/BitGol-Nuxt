@@ -39,7 +39,7 @@
                   <v-row
                     class="ma-0 pa-0"
                     style="width:100%;border-radius:2px"
-                    v-for="(live, indexe) in $store.state.lives"  :key="index"
+                    v-for="live in $store.state.lives" :key="live.fixture_id"
                   >
                     <v-row
                       class="ma-0 pa-0"
@@ -73,7 +73,7 @@
                     <v-row
                       class="ma-0 pa-0"
                       style="width:100%;border-radius:2px"
-                      v-for="(live, indexe) in $store.state.lives"  :key="index"
+                      v-for="live in $store.state.lives" :key="live.fixture_id"
                     >
                       <v-row
                         class="ma-0 pa-0"

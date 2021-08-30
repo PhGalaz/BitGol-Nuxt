@@ -12,7 +12,8 @@ export const state = () => ({
   leagues: [],
   countries: [],
   teams: [],
-  lives: []
+  lives: [],
+  bets: []
 })
 
 export const mutations = {
@@ -53,6 +54,10 @@ export const mutations = {
   },
   getcountries(state, data) {
     state.countries = data.countries
+  },
+  getbets(state, data) {
+    // console.log(data.bets[0].fixture[0])
+    state.bets = data.bets
   },
   getteams(state, data) {
     state.teams = data.teams

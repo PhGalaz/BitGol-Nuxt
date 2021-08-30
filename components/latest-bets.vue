@@ -9,38 +9,36 @@
       style="height:100%"
     />
     <v-row
-      class="ma-0 ml-1 mb-1 pa-0 lbar"
+      class="ma-0 mx-1 mb-1 pa-0 lbar"
       style="max-height:504px;max-width:100%;overflow:auto;border-radius:2px"
     >
       <v-row
         class="ma-0 pa-0"
         style="background-color:#121212;border-radius:2px"
+        v-for="bet in bets"  :key="bet.bet_id"
       >
-        <latest-bet class="ma-0 mx-1 mt-1 mb-1 pa-0"/>
-        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
-        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
-        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
-        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
-        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
-        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
-        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
-        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
-        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
-        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
-        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
-        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
-        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
-        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
-        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
-        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
-        <latest-bet class="ma-0 mx-1 mb-1 pa-0"/>
+        <latest-bet class="ma-0 mx-1 mt-1 pa-0" :bet=bet />
       </v-row>
     </v-row>
   </v-row>
 </template>
 
 <script>
+  export default {
+    computed: {
+      bets: function() {
+        var bets = this.$store.state.bets
+        console.log(this.$store.state.bets)
+        return bets
 
+        //var byDate = bets.slice(0);
+        //  byDate.sort(function(a,b) {
+        //      return a.created - b.created;
+        //  });
+        //return byDate;
+      }
+    }
+  }
 </script>
 
 <style lang="sass">

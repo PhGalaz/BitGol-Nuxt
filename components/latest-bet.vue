@@ -355,17 +355,28 @@ export default {
       class="ma-0 pa-0"
       style="width:20%;height:100%;border-radius:2px"
     >
+      <!-- {{ bet.fixture[0] }} -->
       <v-row
         class="ma-0 pa-0"
         style="width:50%;height:100%;background-color:#272727"
       >
-
+        <!-- <v-img
+          class="ma-0 pa-0"
+          max-height="35"
+          max-width="35"
+          :src="bet.fixture[0].homeTeam[0].logo"
+        ></v-img> -->
       </v-row>
       <v-row
         class="ma-0 pa-0"
         style="width:50%;height:100%;background-color:#272727"
       >
-
+        <!-- <v-img
+          class="ma-0 pa-0"
+          max-height="35"
+          max-width="35"
+          :src="bet.fixture[0].homeTeam[0].logo"
+        ></v-img> -->
       </v-row>
     </v-row>
     <v-row
@@ -379,8 +390,11 @@ export default {
 
 <script>
   export default {
+    mounted() {
+      console.log('last',this.bet.fixture.awayTeam)
+    },
     props: {
-      fixture: {
+      bet: {
         type: Object,
         default: () => ({})
       }
@@ -389,8 +403,5 @@ export default {
 </script>
 
 <style lang="sass">
-  .bit:hover
-    background-color: #272727 !important
-    opacity: 1 !important
-    cursor: pointer
+
 </style>
