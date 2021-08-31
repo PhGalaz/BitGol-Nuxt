@@ -28,7 +28,8 @@
     computed: {
       bets: function() {
         var bets = this.$store.state.bets
-        console.log(this.$store.state.bets)
+
+        console.log(this.$store.state.bets[0])
         return bets
 
         //var byDate = bets.slice(0);

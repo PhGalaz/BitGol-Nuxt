@@ -56,8 +56,9 @@ export const mutations = {
     state.countries = data.countries
   },
   getbets(state, data) {
-    // console.log(data.bets[0].fixture[0])
     state.bets = data.bets
+    console.log('xxxxxx',state.bets)
+    // console.log('yyyyyy',state.bets[0].fixture[0].elapsed)
   },
   getteams(state, data) {
     state.teams = data.teams

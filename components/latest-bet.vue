@@ -391,7 +391,7 @@ export default {
 <script>
   export default {
     mounted() {
-      console.log('last',this.bet.fixture.awayTeam)
+      // console.log('last',this.bet.fixture)
     },
     props: {
       bet: {
