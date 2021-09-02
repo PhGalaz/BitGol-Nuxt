@@ -57,8 +57,8 @@ export const mutations = {
   },
   getbets(state, data) {
     state.bets = data.bets
-    console.log('xxxxxx',state.bets)
-    // console.log('yyyyyy',state.bets[0].fixture[0].elapsed)
+    console.log('1',state.bets['0'])
+    console.log('2',state.bets['0'].bet_id)
   },
   getteams(state, data) {
     state.teams = data.teams

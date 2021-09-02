@@ -58,9 +58,9 @@
               <open-bets
                 class="ma-0 pa-0"
               />
-              <open-bets
+              <!-- <open-bets
                 class="ma-0 mt-4 pa-0"
-              />
+              /> -->
             </v-col>
             <v-col
               class="ma-0 ml-3 pa-0"

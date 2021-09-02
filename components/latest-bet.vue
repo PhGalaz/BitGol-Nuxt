@@ -367,6 +367,7 @@ export default {
           :src="bet.fixture[0].homeTeam[0].logo"
         ></v-img> -->
       </v-row>
+        <pre>{{ data }}</pre>
       <v-row
         class="ma-0 pa-0"
         style="width:50%;height:100%;background-color:#272727"
@@ -390,15 +391,25 @@ export default {
 
 <script>
   export default {
-    mounted() {
-      // console.log('last',this.bet.fixture)
-    },
+    // data: function () {
+    //   return {
+    //     bet: []
+    //   }
+    // },
     props: {
-      bet: {
+      data: {
         type: Object,
-        default: () => ({})
-      }
+        default: () => {
+          // fixture: Object,
+          // created: Date
+        },
+      },
     }
+    // computed: {
+    //   tipo: function (){
+    //     return typeof(this.bet.fixture[0])
+    //   }
+    // }
   }
 </script>
 
