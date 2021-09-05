@@ -69,7 +69,7 @@
             <v-img
               max-height="13"
               max-width="13"
-              src="bitcoin-cash-circle.png"
+              src="bitcoin-verde.png"
               class="ma-0 mr-1 pa-0"
             ></v-img>
             <p

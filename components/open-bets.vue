@@ -13,18 +13,21 @@
       >
         <latest-bets />
       </v-row>
-      <v-row
+      <!-- <v-row
         class="ma-0 mx-1 mb-1 pa-0"
         style="width:100%"
       >
         <locked-bets />
-      </v-row>
+      </v-row> -->
     </v-row>
+    <!-- {{ object.fixture[0].league[0] }} -->
   </v-row>
 </template>
 
 <script>
+  export default {
 
+  }
 </script>
 
 <style lang="sass">
