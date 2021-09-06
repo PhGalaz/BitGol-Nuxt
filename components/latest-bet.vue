@@ -86,7 +86,7 @@
         >
           <v-avatar
             class="ma-0 pa-0"
-            size="42"
+            size="47"
             style="background-color:#272727;border:2px solid white"
           >
             <v-img
@@ -105,10 +105,10 @@
         >
           <v-avatar
             class="ma-0 pa-0"
-            size="42"
+            size="47"
             style="background-color:#272727"
           >
-            <h5>T</h5>
+            <h5>X</h5>
           </v-avatar>
         </v-row>
         <v-row
@@ -119,7 +119,7 @@
         >
         <v-avatar
           class="ma-0 pa-0"
-          size="42"
+          size="47"
           style="background-color:#272727;border:2px solid #1CD790"
         >
           <v-img

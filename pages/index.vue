@@ -25,14 +25,15 @@
 
     <v-row
       class="ma-0 mt-4 pa-0"
-      style=""
+      style="width:100%"
     >
       <v-row
         class="ma-0 mx-3 pa-0"
+        style=""
       >
         <v-col
-          class="ma-0 pa-0"
-          style="max-width:20%"
+          class="ma-0 pa-0 col-md-3"
+
         >
           <v-row
             class="ma-0 pa-0"
@@ -44,16 +45,16 @@
           </v-row>
         </v-col>
         <v-col
-          class="ma-0 ml-3 pa-0"
-          style="min-width:80%"
+          class="ma-0 pa-0 col-md-9"
+          style=""
         >
           <v-row
-            class="ma-0 pa-0"
+            class="ma-0 pa-0 pl-3"
             style="width:100%;border-radius:3px"
           >
             <v-col
-              class="ma-0 pa-0"
-              style="max-width:80%"
+              class="ma-0 pa-0 col-md-12"
+              style=""
             >
               <open-bets
                 class="ma-0 pa-0"
@@ -64,7 +65,7 @@
             </v-col>
             <v-col
               class="ma-0 ml-3 pa-0"
-              style="max-width:20%;border-radius:2px"
+              style="border-radius:2px"
             >
               <stats
                 class="ma-0 pa-0"

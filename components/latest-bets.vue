@@ -47,7 +47,7 @@
             justify="center"
             align="center"
           >
-            <h5>TIE</h5>
+            <h5>DRAW</h5>
           </v-row>
           <v-row
             class="ma-0 pa-0"
