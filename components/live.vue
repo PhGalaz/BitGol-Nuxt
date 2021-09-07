@@ -21,10 +21,8 @@
           <v-img
             :src="fixture.homeTeam[0].logo"
             class="ma-0 pa-0"
-            max-width="2
-            0px"
-            max-height="2
-            5px"
+            max-width="20px"
+            max-height="25px"
           ></v-img>
         </v-row>
         <v-row

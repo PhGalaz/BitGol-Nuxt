@@ -64,7 +64,7 @@
               /> -->
             </v-col>
             <v-col
-              class="ma-0 ml-3 pa-0"
+              class="ma-0 mt-3 pa-0"
               style="border-radius:2px"
             >
               <stats

@@ -17,7 +17,7 @@
         <v-row
           class="ma-0 pa-0"
           :class="{'item' : cup.name != ''}"
-          @click="method(cup.name)"
+          @click="method(cup.league_id)"
           style="color:#ccc;max-width:100%"
           v-if="cup.name != undefined"
         >

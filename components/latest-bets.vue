@@ -1,11 +1,11 @@
 <template>
   <v-row
     class="ma-0 pa-0"
-    style="width:100%;background-color:#1CD790;border-radius:2px"
+    style="width:100%;background-color:#208E64;border-radius:2px"
   >
     <subtitle
       class="ma-0 mt-1 pa-0"
-      title='LATEST BETS'
+      title='NEW BETS'
       style="height:100%"
     />
     <v-row
@@ -33,7 +33,7 @@
         </v-row>
         <v-row
           class="ma-0 pa-0"
-          style="width:21%"
+          style="width:15%"
         >
           <v-row
             class="ma-0 pa-0"
@@ -72,6 +72,12 @@
         <!-- <open-bet class="ma-0 mx-1 mt-1 pa-0" :bet="bet"/> -->
 
         <latest-bet class="ma-0 mx-1 pa-0 be" style="opacity:.75":bet="bet"/>
+        <!-- <v-row>
+          <img
+            src="test.png"
+            alt="John"
+          >
+        </v-row> -->
       </v-row>
     </v-row>
   </v-row>
