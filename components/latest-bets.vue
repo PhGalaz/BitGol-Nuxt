@@ -1,7 +1,7 @@
 <template>
   <v-row
     class="ma-0 pa-0"
-    style="width:100%;background-color:#208E64;border-radius:2px"
+    style="width:100%;background-color:#1CD790;border-radius:2px"
   >
     <subtitle
       class="ma-0 mt-1 pa-0"
@@ -22,7 +22,7 @@
       </v-row> -->
       <v-row
         class="ma-0 pa-0"
-        style="width:100%;height:30px;background-color:#272727"
+        style="width:100%;height:30px;background-color:#1C1C1C"
         justify="center"
       >
         <v-row
@@ -66,7 +66,7 @@
       </v-row>
       <v-row
         class="ma-0 pa-0"
-        style="width:100%;background-color:#272727"
+        style="width:100%;background-color:#1C1C1C"
         v-for="(bet,index) in $store.state.bets"  :key="bet.bet_id"
       >
         <!-- <open-bet class="ma-0 mx-1 mt-1 pa-0" :bet="bet"/> -->

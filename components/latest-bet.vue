@@ -3,55 +3,47 @@
     class="ma-0 mb-1 pa-0"
     justify="center"
     align="center"
-    style="width:100%;height:55px;border-radius:2px;background-color:#1C1C1C"
+    style="width:100%;height:55px;border-radius:2px;background-color:#272727"
   >
 
     <!-- left -->
+    <v-spacer></v-spacer>
     <v-row
       class="ma-0 ml-1 pa-0"
-      style="width:38%;max-height:95%;border-radius:45px;background-color:#272727"
+      style="width:20%;max-height:95%;border-radius:45px"
       align="center"
     >
-      <v-avatar
+      <!-- <v-avatar
         class="ma-0 pa-0"
-        size="47"
+        size="37"
         style="border:3px solid #272727"
       >
         <img
           src="https://cdn.vuetifyjs.com/images/john.jpg"
           alt="John"
         >
-      </v-avatar>
+      </v-avatar> -->
       <v-row
-        class="ma-0 mt-1 pa-0"
+        class="ma-0 pa-0"
         style="height:100%"
       >
         <v-row
           class="ma-0 pa-0"
           style="width:100%"
+          align="center"
         >
+          <v-spacer></v-spacer>
+          <h4 class="ma-0 mr-3 pa-0" style="color:white">{{ bet.fixture[0].homeTeam[0].name }}</h4>
           <v-img
-            class="ma-0 pa-0"
-            max-height="15"
-            max-width="20"
+            class="ma-0 mr-3 pa-0"
+            max-height="30"
+            max-width="30"
             :src="bet.fixture[0].homeTeam[0].logo"
           ></v-img>
-          <h5 style="font-weight:normal">{{ bet.fixture[0].homeTeam[0].name }}</h5>
         </v-row>
-        <v-row
-          class="ma-0 pa-0"
-          style="width:100%"
-        >
-          <v-img
-            class="ma-0 pa-0"
-            max-height="20"
-            max-width="20"
-            :src="bet.fixture[0].awayTeam[0].logo"
-          ></v-img>
-          <h5 style="font-weight:normal">{{ bet.fixture[0].awayTeam[0].name }}</h5>
-        </v-row>
-        <v-row
-          class="ma-0 mt-1 pa-0 d-none"
+
+        <!-- <v-row
+          class="ma-0 mt-1 pa-0"
           style="max-width:95%;max-height:15px;background: linear-gradient(90deg,transparent,white);border-radius:0 45px 45px 0"
           align="center"
         >
@@ -64,32 +56,14 @@
             src="bitcoin-gris.png"
             class="ma-0 mr-1 pa-0"
           ></v-img>
-        </v-row>
+        </v-row> -->
       </v-row>
-      <v-avatar
-        class="ma-0 pa-0"
-        size="47"
-        style="background-color:#272727;border:2px solid #272727"
-      >
-        <v-avatar
-          class="ma-0 pa-0"
-          size="47"
-          style="background-color:#272727"
-        >
-          <v-img
-            class="ma-0 pa-0"
-            max-height="35"
-            max-width="35"
-            :src="bet.fixture[0].homeTeam[0].logo"
-          ></v-img>
-        </v-avatar>
-      </v-avatar>
     </v-row>
 
     <!-- center -->
     <v-row
       class="ma-0 pa-0"
-      style="width:15%;height:100%;border-radius:2px"
+      style="max-width:18%;height:100%;border-radius:2px"
     >
       <v-row
         class="ma-0 pa-0"
@@ -104,12 +78,12 @@
           <v-avatar
             class="ma-0 pa-0"
             size="47"
-            style="background-color:#272727;border:2px solid #272727"
+            style="background-color:#1C1C1C;border:2px solid #272727"
           >
             <v-avatar
               class="ma-0 pa-0"
-              size="37"
-              style="background-color:#272727"
+              size="27"
+              style="background-color:#1C1C1C"
             >
               <v-icon
                 light
@@ -127,16 +101,16 @@
           <v-avatar
             class="ma-0 pa-0"
             size="47"
-            style="background-color:#272727;border:2px solid #272727"
+            style="background-color:#1C1C1C;border:2px solid #272727"
           >
             <v-avatar
               class="ma-0 pa-0"
-              size="37"
-              style="background-color:#272727"
+              size="27"
+              style="background-color:#1C1C1C"
             >
               <v-icon
-                color="grey"
-              >mdi-equal-box</v-icon>
+                color="white"
+              >mdi-equal</v-icon>
             </v-avatar>
           </v-avatar>
         </v-row>
@@ -149,17 +123,17 @@
           <v-avatar
             class="ma-0 pa-0"
             size="47"
-            style="background-color:#272727;border:2px solid #272727"
+            style="background-color:#1C1C1C;border:2px solid #272727"
           >
             <v-avatar
               class="ma-0 pa-0"
-              size="37"
-              style="background-color:#272727"
+              size="27"
+              style="background-color:#1C1C1C"
             >
               <v-icon
                 light
                 color="green"
-              >mdi-check-decagram</v-icon>
+              >mdi-check-circle</v-icon>
             </v-avatar>
           </v-avatar>
         </v-row>
@@ -170,34 +144,34 @@
     <!-- right -->
     <v-row
       class="ma-0 mr-1 pa-0"
-      style="width:38%;max-height:95%;border-radius:45px;background-color:#272727"
+      style="width:20%;max-height:95%;border-radius:45px"
       align="center"
     >
-      <v-avatar
-        class="ma-0 ml-2 pa-0"
-        size="37"
-        style="background-color:#272727;border:2px solid grey"
+      <v-row
+        class="ma-0 pa-0"
+        style="width:100%"
+        align="center"
       >
-        <h6 style="color:grey"> 12.00 </h6>
-      </v-avatar>
+        <v-img
+          class="ma-0 ml-3 pa-0"
+          max-height="30"
+          max-width="30"
+          :src="bet.fixture[0].awayTeam[0].logo"
+        ></v-img>
+        <h4 class="ma-0 ml-3 pa-0" style="color:white">{{ bet.fixture[0].awayTeam[0].name }}</h4>
+        <!-- <v-avatar
+          class="ma-0 ml-2 pa-0"
+          size="37"
+          style="background-color:#272727;border:2px solid white"
+        >
+          <h6 style="color:white"> 12.00 </h6>
+        </v-avatar> -->
+      </v-row>
       <v-row
         class="ma-0 mt-1 pa-0"
         style="height:100%"
       >
-        <v-row
-          class="ma-0 pa-0"
-          style="width:100%"
-        >
-          <v-spacer></v-spacer>
-          <h5 class="ma-0 mr-1 pa-0" style="font-weight:normal">{{ bet.fixture[0].awayTeam[0].name }}</h5>
-          <v-img
-            class="ma-0 pa-0"
-            max-height="15"
-            max-width="20"
-            :src="bet.fixture[0].awayTeam[0].logo"
-          ></v-img>
-        </v-row>
-        <v-row
+        <!-- <v-row
           class="ma-0 pa-0"
           style="width:100%"
         >
@@ -227,22 +201,10 @@
               hola
             </v-row>
           </v-row>
-        </v-row>
+        </v-row> -->
       </v-row>
-      <v-avatar
-        class="ma-0 pa-0"
-        size="47"
-        style="border:2px solid #1CD790;background-color:#272727"
-      >
-
-          <v-icon
-            color="#1CD790"
-            class="ma-0 pa-0"
-            small
-          >mdi-lock-open-variant</v-icon>
-
-      </v-avatar>
     </v-row>
+    <v-spacer></v-spacer>
   </v-row>
 </template>
 
