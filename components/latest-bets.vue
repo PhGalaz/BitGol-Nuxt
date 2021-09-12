@@ -1,7 +1,7 @@
 <template>
   <v-row
     class="ma-0 pa-0"
-    style="width:100%;background-color:#1CD790;border-radius:2px"
+    style="width:100%;background-color:#629122;border-radius:2px;inset:-3px"
   >
     <subtitle
       class="ma-0 mt-1 pa-0"

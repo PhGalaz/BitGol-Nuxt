@@ -87,7 +87,7 @@
             >
               <v-icon
                 light
-                color="red"
+                color="#CC3333"
               >mdi-close-circle</v-icon>
             </v-avatar>
           </v-avatar>
@@ -132,7 +132,7 @@
             >
               <v-icon
                 light
-                color="green"
+                color="#629122"
               >mdi-check-circle</v-icon>
             </v-avatar>
           </v-avatar>
@@ -159,13 +159,15 @@
           :src="bet.fixture[0].awayTeam[0].logo"
         ></v-img>
         <h4 class="ma-0 ml-3 pa-0" style="color:white">{{ bet.fixture[0].awayTeam[0].name }}</h4>
-        <!-- <v-avatar
+        <v-spacer></v-spacer>
+
+        <v-avatar
           class="ma-0 ml-2 pa-0"
-          size="37"
-          style="background-color:#272727;border:2px solid white"
+          size="47"
+          style="background-color:#1C1C1C;opacity:.75;border:1px solid white"
         >
-          <h6 style="color:white"> 12.00 </h6>
-        </v-avatar> -->
+          <h6 style="color:white"> 11.00 </h6>
+        </v-avatar>
       </v-row>
       <v-row
         class="ma-0 mt-1 pa-0"
