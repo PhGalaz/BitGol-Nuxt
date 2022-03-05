@@ -1,7 +1,7 @@
 <template>
   <v-row
     class="ma-0 pa-0"
-    style="width:100%;background-color:rgba(39,39,39,.5);border-radius:2px"
+    style="width:100%;background-color:rgba(39,39,39,.5);border-radius:2px;color:#ccc"
   >
     <ticle title='OPEN BETS'/>
     <v-row

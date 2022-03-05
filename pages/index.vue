@@ -53,7 +53,7 @@
             style="width:100%;border-radius:3px"
           >
             <v-col
-              class="ma-0 pa-0 col-md-12"
+              class="ma-0 pa-0 col-md-9"
               style=""
             >
               <open-bets
@@ -64,7 +64,7 @@
               /> -->
             </v-col>
             <v-col
-              class="ma-0 mt-3 pa-0"
+              class="ma-0 ml-3 pa-0"
               style="border-radius:2px"
             >
               <stats

@@ -1,12 +1,12 @@
 <template>
   <v-row
     class="ma-0 pa-0"
-    style="width:100%;background-color:#629122;border-radius:2px;inset:-3px"
+    style="width:100%;background-color:#4FAF00;border-radius:2px;inset:-3px"
   >
     <subtitle
       class="ma-0 mt-1 pa-0"
       title='NEW BETS'
-      style="height:100%"
+      style="height:100%;color:#333"
     />
     <v-row
       class="ma-0 mx-1 mb-1 pa-0 lbar"
@@ -33,7 +33,7 @@
         </v-row>
         <v-row
           class="ma-0 pa-0"
-          style="width:15%"
+          style="width:15%;color:#ccc"
         >
           <v-row
             class="ma-0 pa-0"
@@ -71,7 +71,7 @@
       >
         <!-- <open-bet class="ma-0 mx-1 mt-1 pa-0" :bet="bet"/> -->
 
-        <latest-bet class="ma-0 mx-1 pa-0 be" style="opacity:.75":bet="bet"/>
+        <latest-bet class="ma-0 mx-1 pa-0" style="opacity:.75":bet="bet"/>
         <!-- <v-row>
           <img
             src="test.png"
@@ -115,9 +115,6 @@
     background-color: white
     border-radius: 3px !important
     border-color: #259872
-  .be:hover
-    cursor: pointer
-    opacity: 1 !important
 
 
 </style>

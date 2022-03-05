@@ -103,10 +103,10 @@
         >
           <v-icon
             class="ma-0 mb-n3 mt-2 pa-0"
-            color="#1C1C1C"
+            color="#629122"
             style="width:100%"
           >mdi-sleep</v-icon>
-          <h5 style="height:50%">NO LIVE GAMES <br>AT THIS HOURS</h5>
+          <h5 style="height:50%;color:#629122">NO LIVE GAMES <br>AT THIS HOURS</h5>
         </v-row>
       </v-row>
     </v-row>
