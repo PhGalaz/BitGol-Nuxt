@@ -1,5 +1,8 @@
 
 export const state = () => ({
+  min_bet: 36000,
+  currency: true,
+
   deployed: true,
   drawerright: false,
 
@@ -17,6 +20,9 @@ export const state = () => ({
 })
 
 export const mutations = {
+  switch_units(state) {
+    state.currency = !state.currency
+  },
   SOCKET_ONOPEN(state, chatMessage) {
 
   },
@@ -26,10 +32,7 @@ export const mutations = {
       state.bch_price = cont[0].data.price.toFixed(2)
     }
     if(cont[0].event == "lives") {
-      console.log(state.lives)
-      console.log(cont[0].data)
       // state.lives = cont[0].data
-
     }
   },
   bchprice(state, data) {

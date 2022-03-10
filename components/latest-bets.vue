@@ -1,12 +1,12 @@
 <template>
   <v-row
     class="ma-0 pa-0"
-    style="width:100%;background-color:#4FAF00;border-radius:2px;inset:-3px"
+    style="width:100%;background-color:#444;border-radius:2px;inset:-3px"
   >
     <subtitle
       class="ma-0 mt-1 pa-0"
       title='NEW BETS'
-      style="height:100%;color:#333"
+      style="height:100%;color:#ccc"
     />
     <v-row
       class="ma-0 mx-1 mb-1 pa-0 lbar"

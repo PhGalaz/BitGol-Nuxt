@@ -415,7 +415,7 @@
   ::-webkit-scrollbar
     border-radius: 0 3px 3px 0
     background: #272727
-    width: 8px
+    width: 12px
   ::-webkit-scrollbar-thumb
     background-color: white
     border: 2px solid #121212
