@@ -1,7 +1,7 @@
 <template>
   <v-row
     class="ma-0 pa-0"
-    style="width:100%;background-color:#444;border-radius:2px;inset:-3px"
+    style="width:100%;border-radius:2px;inset:-3px;background: linear-gradient(90deg, rgba(2,123,146,.6) 0%, rgba(0,166,82,.7) 100%) !important"
   >
     <subtitle
       class="ma-0 mt-1 pa-0"
@@ -10,7 +10,7 @@
     />
     <v-row
       class="ma-0 mx-1 mb-1 pa-0 lbar"
-      style="max-height:504px;max-width:100%;overflow:auto;border-radius:2px"
+      style="max-height:1000px;max-width:100%;overflow:auto;border-radius:2px"
     >
       <!-- <v-row
         class="ma-0 pa-0"

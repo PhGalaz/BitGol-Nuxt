@@ -325,25 +325,27 @@
     //     'url'
     //   ).then(res => res.json())
     // },
-    computed: {
-      // product() {
-      //   return this.store.getters['getProductById(this.$route.params.id)']
-      // },
-      //   works with:
-      //   {{ $route.params.(name of .vue file on pages>products>_id.vue) }}
-      // },
-      current_bch_price() {
-        return this.$store.getters['getCurrentPrice']
-      }
-    },
+    // computed: {
+    //   product() {
+    //     return this.store.getters['getProductById(this.$route.params.id)']
+    //   },
+    //     works with:
+    //     {{ $route.params.(name of .vue file on pages>products>_id.vue) }}
+    //   },
+    //   current_bch_price() {
+    //     return this.$store.getters['getCurrentPrice']
+    //   }
+    // },
     mounted () {
-        window.addEventListener('scroll', this.onScroll)
+        window.addEventListener('scroll', this.onScroll),
+        this.$options.sockets.onmessage = (data) => this.mess(data)
       },
     beforeDestroy () {
       window.removeEventListener('scroll', this.onScroll)
     },
     created() {
       this.initdata()
+
       // let res = await this.$http.get('http://localhost:3000/leagues');
       // console.log(res)
       // this.$store.commit('leagues', res);
@@ -359,6 +361,14 @@
       // })
     },
     methods: {
+      mess(data){
+        var event = JSON.parse(data.data)['0']['event']
+        if (event == "bchinfo") {
+          var price = parseFloat(JSON.parse(data.data)[0]['data']['price'].toFixed(2))
+          var data = { price: price }
+          this.$store.commit('bchprice', data)
+        }
+      },
       async initdata() {
         const info = await this.$axios.$get('http://localhost:3000/bch')
         var data = info.info[0]

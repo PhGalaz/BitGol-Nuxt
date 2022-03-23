@@ -59,6 +59,9 @@
               <open-bets
                 class="ma-0 pa-0"
               />
+              <next-games
+                class="ma-0 mt-4 pa-0"
+              />
               <!-- <open-bets
                 class="ma-0 mt-4 pa-0"
               /> -->

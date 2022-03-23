@@ -1,3 +1,4 @@
+import axios from 'axios'
 
 export const state = () => ({
   min_bet: 36000,
@@ -16,7 +17,8 @@ export const state = () => ({
   countries: [],
   teams: [],
   lives: [],
-  bets: []
+  bets: [],
+  fixtures: []
 })
 
 export const mutations = {
@@ -29,11 +31,14 @@ export const mutations = {
   SOCKET_ONMESSAGE(state, cont) {
     cont = JSON.parse(cont.data)
     if(cont[0].event == "bchinfo") {
-      state.bch_price = cont[0].data.price.toFixed(2)
+      // state.bch_price = cont[0].data.price.toFixed(2)
     }
     if(cont[0].event == "lives") {
       // state.lives = cont[0].data
     }
+  },
+  SET_FIXTURES(state, fixtures) {
+    state.fixtures = fixtures;
   },
   bchprice(state, data) {
     state.bch_price = data.price.toFixed(2)
@@ -152,6 +157,10 @@ export const actions = {
   FORMAT_MESSAGE({ commit }, chatMessage){
     const chatMessageFmt = `$(new Date().toLocaleString()}: ${chatMessage}\r\n`
     commit('SET_MESSAGE', chatMessageFmt)
+  },
+  async loadFixtures({ commit }) {
+    let response = await axios.get('http://localhost:3000/fixtures');
+    commit('SET_FIXTURES', response.data);
   }
 }
 
@@ -162,4 +171,8 @@ export const getters = {
   getCurrentPrice(state){
     return state.bch_price
   }
+  // allFixtures: (state) => state.fixtures
+ //  fixturesById: state => {
+ //   return _.keyBy(state.fixtures, "id")
+ // }
 }

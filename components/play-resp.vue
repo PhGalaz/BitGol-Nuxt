@@ -18,6 +18,7 @@
       small
       text
       color="white"
+      @click="respo()"
     >
       <h5
         class="ma-0 ml-5 pa-0"
@@ -184,6 +185,10 @@
     methods:{
       responsablyOut(){
         this.showResponsably = false
+      },
+      respo(){
+        var data = { price: parseFloat(this.$store.state.bch_price) + 1 }
+        this.$store.commit('bchprice', data)
       }
     }
   }

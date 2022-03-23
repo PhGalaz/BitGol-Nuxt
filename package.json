@@ -17,6 +17,8 @@
     "tls": "0.0.1",
     "vue-native-websocket": "^2.0.15",
     "vue-qr": "^3.2.4",
+    "vue-social-sharing": "^3.0.9",
+    "vue-socialmedia-share": "^1.0.1",
     "vuetify": "^2.5.5"
   },
   "devDependencies": {
