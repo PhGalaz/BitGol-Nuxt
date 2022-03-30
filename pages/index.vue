@@ -88,6 +88,9 @@
       return {
       }
     },
+    mounted(){
+      this.$store.dispatch('loadFixtures')
+    }
 }
 </script>
 

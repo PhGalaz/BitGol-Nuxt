@@ -165,12 +165,14 @@
     <v-btn
       x-small
       icon
-      color= "white"
+      color= "#ccc"
       class="ml-3 mr-3"
     >
       <v-icon
+        x-small
+        style="background-color:#444;border-radius:45px"
         @click="responsablyOut()"
-      >mdi-close-circle</v-icon>
+      >mdi-close</v-icon>
     </v-btn>
 
 

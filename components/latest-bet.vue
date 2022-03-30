@@ -1,19 +1,17 @@
 <template>
   <v-row
-    class="ma-0 mb-1 pa-0 vet"
+    class="ma-0 mb-1 pa-0"
     justify="center"
     align="center"
-    style="width:100%;height:60px;border-radius:2px;background-color:#272727"
+    style="width:100%;border-radius:2px;background-color:#272727"
     @mouseover="hover = true"
     @mouseleave="hover = false"
   >
-    <v-expand-transition>
+    <!-- <v-expand-transition>
       <v-card
-        class="ma-0 mt-1 pa-0"
+        class="ma-0 mt-1 pa-0 fax"
         v-show="hover"
-        height="20"
-        style="background-color:transparent;border:0px solid #555;border-radius:2px;width:100%;max-width:100%;
-          font-size:10px"
+        style="border-radius:2px;width:100%;font-size:10px"
         justify="center"
         flat
       >
@@ -106,18 +104,18 @@
           </v-row>
         </v-row>
       </v-card>
-    </v-expand-transition>
+    </v-expand-transition> -->
 
 
     <v-row
       class="ma-0 pa-0 main-line"
-      style="width:100%;height:50px;background-color:transparent;margin-top:2px"
+      style="width:100%;max-height:50px;min-height:50px;background-color:transparent;margin-top:2px"
       align="center"
     >
       <!-- left -->
       <v-spacer></v-spacer>
       <v-row
-        class="ma-0 ml-1 pa-0"
+        class="ma-0 ml-1 mr-8 pa-0"
         style="width:20%;border-radius:45px"
         align="center"
         justify="center"
@@ -185,7 +183,7 @@
 
       <!-- right -->
       <v-row
-        class="ma-0 mr-1 pa-0"
+        class="ma-0 mr-1 ml-8 pa-0"
         style="width:20%;height:50px;border-radius:45px"
         align="center"
       >
@@ -213,15 +211,12 @@
 
     <v-expand-transition>
       <v-card
-        class="ma-0"
+        class="ma-0 pa-0 fax"
         v-show="hover"
-        height="160"
-        style="background-color:transparent;border:0px solid #555;border-radius:2px;width:100%;max-width:100%;
-          font-size:12px;color:#555;overflow:hidden;height:220px;z-index:-1000"
-          flat
+        style="border-radius:2px;width:100%;font-size:12px;color:#555;overflow:hidden"
+        flat
       >
         <v-row
-          v-show="hover"
           class="ma-0 pa-0"
           style="width:100%;overflow:hidden"
           justify="center"
@@ -382,7 +377,7 @@
                       backgroundColor="#222"
                       colorLight="transparent"
                       colorDark="#ccc"
-                      margin="0"
+                      margin=0
                       text="bitcoincash:pprn2xyzjkguj4ea4mrsrklmmrnyqx027y5s5tlmcj?amount=0.00030000"
                       :size="80"
                       height="80px"
@@ -550,7 +545,6 @@
                   >
                     <template v-slot:prepend>
                       <v-icon
-                        :color="red"
                         @click="decrement"
                       >
                         mdi-minus
@@ -559,7 +553,6 @@
 
                     <template v-slot:append>
                       <v-icon
-                        :color="red"
                         @click="increment"
                       >
                         mdi-plus
@@ -618,14 +611,14 @@
                   ></span>
                   <span
                     class="font-weight-light ml-1"
-                    style="font-size:10px;color:#999"
+                    style="font-size:10px;color:#999;margin-top:2px !important"
                     v-text="large_units_display"
                   ></span>
                   <v-icon
                   class="ma-0 ml-1 pa-0"
                     small
                     color= "#999"
-                    style="transform:rotate(10deg);color:#444"
+                    style="transform:rotate(10deg);color:#444;margin-top:2px !important"
                   >
                     mdi-information-outline
                   </v-icon>
@@ -655,7 +648,7 @@
                   class="ma-0 ml-1 pa-0"
                     small
                     color= "#999"
-                    style="transform:rotate(10deg);color:#444"
+                    style="transform:rotate(10deg);color:#444;margin-top:2px !important"
                   >
                     mdi-information-outline
                   </v-icon>
@@ -685,7 +678,7 @@
                   class="ma-0 ml-1 pa-0"
                     small
                     color= "#999"
-                    style="transform:rotate(10deg);color:#444"
+                    style="transform:rotate(10deg);color:#444;margin-top:2px !important"
                   >
                     mdi-information-outline
                   </v-icon>
@@ -1091,13 +1084,6 @@
       days() {
         return Math.trunc((this.dateInMilliseconds - this.now) / 60 / 60 / 24);
       },
-      color () {
-        if (this.bpm < 100) return 'indigo'
-        if (this.bpm < 125) return 'teal'
-        if (this.bpm < 140) return 'green'
-        if (this.bpm < 175) return 'orange'
-        return 'red'
-      },
       animationDuration () {
         return `${60 / this.bpm}s`
       },
@@ -1199,7 +1185,7 @@
 
 
 
-<style lang="sass" scope>
+<style lang="sass">
   .amount:hover
     cursor: pointer
   .hash:hover
@@ -1208,7 +1194,7 @@
     cursor: pointer
 
   .team:hover
-    color: #eee !important
+    color: #fff !important
 
   .fecha:hover
     color: #ccc !important
@@ -1243,31 +1229,37 @@
 
   .vet
     // transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1) !important
-    transition: 0.3s ease all !important
+    transition: .5s !important
+
 
   .vet:hover
-      height: 310px !important
-      background-image: repeating-linear-gradient(45deg, transparent, transparent 140px, rgba(0,0,0,.055) 140px, rgba(0,0,0,.055) 280px)
+      // height: 310px !important
+      // background-image: repeating-linear-gradient(45deg, transparent, transparent 140px, rgba(0,0,0,.055) 140px, rgba(0,0,0,.055) 280px)
       // background-color: #1c1c1c !important
       // background-color: #1C1C1C !important
       .main-line
         background-color: #333 !important
-        max-width: 80% !important
+        // max-width: 80% !important
 
+  .main-line
+    transition: .5s !important
   .main-line:hover
       cursor: pointer
 
-  @keyframes metronome-example
-    from
-      transform: scale(.5)
-    to
-      transform: scale(1)
+  .fax
+    transition: .5s !important
+
+  // @keyframes metronome-example
+  //   from
+  //     transform: scale(.5)
+  //   to
+  //     transform: scale(1)
 
 
-  .v-avatar--metronome
-    animation-name: metronome-example
-    animation-iteration-count: infinite
-    animation-direction: alternate
+  // .v-avatar--metronome
+  //   animation-name: metronome-example
+  //   animation-iteration-count: infinite
+  //   animation-direction: alternate
 
 
 </style>

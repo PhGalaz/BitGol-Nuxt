@@ -160,7 +160,7 @@ export const actions = {
   },
   async loadFixtures({ commit }) {
     let response = await axios.get('http://localhost:3000/fixtures');
-    commit('SET_FIXTURES', response.data);
+    commit('SET_FIXTURES', response.data.fixtures);
   }
 }
 

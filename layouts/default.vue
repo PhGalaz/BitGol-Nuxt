@@ -373,12 +373,12 @@
         const info = await this.$axios.$get('http://localhost:3000/bch')
         var data = info.info[0]
         this.$store.commit('bchprice', data);
-        const leagues = await this.$axios.$get('http://localhost:3000/leagues')
-        this.$store.commit('getleagues', leagues);
-        const countries = await this.$axios.$get('http://localhost:3000/countries')
-        this.$store.commit('getcountries', countries);
-        const teams = await this.$axios.$get('http://localhost:3000/teams')
-        this.$store.commit('getteams', teams);
+        // const leagues = await this.$axios.$get('http://localhost:3000/leagues')
+        // this.$store.commit('getleagues', leagues);
+        // const countries = await this.$axios.$get('http://localhost:3000/countries')
+        // this.$store.commit('getcountries', countries);
+        // const teams = await this.$axios.$get('http://localhost:3000/teams')
+        // this.$store.commit('getteams', teams);
         const bets = await this.$axios.$get('http://localhost:3000/bets')
         this.$store.commit('getbets', bets);
       },
