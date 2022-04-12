@@ -1,115 +1,15 @@
 <template>
   <v-row
-    class="ma-0 mb-1 pa-0"
+    class="ma-0 mb-1 pa-0 vet open"
     justify="center"
     align="center"
-    style="width:100%;border-radius:2px;background-color:#272727"
+    style="width:100%;min-height:55px !important;border-radius:2px;background-color:#272727"
     @mouseover="hover = true"
-    @mouseleave="hover = false"
+    @mouseleave="hovering"
   >
-    <!-- <v-expand-transition>
-      <v-card
-        class="ma-0 mt-1 pa-0 fax"
-        v-show="hover"
-        style="border-radius:2px;width:100%;font-size:10px"
-        justify="center"
-        flat
-      >
-        <v-row
-          v-show="hover"
-          class="ma-0 mt-1 pa-0"
-          style="width:100%"
-          align="center"
-          justify="center"
-        >
-          <v-row
-            class="ma-0 pa-0"
-            style="max-width:80%;font-weight:bold"
-          >
-            <v-row
-              class="ma-0 pa-0"
-              style="width:30%"
-              align="center"
-            >
-              <v-img
-                class="ma-0 pa-0 logos"
-                max-height="15"
-                max-width="15"
-                :src="bet.fixture[0].league[0].flag"
-                style="opacity:.7"
-              ></v-img>
-              <v-img
-                class="ma-0 ml-1 pa-0 logos"
-                max-height="15"
-                max-width="15"
-                :src="bet.fixture[0].league[0].logo"
-                style="opacity:.7"
-              ></v-img>
-            </v-row>
-            <v-spacer></v-spacer>
-            <v-row
-              class="ma-0 pa-0"
-              align="center"
-              style="width:40%"
-              justify="center"
-            >
-              <p
-
-                style="letter-spacing:0px;color:#999;"
-                class="ma-0 pa-0 font-weight-black"
-              >{{days}}</p>
-              <p
-
-                style="letter-spacing:0px;color:#999"
-                class="ma-0 pa-0 font-weight-medium"
-              >d</p>
-              <p
-
-                style="letter-spacing:0px;color:#999"
-                class="ma-0 ml-1 pa-0 font-weight-black"
-              >{{hours}}</p>
-              <p
-
-                style="letter-spacing:0px;color:#999"
-                class="ma-0 pa-0 font-weight-medium"
-              >h</p>
-              <p
-
-                style="letter-spacing:0px;color:#999"
-                class="ma-0 ml-1 pa-0 font-weight-black"
-              >{{minutes}}</p>
-              <p
-
-                style="letter-spacing:0px;color:#999"
-                class="ma-0 pa-0 font-weight-medium"
-              >m</p>
-              <p
-
-                style="letter-spacing:0px;color:#999"
-                class="ma-0 ml-1 pa-0 font-weight-black"
-              >{{seconds}}</p>
-              <p
-
-                style="letter-spacing:0px;color:#999"
-                class="ma-0 pa-0 font-weight-medium"
-              >s</p>
-            </v-row>
-            <v-row
-              class="ma-0 pa-0 fecha"
-              style="width:30%;color:#999"
-            >
-              <v-spacer></v-spacer>
-              {{eventDate.toUpperCase().replace(/,/g, '')}}
-            </v-row>
-          </v-row>
-        </v-row>
-      </v-card>
-    </v-expand-transition> -->
-
-
     <v-row
       class="ma-0 pa-0 main-line"
-      style="width:100%;max-height:50px;min-height:50px;background-color:transparent;margin-top:2px"
+      style="max-width:100%;max-height:55px;min-height:55px;background-color:transparent;margin-top:2px"
       align="center"
     >
       <!-- left -->
@@ -141,20 +41,20 @@
         </v-row>
       </v-row>
 
-
-
       <!-- center -->
 
       <v-row
-        class="ma-0 pa-0"
+        class="ma-0 ml-1 pa-0"
         style="max-width:18%;height:100%;border-radius:2px;font-weight:bold"
+        justify="center"
       >
         <v-row
           class="ma-0 pa-0"
-          style="width:100%"
+          style="width:100%;min-height:100%"
+          justify="center"
         >
           <v-row
-            class="ma-0 pa-0"
+            class="ma-0 pa-0 factor"
             :style="factor_style(bet.home_factor.toFixed(2))"
             justify="center"
             align="center"
@@ -162,15 +62,16 @@
             {{bet.home_factor.toFixed(2)}}
           </v-row>
           <v-row
-            class="ma-0 pa-0"
+            class="ma-0 pa-0 factor"
             :style="factor_style(bet.draw_factor.toFixed(2))"
+            style="min-height:100%"
             justify="center"
             align="center"
           >
             {{bet.draw_factor.toFixed(2)}}
           </v-row>
           <v-row
-            class="ma-0 pa-0"
+            class="ma-0 pa-0 factor"
             :style="factor_style(bet.away_factor.toFixed(2))"
             justify="center"
             align="center"
@@ -180,8 +81,8 @@
         </v-row>
       </v-row>
 
-
       <!-- right -->
+
       <v-row
         class="ma-0 mr-1 ml-8 pa-0"
         style="width:20%;height:50px;border-radius:45px"
@@ -211,660 +112,873 @@
 
     <v-expand-transition>
       <v-card
-        class="ma-0 pa-0 fax"
+        class="ma-0 pa-0 mx-1 mb-1 fax"
         v-show="hover"
-        style="border-radius:2px;width:100%;font-size:12px;color:#555;overflow:hidden"
+        style="border-radius:2px;width:100%;font-size:12px;color:#555"
         flat
       >
         <v-row
-          class="ma-0 pa-0"
-          style="width:100%;overflow:hidden"
-          justify="center"
-
+          class="ma-0 mt-4 pa-0"
+          style="height:30px;background-color:#222"
         >
+          <v-spacer></v-spacer>
           <v-row
-            class="ma-0 pa-0"
-            style="min-width:80%;max-width:80%"
+            class="ma-0 ml-1 mr-8 pa-0"
+            style="width:20%"
+            align="center"
             justify="center"
           >
             <v-row
-              class="ma-0 mt-1 pa-0"
-              style="max-width:110px;max-height:12px;border-radius:2px"
+              class="ma-0 pa-0"
+              style=""
+              justify="end"
+              align="center"
+            >
+              <span
+                class="ml-1 font-weight-bold"
+                :style="alt_style(bet.home_factor)"
+                v-text="home_amount_display"
+              ></span>
+              <span
+                class="font-weight-light ml-1"
+                style="font-size:10px;color:#999;margin-top:3px !important"
+                v-text="large_units_display"
+              ></span>
+              <v-icon
+              class="ma-0 ml-1 pa-0"
+                small
+                color= "#999"
+                style="transform:rotate(10deg);color:#444"
+              >
+                mdi-information-outline
+              </v-icon>
+            </v-row>
+          </v-row>
+
+          <!-- center -->
+
+          <v-row
+            class="ma-0 pa-0"
+            style="width:25%;height:100%;border-radius:2px;font-weight:bold;background-color:#252525"
+            justify="center"
+          >
+            <v-row
+              class="ma-0 pa-0"
+              style=""
               justify="center"
               align="center"
             >
-              <facebook class="social ma-0 ml-5 pa-0" :url="url" scale="1" style="margin-top:-1px !important;fill:#ccc;filter: grayscale(100%);opacity:.5"></facebook>
-              <v-spacer></v-spacer>
-              <twitter class="social ma-0 pa-0" :url="url" title="Check me on Github" scale="1" style="margin-top:-1px !important;fill:#ccc !important;filter: grayscale(100%);opacity:.5"></twitter>
-              <v-spacer></v-spacer>
-              <whats-app class="social ma-0 pa-0" :url="url" title="Hello" scale="1" style="margin-top:-1px !important;fill:#ccc !important;filter: grayscale(100%);opacity:.5"></whats-app>
-              <v-spacer></v-spacer>
-              <telegram class="social ma-0 mr-5 pa-0" :url="url" scale="1" style="margin-top:-1px !important;fill:#ccc !important;filter: grayscale(100%);opacity:.5"></telegram>
+              <span
+                class="ml-1 font-weight-bold"
+                :style="alt_style(bet.draw_factor)"
+                v-text="draw_amount_display"
+              ></span>
+              <span
+                class="font-weight-light ml-1"
+                style="font-size:10px;color:#999;margin-top:3px !important"
+                v-text="large_units_display"
+              ></span>
+              <v-icon
+              class="ma-0 ml-1 pa-0"
+                small
+                color= "#999"
+                style="transform:rotate(10deg);color:#444"
+              >
+                mdi-information-outline
+              </v-icon>
             </v-row>
+          </v-row>
+
+
+          <!-- right -->
+          <v-row
+            class="ma-0 mr-1 ml-8 pa-0"
+            style="width:20%"
+            align="center"
+          >
             <v-row
-              class="ma-0 mt-3 pa-0"
-              style="width:100%;height:100px"
+              class="ma-0 pa-0"
+              style=""
+              align="center"
             >
+              <span
+                class="ml-1 font-weight-bold"
+                :style="alt_style(bet.away_factor)"
+                v-text="away_amount_display"
+              ></span>
+              <span
+                class="font-weight-light ml-1"
+                style="font-size:10px;color:#999;margin-top:3px !important"
+                v-text="large_units_display"
+              ></span>
+              <v-icon
+              class="ma-0 ml-1 pa-0"
+                small
+                color= "#999"
+                style="transform:rotate(10deg);color:#444"
+              >
+                mdi-information-outline
+              </v-icon>
+            </v-row>
+          </v-row>
+          <v-spacer></v-spacer>
+        </v-row>
+
+
+        <v-row
+          class="ma-0 pa-0"
+        >
+          <v-row
+            class="ma-0 mt-1 pa-0"
+            style="width:50%"
+            justify="center"
+          >
+            <v-row
+              class="ma-0 pa-0"
+              style="width:100%"
+              justify="center"
+              align="center"
+            >
+
               <v-row
                 class="ma-0 pa-0"
-                style="width:25%;height:80px"
-              >
-
-                <v-row
-                  class="ma-0 pa-0"
-                  style="width:100%;max-height:20px"
-                  @click="$store.commit('switch_units')"
-                  align="center"
-                >
-                  <v-row
-                    class="ma-0 pa-0"
-                    style="width:100%;color:#999"
-                  >
-                    <span
-                      class="ml-1 font-weight-bold align-end"
-                      style="font-size:10px"
-                    >TOTAL BID</span>
-                  </v-row>
-                  <v-row
-                    class="ma-0 pa-0"
-                    style="color:#999;margin-top:-2px !important"
-                  >
-                    <span
-                      class="ml-1 font-weight-bold"
-                      style="font-size:10px;color:#ccc"
-                      v-text="total"
-                    ></span>
-                    <span
-                      class="font-weight-light ml-1"
-                      style="font-size:10px"
-                      v-text="large_units_display"
-                    ></span>
-                    <span
-                      class="ml-1 font-weight-bold align-end"
-                      style="font-size:10px"
-                    >tx:</span>
-                    <span
-                      class="ml-1 font-weight-bold font-italic hash"
-                      style="font-size:10px;text-decoration:none"
-                      v-text="tx_hash"
-                    ></span>
-                    <v-icon
-                    class="ma-0 ml-1 pa-0"
-                      small
-                      color= "#999"
-                      style="transform:rotate(10deg);color:#444"
-                    >
-                      mdi-information-outline
-                    </v-icon>
-                  </v-row>
-                  <v-row
-                    class="ma-0 mt-1 pa-0"
-                    style="width:100%;color:#999"
-                  >
-                    <span
-                      class="ml-1 font-weight-bold align-end"
-                      style="font-size:10px"
-                    >TAKEN BID</span>
-                  </v-row>
-                  <v-row
-                    class="ma-0 pa-0"
-                    style="width:100%;color:#999;margin-top:-2px !important"
-                  >
-                    <span
-                      class="ml-1 font-weight-bold"
-                      style="font-size:10px;color:#ccc"
-                      v-text="taken.taken"
-                    ></span>
-                    <span
-                      class="font-weight-light ml-1"
-                      style="font-size:10px"
-                      v-text="large_units_display"
-                    ></span>
-                    <span
-                      class="ml-1 font-weight-bold"
-                      style="font-size:10px;color:#ccc"
-                      v-text="taken.porcentage + '%'"
-                    ></span>
-                  </v-row>
-                  <v-row
-                    class="ma-0 mt-1 pa-0"
-                    style="width:100%;color:#999"
-                  >
-                    <span
-                      class="ml-1 font-weight-bold align-end"
-                      style="font-size:10px"
-                    >ACTIVE BID</span>
-                  </v-row>
-                  <v-row
-                    class="ma-0 pa-0"
-                    style="width:100%;color:#999;margin-top:-5px !important"
-                  >
-                    <span
-                      class="ml-1 font-weight-bold"
-                      style="font-size:15px;color:#ccc"
-                      v-text="available.available.toLocaleString()"
-                    ></span>
-                    <span
-                      class="font-weight-light ml-1"
-                      style="font-size:10px;margin-top: 5px"
-                      v-text="large_units_display"
-                    ></span>
-                    <span
-                      class="ml-1 font-weight-bold"
-                      style="font-size:10px;color:#ccc;margin-top:5px !important"
-                      v-text="available.porcentage + '%'"
-                    ></span>
-                  </v-row>
-
-                </v-row>
-              </v-row>
-              <v-row
-                v-show="qr"
-                class="ma-0 mt-8 pa-0"
-                style="max-width:50%;max-height:80px"
-                justify="left"
+                style="max-width:90%;height:160px"
+                align="center"
               >
                 <v-row
-                  class="ma-0 ml-10 pa-0"
-                  style="width:100%"
+                  class="ma-0 mt-6 pa-0"
+                  style="width:25%"
                 >
+
                   <v-row
                     class="ma-0 pa-0"
-                    style="max-height:80px"
-                  >
-                    <vue-qr
-                      class="ma-0 pa-0"
-                      backgroundColor="#222"
-                      colorLight="transparent"
-                      colorDark="#ccc"
-                      margin=0
-                      text="bitcoincash:pprn2xyzjkguj4ea4mrsrklmmrnyqx027y5s5tlmcj?amount=0.00030000"
-                      :size="80"
-                      height="80px"
-                    >
-                    </vue-qr>
-                  </v-row>
-                  <v-row
-                    class="ma-0 pa-0"
-                    style="max-width:75%"
+                    style="width:100%"
                   >
                     <v-row
                       class="ma-0 pa-0"
                       style="width:100%;color:#999"
                     >
-                      <p
-                        class="ml-2 font-weight-black"
-                        style="width:80%;font-size:13px;color:#ccc"
-                      ><span class="ma-0 pa-0 hash">bitcoincash:pprn2xyzjkguj4ea4mrsrklmmrnyqx027y5s5tlmcj</span>
-                      <v-icon
-                        class="ma-0 pa-0 fecha"
-                        small
-                        style="transform:scaleY(-1)"
-                        @click="copy"
-                        color="#999"
-                      >
-                        mdi-content-copy
-                      </v-icon>
-                      <v-icon
+                      <span
+                        class="ml-1 font-weight-bold align-end"
+                        style="font-size:12px"
+                      >ACTIVE BID</span>
+                    </v-row>
+                    <v-row
+                      class="ma-0 pa-0 align-end"
+                      style="color:#727272"
+                      align="end"
+                    >
+                      <v-row
                         class="ma-0 pa-0"
+                        style="height:100%;max-width:15px"
+                        align="center"
+                      >
+                        <v-img
+                          max-height="13"
+                          max-width="13"
+                          src="bitcoin-verde.png"
+                          class="ma-0 mr-1 pa-0"
+                          style="opacity:.8"
+                        ></v-img>
+                      </v-row>
+                      <span
+                        class="ml-1 font-weight-bold"
+                        style="font-size:14px;color:#727272"
+                        v-text="available.available.toLocaleString()"
+                      ></span>
+                      <span
+                        class="font-weight-light mt-n2 ml-1 amount"
+                        style="font-size:12px"
+                        v-text="large_units_display"
+                        @click="$store.commit('switch_units')"
+                      ></span>
+                      <span
+                        class="ml-1 font-weight-bold"
+                        style="font-size:12px"
+                        v-text="available.porcentage + '%'"
+                      ></span>
+                    </v-row>
+                    <v-row
+                      class="ma-0 mt-2 pa-0"
+                      style="width:100%;color:#999"
+                    >
+                      <span
+                        class="ml-1 font-weight-bold align-end"
+                        style="font-size:12px"
+                      >TAKEN BID</span>
+                    </v-row>
+                    <v-row
+                      class="ma-0 pa-0"
+                      style="color:#727272"
+                      align="end"
+                    >
+                      <span
+                        class="ml-1 font-weight-bold"
+                        style="font-size:14px;color:#727272"
+                        v-text="taken.taken"
+                      ></span>
+                      <span
+                        class="font-weight-light ml-1 amount"
+                        style="font-size:12px"
+                        v-text="large_units_display"
+                        @click="$store.commit('switch_units')"
+                      ></span>
+                      <span
+                        class="ml-1 font-weight-bold"
+                        style="font-size:12px"
+                        v-text="taken.porcentage + '%'"
+                      ></span>
+                    </v-row>
+                    <v-row
+                      class="ma-0 mt-2 pa-0"
+                      style="width:100%;color:#999"
+                    >
+                      <span
+                        class="ml-1 font-weight-bold align-end"
+                        style="font-size:12px"
+                      >INITIAL BID</span>
+                    </v-row>
+                    <v-row
+                      class="ma-0 pa-0"
+                      style="color:#727272"
+                      align="end"
+                    >
+                      <span
+                        class="ml-1 font-weight-bold"
+                        style="font-size:14px;color:#727272"
+                        v-text="total"
+                      ></span>
+                      <span
+                        class="font-weight-light ml-1 amount"
+                        style="font-size:12px"
+                        v-text="large_units_display"
+                        @click="$store.commit('switch_units')"
+                      ></span>
+                      <span
+                        class="ml-1 font-weight-bold"
+                        style="font-size:12px"
+                      >tx:</span>
+                      <span
+                        class="ml-1 font-weight-bold font-italic hash"
+                        style="font-size:12px;text-decoration:none"
+                        v-text="tx_hash"
+                      ></span>
+                      <v-icon
+                      class="ma-0 ml-1 pa-0"
                         small
-                        color= "#444"
-                        style="transform:rotate(15deg)"
+                        color= "#999"
+                        style="transform:rotate(10deg);color:#444"
                       >
                         mdi-information-outline
                       </v-icon>
-                    </p>
-                      <v-row
-                        class="ma-0 mt-n2 pa-0"
-                        style="width:100%;color:#999"
-                        justify="left"
-
-                      >
-                        <div
-                          class="ma-0 ml-2 pa-0"
-                          style="color:#999;;min-width:20%"
-                        >
-                          <span
-                            class="font-weight-black"
-                            style="font-size:10px"
-                          >MIN BET</span>
-                        </div>
-
-                        <div
-                          class="ml-2 font-weight-bold"
-                          style="font-size:13px;color:#ccc"
-                          v-text="minimun_display"
-                        ></div>
-                        <div
-                          class="font-weight-light ml-1"
-                          style="font-size:10px;margin-top:2px !important"
-                          v-text="large_units_display"
-                        ></div>
-                        <v-icon
-                          class="ma-0 ml-1 pa-0"
-                          small
-                          color= "#FF7C00"
-                        >
-                          mdi-alert-circle-outline
-                        </v-icon>
-                      </v-row>
-                      <v-row
-                        class="ma-0 mt-n1 pa-0"
-                        style="width:100%;color:#999"
-                        justify="left"
-                        align="center"
-                      >
-                        <div
-                          class="ma-0 ml-2 mt-1 pa-0"
-                          style="color:#999;;min-width:20%"
-                        >
-                          <span
-                            class="font-weight-black"
-                            style="font-size:10px"
-                          >MAX BET</span>
-                        </div>
-
-                        <div
-                          class="ml-2 font-weight-bold"
-                          style="font-size:13px;color:#ccc"
-                          v-text="maximun_display"
-                        ></div>
-                        <div
-                          class="font-weight-light ml-1"
-                          style="font-size:10px;margin-top:1px"
-                          v-text="large_units_display"
-                        ></div>
-                        <v-icon
-                        class="ma-0 ml-1 pa-0"
-                          small
-                          color= "#FF7C00"
-                        >
-                          mdi-alert-circle-outline
-                        </v-icon>
-                      </v-row>
                     </v-row>
-
-
                   </v-row>
                 </v-row>
-              </v-row>
-              <v-row
-                v-show="!qr"
-                class="ma-0 mt-6 pa-0"
-                style="width:50%;height:80px"
-                justify="center"
-              >
-
                 <v-row
-                  class="ma-0 mx-8 pa-0"
-                  style="width:100%;height:10px"
-                  @click="$store.commit('switch_units')"
-                >
-                  <span
-                    class="ml-1 text-h7 font-weight-light amount"
-                    style=";color:#ccc"
-                    v-text="small_amount_display"
-                  ></span>
-                  <span
-                    class="text-h7 font-weight-light ml-1"
-                    v-text="small_units_display"
-                  ></span>
-                </v-row>
-
-                <v-row
-                  class="ma-0 mt-1 mx-8 pa-0"
-                  style="width:100%"
-                  @click="$store.commit('switch_units')"
-                >
-                  <span
-                    class="ml-1 text-h4 font-weight-light amount"
-                    style="color:#ccc"
-                    v-text="large_amount_display"
-                  ></span>
-                  <span
-                    class="subheading font-weight-light ml-1 mt-3"
-                    style="font-size:20px"
-                    v-text="large_units_display"
-                  ></span>
-                </v-row>
-
-                <v-row
-                  class="ma-0 mt-2 mx-8 pa-0"
-                  style="width:100%;height:10px"
-                >
-                  <v-slider
-                    v-model="bpm"
-                    min="0"
-                    :max="max_bet"
-                    style="width:100%"
-                    color="#26D895"
-                    track-color="#26D895"
-                    track-fill-color="#333"
-                    dense
-                    @change="check_taken()"
-                  >
-                    <template v-slot:prepend>
-                      <v-icon
-                        @click="decrement"
-                      >
-                        mdi-minus
-                      </v-icon>
-                    </template>
-
-                    <template v-slot:append>
-                      <v-icon
-                        @click="increment"
-                      >
-                        mdi-plus
-                      </v-icon>
-                    </template>
-                  </v-slider>
-                </v-row>
-              </v-row>
-              <v-row
-                class="ma-0 pa-0"
-                style="width:25%;height:80px"
-              >
-                <v-row
-                  class="ma-0 ml-8 pa-0"
-                  style="width:100%;color:#999;border-bottom:1px solid #444"
-                  justify="left"
-                  align="center"
+                  class="ma-0 pa-0"
+                  style="width:50%"
                 >
                   <v-row
                     class="ma-0 pa-0"
-                    style="color:#999"
+                    style="width:100%"
                   >
-                    <span
-                      class="font-weight-black"
-                      style="font-size:10px;margin-top:3px !important"
-                    >BETTING</span>
+                    <v-row
+                      v-show="qr"
+                      class="ma-0 ml-5 mt-4 pa-0"
+                      style="width:50%;height:120px"
+                      align="center"
+                    >
+                      <v-row
+                        class="ma-0 pa-0"
+                        style="width:100%;height:110px"
+                      >
+                        <v-row
+                          class="ma-0 ml-5 pa-0"
+                          style="width:100%;height:110px"
+                        >
+                          <v-row
+                            class="ma-0 pa-0"
+                            style="max-width:120px"
+                          >
+                            <vue-qr
+                              class="ma-0 pa-0"
+                              backgroundColor="#222"
+                              colorLight="transparent"
+                              colorDark="#ccc"
+                              text="bitcoincash:pprn2xyzjkguj4ea4mrsrklmmrnyqx027y5s5tlmcj?amount=0.00030000"
+                              :size="120"
+                              :margin="0"
+                              >
+                            </vue-qr>
+
+                          </v-row>
+                          <v-row
+                            class="ma-0 pa-0"
+                            style="max-width:calc(100% - 120px)"
+                          >
+                            <v-row
+                              class="ma-0 pa-0"
+                              style="color:#999;width:100%"
+                            >
+                              <p
+                                class="ml-5 font-weight-black"
+                                style="width:80%;font-size:13px;color:#ccc"
+                              ><span class="ma-0 pa-0 hash">bitcoincash:pprn2xyzjkguj4ea4mrsrklmmrnyqx027y5s5tlmcj</span>
+                              <v-icon
+                                class="ma-0 pa-0 fecha"
+                                small
+                                style="transform:scaleY(-1)"
+                                @click="copy"
+                                color="#999"
+                              >
+                                mdi-content-copy
+                              </v-icon>
+                              <v-icon
+                                class="ma-0 pa-0"
+                                small
+                                color= "#444"
+                                style="transform:rotate(15deg)"
+                              >
+                                mdi-information-outline
+                              </v-icon>
+                            </p>
+                              <v-row
+                                class="ma-0 mb-1 pa-0"
+                                style="height:0;width:100%;color:#999"
+                                align="center"
+                              >
+                                <div
+                                  class="ma-0 ml-5 pa-0"
+                                  style="color:#999;;min-width:20%"
+                                >
+                                  <span
+                                    class="font-weight-black"
+                                    style="font-size:10px"
+                                  >AMOUNT SELECTED</span>
+                                </div>
+                                <v-spacer></v-spacer>
+
+                                <div
+                                  class="ml-2 font-weight-bold"
+                                  style="font-size:13px;color:#ccc"
+                                  v-text="large_amount_display"
+                                ></div>
+                                <div
+                                  class="font-weight-light ml-1"
+                                  style="font-size:10px"
+                                  v-text="large_units_display"
+                                ></div>
+                                <v-icon
+                                  class="ma-0 ml-1 pa-0"
+                                  small
+                                  color= "#444"
+                                >
+                                  mdi-alert-circle-outline
+                                </v-icon>
+                              </v-row>
+                              <v-row
+                                class="ma-0 mt-4 pa-0"
+                                style="width:100%;color:#999"
+                                align="center"
+                              >
+                                <div
+                                  class="ma-0 ml-5 pa-0"
+                                  style="color:#999;;min-width:20%"
+                                >
+                                  <span
+                                    class="font-weight-black"
+                                    style="font-size:10px"
+                                  >MIN BET</span>
+                                </div>
+                                <v-spacer></v-spacer>
+
+                                <div
+                                  class="ml-2 font-weight-bold"
+                                  style="font-size:13px;color:#ccc"
+                                  v-text="minimun_display"
+                                ></div>
+                                <div
+                                  class="font-weight-light ml-1"
+                                  style="font-size:10px"
+                                  v-text="large_units_display"
+                                ></div>
+                                <v-icon
+                                  class="ma-0 ml-1 pa-0"
+                                  small
+                                  color= "#444"
+                                >
+                                  mdi-alert-circle-outline
+                                </v-icon>
+                              </v-row>
+                              <v-row
+                                class="ma-0 pa-0"
+                                style="width:100%;color:#999"
+                                align="center"
+                              >
+                                <div
+                                  class="ma-0 ml-5 pa-0"
+                                  style="color:#999;;min-width:20%"
+                                >
+                                  <span
+                                    class="font-weight-black"
+                                    style="font-size:10px"
+                                  >MAX BET</span>
+                                </div>
+                                <v-spacer></v-spacer>
+
+                                <div
+                                  class="ml-2 font-weight-bold"
+                                  style="font-size:13px;color:#ccc"
+                                  v-text="maximun_display"
+                                ></div>
+                                <div
+                                  class="font-weight-light ml-1"
+                                  style="font-size:10px"
+                                  v-text="large_units_display"
+                                ></div>
+                                <v-icon
+                                  class="ma-0 ml-1 pa-0"
+                                  small
+                                  color= "#444"
+                                >
+                                  mdi-alert-circle-outline
+                                </v-icon>
+                              </v-row>
+                            </v-row>
+
+
+                          </v-row>
+                        </v-row>
+
+                      </v-row>
+                    </v-row>
+                    <v-row
+                      v-show="!qr"
+                      class="ma-0 ml-5 mr-n10 mt-n6 pa-0"
+                      style="width:50%;height:120px"
+                      align="center"
+                    >
+                      <v-row
+                        class="ma-0 mx-8 mt-n4 pa-0"
+                        align="end"
+                      >
+                        <span
+                          class=""
+                          style="color:#ccc;font-size:16px"
+                          v-text="small_amount_display"
+                        ></span>
+                        <span
+                          class="ml-1 amount"
+                          style="font-size:16px"
+                          v-text="small_units_display"
+                          @click="$store.commit('switch_units')"
+                        ></span>
+                      </v-row>
+                      <v-row
+                        class="ma-0 mx-8 mt-n8 pa-0"
+                        style="width:100%"
+                      >
+                        <span
+                          class="text-h4"
+                          style="color:#ccc"
+                          v-text="large_amount_display"
+                        ></span>
+                        <span
+                          @click="$store.commit('switch_units')"
+                          class="subheading amount font-weight-light ml-1"
+                          style="font-size:20px;margin-top:10px!important"
+                          v-text="large_units_display"
+                        ></span>
+                      </v-row>
+                      <v-row
+                        class="ma-0 mt-n8 pa-0"
+                        style="width:100%;height:10px"
+                      >
+                        <v-slider
+                          v-model="bpm"
+                          min="0"
+                          :max="max_bet"
+                          style="width:100%"
+                          color="#26D895"
+                          track-color="#26D895"
+                          track-fill-color="#333"
+                          dense
+                          @change="check_taken()"
+                        >
+                          <template v-slot:prepend>
+                            <v-icon
+                              @click="decrement"
+                            >
+                              mdi-minus
+                            </v-icon>
+                          </template>
+
+                          <template v-slot:append>
+                            <v-icon
+                              @click="increment"
+                            >
+                              mdi-plus
+                            </v-icon>
+                          </template>
+                        </v-slider>
+                      </v-row>
+                    </v-row>
+                    <v-row
+                      v-show="!qr"
+                      class="ma-0 mt-n4 ml-2 pa-0"
+                      style="width:100%;max-height:10px"
+                    >
+                      <v-row
+                        class="ma-0 mt-8 pa-0"
+                        style="width:100%"
+                        justify="center"
+                        align="center"
+                      >
+                        <v-btn
+                          class="quick"
+                          style="border-radius:2px;color:#ccc"
+                          height="30px"
+                          @click="quick_bet()"
+                          text
+                        >
+                          QUICK BET
+                        </v-btn>
+                        <v-btn
+                          class="ml-2 quick"
+                          style="border-radius:2px;color:#ccc"
+                          height="30px"
+                          @click="quick_bet()"
+                          text
+                        >
+                          <v-icon
+                            class="ma-0 pa-0"
+                            color="#ccc"
+                            small
+                          >
+                            mdi-cart-arrow-down
+                          </v-icon>
+                        </v-btn>
+                      </v-row>
+                    </v-row>
                   </v-row>
+                </v-row>
+              <v-row
+                class="ma-0 mt-6 pa-0"
+                style="width:25%"
+                align="center"
+                justify="end"
+              >
+                <v-row
+                  class="ma-0 pa-0"
+                  style="height:110px"
+
+                >
+
+                  <v-date-picker
+                    class="ma-0 mr-n4 pa-0"
+                    v-model="date"
+                    :model-config="modelConfig"
+                    disabled
+                    color="#999"
+                    no-title
+                    width="370px"
+                    style="font-size:25px;transform:scaleY(.35) scaleX(.4);transform-origin:top right"
+                  ></v-date-picker>
+
+                </v-row>
+                <v-row
+                  class="ma-0 pa-0"
+                >
                   <v-spacer></v-spacer>
 
-                  <span
-                    class="mt-1 font-weight-bold"
-                    style="font-size:13px;color:#ccc"
-                    v-text="large_amount_display"
-                  ></span>
-                  <span
-                    class="font-weight-light ml-1"
-                    style="font-size:10px;margin-top:3px"
-                    v-text="large_units_display"
-                  ></span>
-                </v-row>
-                <v-row
-                  class="ma-0 mt-2 pa-0"
-                  style="width:100%"
-                  justify="end"
-                  align="center"
-                >
-                  <span
-                    class="ml-8 font-weight-bold"
-                    style="font-size:10px;color:#999"
-                  >HOME</span>
-                  <v-spacer></v-spacer>
-                  <span
-                    class="ml-1 font-weight-bold"
-                    :style="alt_style(bet.home_factor)"
-                    v-text="home_amount_display"
-                  ></span>
-                  <span
-                    class="font-weight-light ml-1"
-                    style="font-size:10px;color:#999;margin-top:2px !important"
-                    v-text="large_units_display"
-                  ></span>
-                  <v-icon
-                  class="ma-0 ml-1 pa-0"
-                    small
-                    color= "#999"
-                    style="transform:rotate(10deg);color:#444;margin-top:2px !important"
+                  <v-row
+                    class="ma-0 mt-3 pa-0"
+                    style="max-width:130px"
+                    align="end"
+                    justify="center"
                   >
-                    mdi-information-outline
-                  </v-icon>
+                    <v-row
+                      class="ma-0 ml-n1 pa-0"
+                      style="max-width:70%;color:#999;margin-top:-2px !important"
+                      justify="center"
+                      align="end"
+                    >
+                      <v-row
+                        class="ma-0 pa-0"
+                        style="width:100%"
+                        justify="center"
+                        align="end"
+                      >
+
+                        <v-row
+                          class="ma-0 pa-0"
+                          style="width:25%"
+                          align="end"
+                          justify="center"
+                        >
+                          <p
+
+                            style="letter-spacing:0px;color:#999;font-size:9px"
+                            class="ma-0 pa-0 font-weight-bold"
+                          >D</p>
+                        </v-row>
+                        <v-row
+                          class="ma-0 pa-0"
+                          style="width:25%"
+                          align="end"
+                          justify="center"
+                        >
+                          <p
+                            style="letter-spacing:0px;color:#999;font-size:9px"
+                            class="ma-0 pa-0 font-weight-bold"
+                          >H</p>
+                        </v-row>
+                        <v-row
+                          class="ma-0 pa-0"
+                          style="width:25%"
+                          align="end"
+                          justify="center"
+                        >
+                          <p
+
+                            style="letter-spacing:0px;color:#999;font-size:9px"
+                            class="ma-0 pa-0 font-weight-bold"
+                          >M</p>
+                        </v-row>
+                        <v-row
+                          class="ma-0 pa-0"
+                          style="width:25%"
+                          align="end"
+                          justify="center"
+                        >
+                          <p
+                            style="letter-spacing:0px;color:#999;font-size:9px"
+                            class="ma-0 pa-0 font-weight-bold"
+                          >S</p>
+                        </v-row>
+                      </v-row>
+                      <v-row
+                        class="ma-0 pa-0"
+                        style="width:100%;color:#727272"
+                        justify="center"
+                      >
+                        <v-row
+                          class="ma-0 pa-0"
+                          style="width:25%"
+                          align="end"
+                          justify="center"
+                        >
+                          <p
+
+                            style="letter-spacing:1px;font-size:10px"
+                            class="ma-0 pa-0 font-weight-medium"
+                          ><span v-if="days < 10">0</span>{{ days }}</p>
+                        </v-row>
+                        <v-row
+                          class="ma-0 pa-0"
+                          style="width:25%"
+                          align="end"
+                          justify="center"
+                        >
+                          <p
+                            style="letter-spacing:1px;font-size:10px"
+                            class="ma-0 pa-0 font-weight-medium"
+                          ><span v-if="hours < 10">0</span>{{ hours }}</p>
+                        </v-row>
+                        <v-row
+                          class="ma-0 pa-0"
+                          style="width:25%"
+                          align="end"
+                          justify="center"
+                        >
+                          <p
+
+                            style="letter-spacing:1px;font-size:10px"
+                            class="ma-0 pa-0 font-weight-medium"
+                          ><span v-if="minutes < 10">0</span>{{ minutes }}</p>
+                        </v-row>
+                        <v-row
+                          class="ma-0 pa-0"
+                          style="width:25%"
+                          align="end"
+                          justify="center"
+                        >
+                          <p
+                            style="letter-spacing:1px;font-size:10px"
+                            class="ma-0 pa-0 font-weight-medium"
+                          ><span v-if="seconds < 10">0</span>{{ seconds }}</p>
+                        </v-row>
+                      </v-row>
+                    </v-row>
+                    <v-row
+                      class="ma-0 mx-2 pa-0"
+                      style="height:100%;opacity:.7;width:5px"
+                      align="center"
+                      justify="center"
+                    >
+                      <v-img
+                        class="ma-0 pa-0 logos"
+                        max-height="17"
+                        max-width="17"
+                        :src="bet.fixture[0].league[0].logo"
+                      ></v-img>
+                    </v-row>
+                    <v-row
+                      class="ma-0 mx-2 pa-0"
+                      style="height:100%;opacity:.7;width:5px"
+                      align="center"
+                      justify="center"
+                    >
+                      <v-img
+                        class="ma-0 pa-0 logos"
+                        max-height="17"
+                        max-width="17"
+                        :src="bet.fixture[0].league[0].flag"
+                      ></v-img>
+                    </v-row>
+                  </v-row>
                 </v-row>
-                <v-row
-                  class="ma-0 pa-0"
-                  style="width:100%"
-                  justify="end"
-                  align="center"
-                >
-                  <span
-                    class="ml-8 font-weight-bold"
-                    style="font-size:10px;color:#999"
-                  >DRAW</span>
-                  <v-spacer></v-spacer>
-                  <span
-                    class="ml-1 font-weight-bold"
-                    :style="alt_style(bet.draw_factor)"
-                    v-text="draw_amount_display"
-                  ></span>
-                  <span
-                    class="font-weight-light ml-1"
-                    style="font-size:10px;margin-top:3px;color:#999"
-                    v-text="large_units_display"
-                  ></span>
-                  <v-icon
-                  class="ma-0 ml-1 pa-0"
-                    small
-                    color= "#999"
-                    style="transform:rotate(10deg);color:#444;margin-top:2px !important"
-                  >
-                    mdi-information-outline
-                  </v-icon>
-                </v-row>
-                <v-row
-                  class="ma-0 pa-0"
-                  style="width:100%"
-                  justify="end"
-                  align="center"
-                >
-                  <span
-                    class="ml-8 font-weight-bold"
-                    style="font-size:10px;margin-top:3px;color:#999"
-                  >AWAY</span>
-                  <v-spacer></v-spacer>
-                  <span
-                    class="ml-1 font-weight-bold"
-                    :style="alt_style(bet.away_factor)"
-                    v-text="away_amount_display"
-                  ></span>
-                  <span
-                    class="font-weight-light ml-1"
-                    style="font-size:10px;margin-top:3px;color:#999"
-                    v-text="large_units_display"
-                  ></span>
-                  <v-icon
-                  class="ma-0 ml-1 pa-0"
-                    small
-                    color= "#999"
-                    style="transform:rotate(10deg);color:#444;margin-top:2px !important"
-                  >
-                    mdi-information-outline
-                  </v-icon>
-                </v-row>
+
               </v-row>
             </v-row>
+          </v-row>
+        </v-row>
+        </v-row>
+        <v-row
+          class="ma-0 mt-10 pa-0"
+          style="width:100%;overflow:hidden;background-color:#252525"
+          justify="center"
+
+        >
+          <v-row
+            class="ma-0 pa-0"
+            style="max-width:90%;height:30px"
+            align="center"
+          >
             <v-row
-              class="ma-0 mt-12 pa-0"
-              style="width:100%"
+              class="ma-0 pa-0"
+              style="max-width:50px"
+              justify="center"
             >
+              <span
+                class="ml-1 font-weight-light align-end font-italic"
+                style="font-size:12px;color:#999"
+              >Open by</span>
+            </v-row>
+            <v-avatar
+              class="ma-0 ml-2 pa-0"
+              size="22"
+            >
+              <img
+                src="https://cdn.vuetifyjs.com/images/john.jpg"
+                alt="John"
+              >
+            </v-avatar>
+            <span
+              class="ml-1 font-weight-bold align-end fecha"
+              style="font-size:12px"
+            >PhGalazHidalgo</span>
+            <v-row
+              class="ma-0 ml-2 pa-0"
+              justify="center"
+              style="max-width:180px"
+            >
+              (
               <v-row
                 class="ma-0 pa-0"
-                style="height:50px;width:40%"
-
+                justify="center"
               >
-                <v-avatar
+                <v-row
                   class="ma-0 pa-0"
-                  size="38"
-                  style=""
-                >
-                  <img
-                    src="https://cdn.vuetifyjs.com/images/john.jpg"
-                    alt="John"
-                  >
-                </v-avatar>
-                <v-flex
-                  class="ma-0 ml-1 pa-0"
-                  style="height:35px"
+                  style="height:100%"
                   align="center"
+                  justify="center"
                 >
-                  <v-flex
+                  <v-img
                     class="ma-0 pa-0"
-                    style="height:50%"
-                    align="center"
-                  >
-                    <v-row
-                      class="ma-0 pa-0"
-                      style="width:100%"
-                    >
-                      <span
-                        class="ml-1 font-weight-light align-end"
-                        style="font-size:10px"
-                      >Open by</span>
-                      <span
-                        class="ml-1 font-weight-bold align-end fecha"
-                        style="font-size:10px"
-                      >PhGalazHidalgo</span>
-                      <span
-                        class="ml-1 font-weight-light align-end"
-                        style="font-size:10px"
-                        v-text="ago"
-                      ></span>
-                    </v-row>
-                  </v-flex>
-                  <v-flex
+                    style="margin-top:1px !important"
+                    max-height="17"
+                    max-width="17"
+                    :src="bet.fixture[0].homeTeam[0].logo"
+                  ></v-img>
+                  <p
                     class="ma-0 pa-0"
-                    align="center"
+                    style="font-weight:bold;margin-left:2px !important;color:#727272"
                   >
-                    <v-row
-                      class="ma-0 pa-0"
-                      style="width:100%"
-                    >
-                      <v-img
-                        class="ma-0 ml-1 pa-0"
-                        style="margin-top:1px !important"
-                        max-height="17"
-                        max-width="17"
-                        :src="bet.fixture[0].homeTeam[0].logo"
-                      ></v-img>
-                      <p
-                        class="ma-0 pa-0"
-                        style="font-weight:bold;margin-left:2px !important"
-                      >
-                        : {{ this.home_open }}
-                      </p>
-                      <p
-                        class="ma-0 ml-2 pa-0"
-                        style="font-weight:bold"
-                      >
-                        <span style="color:#999">D</span> : 2.00
-                      </p>
-                      <v-img
-                        class="ma-0 ml-2 pa-0"
-                        style="margin-top:1px !important"
-                        max-height="17"
-                        max-width="17"
-                        :src="bet.fixture[0].awayTeam[0].logo"
-                      ></v-img>
-                      <p
-                        class="ma-0 ml-1 pa-0"
-                        style="font-weight:bold"
-                      >
-                        : 2.00
-                      </p>
-                    </v-row>
-                  </v-flex>
-                </v-flex>
+                    : {{ this.home_open }}
+                  </p>
+                  <p
+                    class="ma-0 ml-2 pa-0"
+                    style="font-weight:bold;color:#727272"
+                  >
+                    <span style="color:#ccc">D</span> : 2.00
+                  </p>
+                  <v-img
+                    class="ma-0 ml-2 pa-0"
+                    style="margin-top:1px !important"
+                    max-height="17"
+                    max-width="17"
+                    :src="bet.fixture[0].awayTeam[0].logo"
+                  ></v-img>
+                  <p
+                    class="ma-0 ml-1 pa-0"
+                    style="font-weight:bold;color:#727272"
+                  >
+                    : 2.00
+                  </p>
+                </v-row>
               </v-row>
-              <!-- <v-row
-                class="ma-0 mt-4 pa-0"
-                style="width:10%;height:20px;border-radius:2px"
-                justify="center"
-                align="center"
-              >
-                <v-row
-                  class="ma-0 ml-5 pa-0 social"
-                  style="background-color:#ddd;max-width:14px;height:14px;border-radius:2px;filter: grayscale(100%)"
-                >
-                  <facebook class="ma-0 pa-0" :url="url" scale="1" style="margin-top:-1px !important"></facebook>
-                </v-row>
-                <v-spacer></v-spacer>
-                <v-row
-                  class="ma-0 pa-0 social"
-                  style="background-color:#ddd;max-width:14px;height:14px;border-radius:2px;filter: grayscale(100%)"
-                >
-                    <twitter class="ma-0 pa-0" :url="url" title="Check me on Github" scale="1" style="margin-top:-1px !important"></twitter>
-                </v-row>
-                <v-spacer></v-spacer>
-                <v-row
-                  class="ma-0 pa-0 social"
-                  style="background-color:#ddd;max-width:14px;height:14px;border-radius:2px;filter: grayscale(100%)"
-                >
-                  <whats-app class="ma-0 pa-0" :url="url" title="Hello" scale="1" style="margin-top:-1px !important"></whats-app>
-                </v-row>
-                <v-spacer></v-spacer>
-                <v-row
-                  class="ma-0 mr-5 pa-0 social"
-                  style="background-color:#ddd;max-width:14px;height:14px;border-radius:2px;filter: grayscale(100%)"
-                >
-                  <telegram class="ma-0 pa-0" :url="url" scale="1" style="margin-top:-1px !important"></telegram>
-                </v-row>
-              </v-row> -->
-              <!-- <v-row
-                class="ma-0 mt-7 pa-0"
-                style="width:10%;height:20px;border-radius:2px"
-                justify="center"
-                align="center"
-              >
-                <facebook class="social ma-0 ml-5 pa-0" :url="url" scale="1" style="margin-top:-1px !important;fill:#ccc;filter: grayscale(100%);opacity:.5"></facebook>
-                <v-spacer></v-spacer>
-                <twitter class="social ma-0 pa-0" :url="url" title="Check me on Github" scale="1" style="margin-top:-1px !important;fill:#ccc !important;filter: grayscale(100%);opacity:.5"></twitter>
-                <v-spacer></v-spacer>
-                <whats-app class="social ma-0 pa-0" :url="url" title="Hello" scale="1" style="margin-top:-1px !important;fill:#ccc !important;filter: grayscale(100%);opacity:.5"></whats-app>
-                <v-spacer></v-spacer>
-                <telegram class="social ma-0 mr-5 pa-0" :url="url" scale="1" style="margin-top:-1px !important;fill:#ccc !important;filter: grayscale(100%);opacity:.5"></telegram>
-              </v-row> -->
-              <v-row
-                class="ma-0 mt-n8 pa-0"
-                style="width:40%"
-              >
-                <v-spacer></v-spacer>
+              )
+            </v-row>
+            <span
+              class="ml-1 font-weight-light align-end font-italic"
+              style="font-size:12px;color:#999"
+              v-text="ago"
+            ></span>
 
-                <v-btn
-                  v-show="!qr"
-                  class="quick"
-                  style="background-color:rgba(38,216,149,.1);border-radius:2px;color:#ccc"
-                  height="30px"
-                  @click="quick_bet()"
-                  disable
-                >
-                  QUICK BET
-                </v-btn>
-                <v-btn
-                  v-show="qr"
-                  class=""
-                  style="border:0px solid #444;background-color:#111 !important;border-radius:2px;color:#444"
-                  height="30px"
-                  @click="quick_bet()"
-                  disabled
-                >
-                  QUICK BET
-                </v-btn>
-                <v-btn
-                  class="ma-0 ml-2 pa-0 cart"
-                  style="background-color:rgba(266,266,266,.05);border-radius:2px"
-                  max-width="20px"
-                  height="30px"
-                >
-                  <v-icon
-                    class="ma-0 pa-0"
-                    color="#ccc"
-                    small
-                  >
-                    mdi-cart-arrow-down
-                  </v-icon>
-                </v-btn>
+            <v-spacer></v-spacer>
+
+            <v-row
+              class="ma-0 ml-2 pa-0"
+              style="opacity:.7;max-width:100px"
+              align="center"
+              justify="center"
+            >
+              <v-row
+                class="ma-0 mt-1 pa-0"
+                style="border-radius:2px;max-width:105px"
+                justify="end"
+                align="center"
+              >
+                <facebook
+                  class="social ma-0 ml-5 pa-0"
+                  :url="url"
+                  scale="1"
+                  style="opacity:.8;filter:grayscale(100%)"
+                  ></facebook>
+                <v-spacer></v-spacer>
+                <twitter
+                  class="social ma-0 pa-0"
+                  :url="url"
+                  title="Check me on Github"
+                  scale="1"
+                  style="opacity:.8;filter:grayscale(100%)"
+                  ></twitter>
+                <v-spacer></v-spacer>
+                <whats-app
+                  class="social ma-0 pa-0"
+                  :url="url"
+                  title="Hello"
+                  scale="1"
+                  style="opacity:.8;filter:grayscale(100%)"
+                  ></whats-app>
+                <v-spacer></v-spacer>
+                <telegram
+                  class="social ma-0 pa-0"
+                  :url="url"
+                  scale="1"
+                  style="opacity:.8;filter:grayscale(100%)"
+                  ></telegram>
               </v-row>
             </v-row>
           </v-row>
@@ -875,7 +989,6 @@
 </template>
 
 <script>
-
   import { mapState } from 'vuex'
   import {
     Facebook,
@@ -913,10 +1026,18 @@
         draw_style: "font-size:13px;color:#ccc",
         away_style: "font-size:13px;color:#ccc",
         qr: false,
-        ago: null
+        ago: null,
+        events: [ this.bet.fixture.event_date ],
+        modelConfig: {
+          type: 'string',
+          mask: 'YYYY-MM-DD', // Uses 'iso' if missing
+        },
       }
     },
     computed: {
+      date(){
+        return this.bet.fixture[0].event_date.slice(0,10)
+      },
       ...mapState([
         // map this.count to store.state.count
         'min_bet'
@@ -1168,6 +1289,12 @@
       },
       toggle () {
         this.isPlaying = !this.isPlaying
+      },
+      hovering() {
+          setTimeout(() => this.hover = false, 200);
+      },
+      hovering0() {
+          setTimeout(() => this.hover = true, 200);
       }
     },
     created () {
@@ -1197,7 +1324,7 @@
     color: #fff !important
 
   .fecha:hover
-    color: #ccc !important
+    color: white !important
     cursor: pointer
 
   .social:hover
@@ -1205,15 +1332,21 @@
     cursor: pointer
 
   .quick
-    // border: 1px solid rgba(38,216,149,1) !important
-    background-color: rgba(38,216,149,.3) !important
+    // background-color: rgba(0, 148, 107,1) !important
+    // background: linear-gradient(90deg, #027B92 0%, #00A652 100%) !important
     color: white !important
+    // background: linear-gradient(90deg, transparent 0%,  #009B60 100%) !important
+    background: linear-gradient(90deg, rgba(0, 148, 107,.5) 0%, rgba(0, 148, 107,1) 50%, rgba(0, 148, 107,.5) 100%) !important
+    background-size: 300% 300% !important
+    transition: .5s ease !important
+
+
 
   .quick:hover
-    // border: 1px solid rgba(38,216,149,1) !important
-    background: linear-gradient(90deg, #027B92 0%, #00A652 100%) !important
+    // background: linear-gradient(90deg, #027B92 0%, #00A652 100%) !important
     color: white !important
     cursor: pointer
+    background-position: right center !important
 
   .cart:hover
     border: 1px solid rgba(266,266,266,.9) !important
@@ -1222,44 +1355,52 @@
     cursor: pointer
 
   .logos:hover
-    opacity: 2 !important
+    opacity: 1.2 !important
     cursor: pointer
   .taken
     min-width: 100% !important
 
-  .vet
-    // transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1) !important
-    transition: .5s !important
+
 
 
   .vet:hover
-      // height: 310px !important
-      // background-image: repeating-linear-gradient(45deg, transparent, transparent 140px, rgba(0,0,0,.055) 140px, rgba(0,0,0,.055) 280px)
-      // background-color: #1c1c1c !important
-      // background-color: #1C1C1C !important
-      .main-line
-        background-color: #333 !important
-        // max-width: 80% !important
+    cursor: pointer !important
+    // background: linear-gradient(90deg, rgba(2, 123, 146,.7) 0%, rgba(0, 166, 82,.7) 100%) !important
 
-  .main-line
-    transition: .5s !important
-  .main-line:hover
-      cursor: pointer
-
-  .fax
-    transition: .5s !important
-
-  // @keyframes metronome-example
-  //   from
-  //     transform: scale(.5)
-  //   to
-  //     transform: scale(1)
+    // background: linear-gradient(90deg, rgba(0, 155, 96,.2) 0%, rgba(0, 155, 96,.1) 40%, rgba(0, 155, 96,.1) 60%, rgba(0, 155, 96,.2) 100%) !important
+    background-color: #303030 !important
+    .factor
+      // color: #ccc !important
 
 
-  // .v-avatar--metronome
-  //   animation-name: metronome-example
-  //   animation-iteration-count: infinite
-  //   animation-direction: alternate
+
+  .fax:hover
+    cursor: auto
+
+
+
+  .v-icon.notranslate.mdi.mdi-chevron-left.theme--dark
+    display: none !important
+  .v-icon.notranslate.mdi.mdi-chevron-right.theme--dark
+    display: none !important
+
+  .v-date-picker-table.v-date-picker-table--date.v-date-picker-table.theme--dark
+    background-color: transparent !important
+
+  .v-date-picker-header.v-date-picker-header.theme--dark
+    background-color: transparent !important
+
+  .v-picker__body.v-picker__body--no-title.theme--dark
+    background-color: transparent !important
+
+  .v-date-picker-header__value.v-date-picker-header__value
+    font-size: 35px !important
+
+  .v-btn--active
+    transform: scaleX(1.0) scaleY(1.1) !important
+    font-size: 0px !important
+    font-weight: bold !important
+
 
 
 </style>

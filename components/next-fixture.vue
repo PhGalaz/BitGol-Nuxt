@@ -1,12 +1,12 @@
 <template>
   <v-row
-    class="ma-0 mb-1 pa-0"
+    class="ma-0 mb-1 pa-0 a"
     :class="{ great: betted }"
     justify="center"
     align="center"
     style="border-radius:2px;background-color:#272727"
-    @mouseover="extended = true"
-    @mouseleave="extended = false"
+    @mouseover="hovering0"
+    @mouseleave="hovering"
   >
     <v-row
       class="ma-0 pa-0"
@@ -64,7 +64,7 @@
               height="30px"
               @click=""
             >
-              OPEN NEW BET {{ fixture.fixture_id }}
+              OPEN NEW BET
             </v-btn>
           </v-row>
         </v-row>
@@ -106,12 +106,13 @@
           flat
         >
         <v-row
+          v-if="bets.length > 0"
           class="ma-0 mx-1 pa-0"
           style="background-color:#1c1c1c;color:#999;border-radius:2px"
           align="center"
         >
           <v-row
-            class="ma-0 mt-1 pa-0"
+            class="ma-0 mt-1 pa-0 x"
             style="max-width:35%"
             align="center"
           >
@@ -211,7 +212,6 @@
               <v-row
                 class="ma-0 pa-0"
                 style="width:80%"
-                justify=""
                 align="center"
               >
                 <v-row
@@ -411,6 +411,12 @@
       toFixed(num, fixed) {
         var re = new RegExp('^-?\\d+(?:\.\\d{0,' + (fixed || -1) + '})?');
         return num.toString().match(re)[0];
+      },
+      hovering() {
+          setTimeout(() => this.extended = false, 100);
+      },
+      hovering0() {
+          setTimeout(() => this.extended = true, 100);
       }
     }
   }
@@ -419,6 +425,12 @@
 
 
 <style lang="sass" scoped>
+
+  .a:hover
+    // background-color: rgba(13, 152, 171,.2) !important
+    background-color: #303030 !important
+    cursor: pointer
+
 
   .b:hover
     background-color: #303030 !important
@@ -443,23 +455,33 @@
     cursor: pointer
     background-position: right center !important
 
-  .fox
-    transition: .5s ease !important
+  .fox:hover
+    cursor: auto !important
 
 
   .great
-    background-size: 300% 300% !important
+    // background: linear-gradient(90deg, rgba(2, 121, 138,.4) 0%, #252525 20%, #252525 80%,rgba(2, 121, 138,.4) 100%) !important
+    background: linear-gradient(90deg, rgba(2, 123, 146,.1) 0%, rgba(2, 123, 146,.4) 30%, rgba(0, 166, 82,.4) 70%, rgba(0, 166, 82,.1) 100%) !important
+    // background-size: 300% 300% !important
     // background-image: linear-gradient(45deg, rgba(2, 121, 138,.5) 0%, rgba(2, 121, 138,.5) 50%, rgba(0,166,82,.5) 100%) !important
-    transition: .5s !important
+    // transition: .5s !important
     // animation: animatedgradient 4s ease infinite !important
     // animation-direction: alternate !important
-    background-color: rgba(13, 152, 171,.3) !important
-    background-image: repeating-linear-gradient(-45deg, transparent, transparent 70px, rgba(0,0,0,.055) 70px, rgba(0,0,0,.055) 140px)
+    // background-color: rgba(13, 152, 171,.3) !important
+    // background-color: #353535 !important
+
+    // background-image: repeating-linear-gradient(-45deg, transparent, transparent 70px, rgba(0,0,0,.035) 70px, rgba(0,0,0,.035) 140px)
 
   .great:hover
-    background-image: repeating-linear-gradient(-45deg, transparent, transparent 70px, rgba(0,0,0,.055) 70px, rgba(0,0,0,.055) 140px)
+    background: linear-gradient(90deg, rgba(2, 123, 146,.2) 0%, rgba(2, 123, 146,.6) 30%, rgba(0, 166, 82,.6) 70%, rgba(0, 166, 82,.2) 100%) !important
 
-
+    // background-color: #353535 !important
+    // background-color: rgba(13, 152, 171,.6) !important
+    // background-image: repeating-linear-gradient(-45deg, transparent, transparent 70px, rgba(0,0,0,.035) 70px, rgba(0,0,0,.035) 140px)
+    // background: linear-gradient(90deg, #027B92 0%, tranparent 50%, #00A652 100%) !important
+  .team:hover
+    color: white !important
+    cursor: pointer
 
   @keyframes animatedgradient
     0%

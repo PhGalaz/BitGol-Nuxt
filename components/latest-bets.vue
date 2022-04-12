@@ -1,7 +1,7 @@
 <template>
   <v-row
     class="ma-0 pa-0"
-    style="width:100%;border-radius:2px;inset:-3px;background-color:rgba(0,166,82,1) !important"
+    style="min-height:76px;width:100%;border-radius:2px;inset:-3px;background-color:rgba(0, 148, 107,1) !important"
   >
     <subtitle
       class="ma-0 mt-1 pa-0"
@@ -25,18 +25,14 @@
         style="width:100%;height:30px;background-color:#1C1C1C;border-radius:2px 2px 0 0"
         justify="center"
       >
-        <v-row
-          class="ma-0 ml-1 pa-0"
-          style="width:38%"
-        >
 
-        </v-row>
         <v-row
-          class="ma-0 pa-0"
-          style="width:15%;color:#999"
+          class="ma-0 ml-n2 pa-0"
+          style="max-width:18%;color:#999"
         >
           <v-row
             class="ma-0 pa-0"
+            style="width:33.3%"
             justify="center"
             align="center"
           >
@@ -44,6 +40,7 @@
           </v-row>
           <v-row
             class="ma-0 pa-0"
+            style="width:33.3%"
             justify="center"
             align="center"
           >
@@ -51,17 +48,12 @@
           </v-row>
           <v-row
             class="ma-0 pa-0"
+            style="width:33.3%"
             justify="center"
             align="center"
           >
             <h5>AWAY</h5>
           </v-row>
-        </v-row>
-        <v-row
-          class="ma-0 mr-1 pa-0"
-          style="width:38%"
-        >
-
         </v-row>
       </v-row>
       <v-row

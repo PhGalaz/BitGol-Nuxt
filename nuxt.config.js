@@ -26,6 +26,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~plugins/native-websocket.js', ssr: false },
+    // { src: '~plugins/calendar.js', ssr: false },
     '~plugins/sharing.js'
   ],
 
@@ -66,6 +67,7 @@ export default {
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    treeShake: true,
     theme: {
       dark: true,
       themes: {
