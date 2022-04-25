@@ -1,10 +1,10 @@
 <template>
   <v-row
-    class="ma-0 mb-1 pa-0 a"
+    class="ma-0 mb-1 pa-0 text-decoration-none a"
     :class="{ great: betted }"
     justify="center"
     align="center"
-    style="border-radius:2px;background-color:#272727"
+    style="width:100%;border-radius:2px;background-color:#272727"
     @mouseover="hovering0"
     @mouseleave="hovering"
   >
@@ -12,88 +12,93 @@
       class="ma-0 pa-0"
       style=""
     >
-      <v-row
-        class="ma-0 ml-4 pa-0 main-line"
-        style="width:100%;height:50px;background-color:transparent"
-        align="center"
-      >
-        <!-- left -->
-        <v-spacer></v-spacer>
+
         <v-row
-          class="ma-0 ml-1 pa-0"
-          style="width:20%;border-radius:45px"
+          class="ma-0 ml-2 pa-0 main-line"
+          style="width:100%;height:50px;background-color:transparent"
           align="center"
-          justify="center"
+          @click="$router.push(`/fixture/${fixture.fixture_id}`)"
         >
+          <!-- left -->
+          <v-spacer></v-spacer>
           <v-row
-            class="ma-0 pa-0 text-right"
-            style="width:100%"
+            class="ma-0 ml-1 pa-0"
+            style="width:20%;border-radius:45px"
             align="center"
-          >
-            <v-spacer></v-spacer>
-            <h4 class="ma-0 mr-7 pa-0 team" style="color:#CCC;max-width:250px">{{ fixture.homeTeam[0].name }}</h4>
-            <v-img
-              class="ma-0 mr-3 pa-0"
-              max-height="25"
-              max-width="25"
-              :src="fixture.homeTeam[0].logo"
-            ></v-img>
-          </v-row>
-
-        </v-row>
-
-
-
-        <!-- center -->
-
-        <v-row
-          class="ma-0 pa-0"
-          style="max-width:18%;height:100%;border-radius:2px;font-weight:bold"
-        >
-          <v-row
-            class="ma-0 pa-0"
-            style="width:100%"
             justify="center"
-            align="center"
           >
-            <v-btn
-
-              small
-              class="open"
-              style="border:0px solid #444;border-radius:2px"
-              height="30px"
-              @click=""
+            <v-row
+              class="ma-0 pa-0 text-right"
+              style="width:100%"
+              align="center"
             >
-              OPEN NEW BET
-            </v-btn>
+              <v-spacer></v-spacer>
+              <h4 class="ma-0 mr-7 pa-0 team" style="color:#CCC;max-width:250px">{{ fixture.homeTeam[0].name }}</h4>
+              <v-img
+                contain
+                class="ma-0 mr-3 pa-0"
+                max-height="25"
+                max-width="25"
+                :src="fixture.homeTeam[0].logo"
+              ></v-img>
+            </v-row>
+
           </v-row>
-        </v-row>
 
 
-        <!-- right -->
-        <v-row
-          class="ma-0 mr-1 pa-0"
-          style="width:20%;height:50px;border-radius:45px"
-          align="center"
-        >
+
+          <!-- center -->
+
           <v-row
             class="ma-0 pa-0"
-            style="width:100%"
+            style="max-width:18%;height:100%;border-radius:2px;font-weight:bold"
+          >
+            <v-row
+              class="ma-0 pa-0"
+              style="width:100%"
+              justify="center"
+              align="center"
+            >
+              <v-btn
+
+                small
+                class="open"
+                style="border:0px solid #444;border-radius:2px"
+                height="30px"
+                @click=""
+              >
+                OPEN NEW BET
+              </v-btn>
+            </v-row>
+          </v-row>
+
+
+          <!-- right -->
+          <v-row
+            class="ma-0 mr-1 pa-0"
+            style="width:20%;height:50px;border-radius:45px"
             align="center"
           >
-            <v-img
-              class="ma-0 ml-3 pa-0"
-              max-height="25"
-              max-width="25"
-              :src="fixture.awayTeam[0].logo"
-            ></v-img>
-            <h4 class="ma-0 ml-7 pa-0 team" style="color:#ccc;max-width:250px">{{ fixture.awayTeam[0].name }}</h4>
-            <v-spacer></v-spacer>
+            <v-row
+              class="ma-0 pa-0"
+              style="width:100%"
+              align="center"
+            >
+              <v-img
+                contain
+                class="ma-0 ml-3 pa-0"
+                max-height="25"
+                max-width="25"
+                :src="fixture.awayTeam[0].logo"
+              ></v-img>
+              <h4 class="ma-0 ml-7 pa-0 team" style="color:#ccc;max-width:250px">{{ fixture.awayTeam[0].name }}</h4>
+              <v-spacer></v-spacer>
+            </v-row>
           </v-row>
+
+          <v-spacer></v-spacer>
         </v-row>
 
-        <v-spacer></v-spacer>
-      </v-row>
 
       <v-expand-transition>
         <v-card
@@ -182,6 +187,7 @@
           </v-row>
         </v-row>
           <v-row
+            :to="/bet/"
             v-for="(bet,index) in bets" :key="bet.bet_id"
             :class="{ 'mt-1': index != 0 ,
                       'mb-1': index == bets.length - 1 }"
@@ -189,6 +195,7 @@
             style="height:35px;border-radius:2px;background-color:#222"
             justify="center"
             align="center"
+            @click="$router.push(`/bet/${bet.bet_id}`)"
           >
             <v-row
               class="ma-0 pa-0"
@@ -349,7 +356,8 @@
     },
     data () {
       return {
-        extended: false
+        extended: false,
+        disabled: false
       }
     },
     computed: {
@@ -425,6 +433,8 @@
 
 
 <style lang="sass" scoped>
+  a
+    overflow-x: hidden
 
   .a:hover
     // background-color: rgba(13, 152, 171,.2) !important

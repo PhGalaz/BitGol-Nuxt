@@ -32,6 +32,7 @@
             <v-spacer></v-spacer>
             <h4 class="ma-0 mr-7 pa-0 team" style="color:#CCC;max-width:200px">{{ bet.fixture[0].homeTeam[0].name }}</h4>
             <v-img
+              contain
               class="ma-0 mr-3 pa-0"
               max-height="30"
               max-width="30"
@@ -94,6 +95,7 @@
           align="center"
         >
           <v-img
+            contain
             class="ma-0 ml-3 pa-0"
             max-height="30"
             max-width="30"
@@ -114,7 +116,7 @@
       <v-card
         class="ma-0 pa-0 mx-1 mb-1 fax"
         v-show="hover"
-        style="border-radius:2px;width:100%;font-size:12px;color:#555"
+        style="border-radius:2px;height:300px;width:100%;font-size:12px;color:#555"
         flat
       >
         <v-row
@@ -227,6 +229,7 @@
 
         <v-row
           class="ma-0 pa-0"
+          style="height:184px"
         >
           <v-row
             class="ma-0 mt-1 pa-0"
@@ -817,6 +820,7 @@
                       justify="center"
                     >
                       <v-img
+                        contain
                         class="ma-0 pa-0 logos"
                         max-height="17"
                         max-width="17"
@@ -830,6 +834,7 @@
                       justify="center"
                     >
                       <v-img
+                        contain
                         class="ma-0 pa-0 logos"
                         max-height="17"
                         max-width="17"
@@ -846,19 +851,20 @@
         </v-row>
         <v-row
           class="ma-0 mt-10 pa-0"
-          style="width:100%;overflow:hidden;background-color:#252525"
+          style="width:100%;overflow:hidden;background-color:#353535"
           justify="center"
-
+          align="center"
         >
           <v-row
             class="ma-0 pa-0"
-            style="max-width:90%;height:30px"
+            style="margin-top:2px !important;max-width:90%;height:30px"
             align="center"
           >
             <v-row
               class="ma-0 pa-0"
               style="max-width:50px"
               justify="center"
+              align="center"
             >
               <span
                 class="ml-1 font-weight-light align-end font-italic"
@@ -883,7 +889,6 @@
               justify="center"
               style="max-width:180px"
             >
-              (
               <v-row
                 class="ma-0 pa-0"
                 justify="center"
@@ -895,6 +900,7 @@
                   justify="center"
                 >
                   <v-img
+                    contain
                     class="ma-0 pa-0"
                     style="margin-top:1px !important"
                     max-height="17"
@@ -914,6 +920,7 @@
                     <span style="color:#ccc">D</span> : 2.00
                   </p>
                   <v-img
+                    contain
                     class="ma-0 ml-2 pa-0"
                     style="margin-top:1px !important"
                     max-height="17"
@@ -928,7 +935,6 @@
                   </p>
                 </v-row>
               </v-row>
-              )
             </v-row>
             <span
               class="ml-1 font-weight-light align-end font-italic"
@@ -1368,7 +1374,7 @@
     // background: linear-gradient(90deg, rgba(2, 123, 146,.7) 0%, rgba(0, 166, 82,.7) 100%) !important
 
     // background: linear-gradient(90deg, rgba(0, 155, 96,.2) 0%, rgba(0, 155, 96,.1) 40%, rgba(0, 155, 96,.1) 60%, rgba(0, 155, 96,.2) 100%) !important
-    background-color: #303030 !important
+    background-color: #353535 !important
     .factor
       // color: #ccc !important
 
