@@ -958,14 +958,14 @@
               >
                 <facebook
                   class="social ma-0 ml-5 pa-0"
-                  :url="url"
+                  url="url"
                   scale="1"
                   style="opacity:.8;filter:grayscale(100%)"
                   ></facebook>
                 <v-spacer></v-spacer>
                 <twitter
                   class="social ma-0 pa-0"
-                  :url="url"
+                  url="url"
                   title="Check me on Github"
                   scale="1"
                   style="opacity:.8;filter:grayscale(100%)"
@@ -973,7 +973,7 @@
                 <v-spacer></v-spacer>
                 <whats-app
                   class="social ma-0 pa-0"
-                  :url="url"
+                  url="url"
                   title="Hello"
                   scale="1"
                   style="opacity:.8;filter:grayscale(100%)"
@@ -981,7 +981,7 @@
                 <v-spacer></v-spacer>
                 <telegram
                   class="social ma-0 pa-0"
-                  :url="url"
+                  url="url"
                   scale="1"
                   style="opacity:.8;filter:grayscale(100%)"
                   ></telegram>

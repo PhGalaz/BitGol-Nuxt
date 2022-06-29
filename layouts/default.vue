@@ -47,7 +47,7 @@
           :width="!$store.state.deployed ? '170px' : '230px'"
           :position="!$store.state.deployed ? '0 -22px' : '-10px -25px'"
           height="80px"
-          src="logo.png"
+          src="/logo.png"
           class="ma-0 pa-0"
           style="margin-top:-5px !important"
         ></v-img>
@@ -69,7 +69,7 @@
             <v-img
               max-height="13"
               max-width="13"
-              src="bitcoin-verde.png"
+              src="/bitcoin-verde.png"
               class="ma-0 mr-1 pa-0"
             ></v-img>
             <p
@@ -337,7 +337,7 @@
     //   }
     // },
     mounted () {
-        window.addEventListener('scroll', this.onScroll),
+        window.addEventListener('scroll', this.onScroll)
         this.$options.sockets.onmessage = (data) => this.mess(data)
       },
     beforeDestroy () {

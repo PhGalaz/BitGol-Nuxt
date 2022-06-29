@@ -1,6 +1,15 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
+  env: {
+    BASE_URL: 'https://bitgol.cash/',
+    LOCAL: 'http://localhost:3000/'
+  },
+  publicRuntimeConfig: {
+    BASE_URL: 'https://bitgol.cash/',
+    LOCAL: 'http://localhost:3000/'
+  },
+  privateRuntimeConfig: {},
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - BitGol',

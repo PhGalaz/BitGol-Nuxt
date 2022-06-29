@@ -20,14 +20,15 @@
           justify="center"
           align="center"
         >
-          {{ fixture[0].awayTeam }}
-          <!-- <v-img
+          <p v-if="$fetchState.pending">Fetching mountains...</p>
+          <v-img
+            v-else
             contain
             class="ma-0 mr-3 pa-0"
-            max-height="275"
-            max-width="275"
-            :src="fixture[0].homeTeam[0].logo"
-          ></v-img> -->
+            max-height="75"
+            max-width="75"
+            :src="fixture.fixture.homeTeam[0].logo"
+          ></v-img>
         </v-row>
         <!-- <v-row
           class="ma-0 pa-0"
@@ -77,23 +78,18 @@
 
 <script>
   export default {
-    data() {
-      return {
-        fixture_id: undefined
-      }
+    data: () => ({
+      fixture: []
+    }),
+    async fetch() {
+      this.fixture = await this.$axios.$get(`http://localhost:3000/fixture/${this.$route.params.id}`)
+      // this.fixture  = fixture.fixture
+
+      // var fixtures = this.$store.state.fixtures
+      // this.fixture = fixtures.filter(fixture => fixture.fixture_id == this.$route.params.id)
     },
-    created() {
-      this.fixture_id = this.$route.params.id
-    },
-    computed: {
-      fixture(){
-        var fixtures = this.$store.state.fixtures
-        const result = fixtures.filter(fixture => fixture.fixture_id == this.fixture_id)
-        if(result == []){
-          //consult fixture id
-        }
-        return result
-      }
+    methods: {
+
     }
   }
 </script>

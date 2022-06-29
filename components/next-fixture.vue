@@ -331,7 +331,7 @@
                     justify="center"
                     align="center"
                   >
-                    {{ takenper(bet.init_amount,bet.taken_amount) }}</span><span style="margin-left:2px;margin-top:2px;font-size:9px">%</span>
+                    {{ takenper(bet.init_amount,bet.taken_amount) }}<span style="margin-left:2px;margin-top:2px;font-size:9px">%</span>
                   </v-row>
                 </v-row>
               </v-row>

@@ -16,6 +16,14 @@
         type: Object,
         default: () => {},
       },
+    },
+    data() {
+      return {
+        
+      }
+    },
+    created() {
+
     }
   }
 </script>

@@ -26,7 +26,7 @@
       class="ma-0 mt-4 pa-0"
       style="width:100%"
     >
-
+      Que es esto?
     </v-row>
   </v-row>
 </template>
