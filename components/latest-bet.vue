@@ -279,7 +279,7 @@
                         <v-img
                           max-height="13"
                           max-width="13"
-                          src="bitcoin-verde.png"
+                          src="/bitcoin-verde.png"
                           class="ma-0 mr-1 pa-0"
                           style="opacity:.8"
                         ></v-img>

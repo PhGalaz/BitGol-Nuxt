@@ -1,32 +1,76 @@
 <template>
   <v-row
     class="ma-0 pa-0"
-    style="height:100%"
   >
     <v-row
       class="ma-0 pa-0"
-      style="width:100%;max-height:70vh"
+      style="width:100%"
     >
-      <fixture :fixture_id="$route.params.id"/>
-      <app-bar-tabs
-        style="position:absolute"
+      <p v-if="$fetchState.pending">Fetching ...</p>
+      <fixture 
+        v-else
+        :fixture_id="$route.params.id"
+        :fixture="fixture"
       />
+      <!-- <app-bar-tabs
+        style="position:absolute"
+      /> -->
     </v-row>
     <client-only>
       <play-resp
         style="width:100%;box-shadow:0px 5px 20px -10px #121212"
-      />
+      /> 
     </client-only>
 
 
 
-    <!-- Body -->
 
+    <!-- Body -->
     <v-row
       class="ma-0 mt-4 pa-0"
       style="width:100%"
     >
-      Que es esto?
+      <v-row
+        class="ma-0 mx-3 pa-0"
+        style=""
+      >
+        <v-col
+          class="ma-0 pa-0 col-md-2"
+
+        >
+          <v-row
+            class="ma-0 pa-0"
+            style="width:100%;border-radius:2px"
+          >
+            <!-- <lives
+              class="ma-0 pa-0"
+            /> -->
+          </v-row>
+        </v-col>
+        <v-col
+          class="ma-0 pa-0 col-md-8"
+          style=""
+        >
+          <latest-bets
+            :bets="open_bets"
+            title='OPEN BETS'
+            class="ma-0 pa-0"
+          />
+        </v-col>
+        <v-col
+          class="ma-0 pa-0 col-md-2"
+
+        >
+          <v-row
+            class="ma-0 pa-0"
+            style="width:100%;border-radius:2px"
+          >
+            <!-- <lives
+              class="ma-0 pa-0"
+            /> -->
+          </v-row>
+        </v-col>
+      </v-row>
     </v-row>
   </v-row>
 </template>
@@ -35,6 +79,17 @@
   export default {
     data () {
       return {
+        fixture: [],
+        bets: []
+      }
+    },
+    async fetch() {
+      this.fixture = await this.$axios.$get(`http://localhost:3000/fixture/${this.$route.params.id}`)
+    },
+    computed: {
+      open_bets(){
+        let bets = this.$store.state.bets.filter(bet => bet.fixture_id == this.$route.params.id)
+        return bets
       }
     },
     mounted(){

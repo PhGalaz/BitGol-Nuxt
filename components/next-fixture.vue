@@ -12,7 +12,6 @@
       class="ma-0 pa-0"
       style=""
     >
-
         <v-row
           class="ma-0 ml-2 pa-0 main-line"
           style="width:100%;height:50px;background-color:transparent"
@@ -362,8 +361,7 @@
     },
     computed: {
       bets(){
-        var fid = this.fixture.fixture_id
-        var bets = this.$store.state.bets.filter(bet => bet.fixture_id == fid)
+        var bets = this.$store.state.bets.filter(bet => bet.fixture_id == this.fixture.fixture_id)
         return bets
       },
       betted(){

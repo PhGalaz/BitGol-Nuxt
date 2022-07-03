@@ -6,6 +6,7 @@ export const state = () => ({
 
   deployed: true,
   drawerright: false,
+  responsably: true,
 
   bch_price: null,
   showleagues: false,
@@ -45,6 +46,9 @@ export const mutations = {
   },
   drawer1(state, data) {
     state.drawerright = data
+  },
+  responsably_off(state) {
+    state.responsably = false
   },
   getleagues(state, data) {
     var leagues = []
@@ -154,6 +158,9 @@ export const mutations = {
 }
 
 export const actions = {
+  nuxtServerInit({ commit }){
+
+  },
   FORMAT_MESSAGE({ commit }, chatMessage){
     const chatMessageFmt = `$(new Date().toLocaleString()}: ${chatMessage}\r\n`
     commit('SET_MESSAGE', chatMessageFmt)

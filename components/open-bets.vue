@@ -11,7 +11,10 @@
         class="ma-0 mx-1 mb-1 pa-0"
         style="width:100%"
       >
-        <latest-bets />
+        <latest-bets 
+          :bets="bets"
+          title='NEW BETS'
+        />
       </v-row>
       <!-- <v-row
         class="ma-0 mx-1 mb-1 pa-0"
@@ -26,7 +29,18 @@
 
 <script>
   export default {
+    computed: {
+      bets: function() {
+        var bets = this.$store.state.bets
+        return bets
 
+        //var byDate = bets.slice(0);
+        //  byDate.sort(function(a,b) {
+        //      return a.created - b.created;
+        //  });
+        //return byDate;
+      }
+    }
   }
 </script>
 

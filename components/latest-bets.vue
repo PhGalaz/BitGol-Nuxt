@@ -5,7 +5,7 @@
   >
     <subtitle
       class="ma-0 mt-1 pa-0"
-      title='NEW BETS'
+      :title="title"
       style="height:100%;color:#ccc"
     />
     <v-row
@@ -63,17 +63,9 @@
         <v-row
           class="ma-0 pa-0"
           style="width:100%;background-color:#1C1C1C"
-          v-for="(bet,index) in $store.state.bets"  :key="bet.bet_id"
+          v-for="(bet,index) in bets"  :key="bet.bet_id"
         >
-          <!-- <open-bet class="ma-0 mx-1 mt-1 pa-0" :bet="bet"/> -->
-
-          <latest-bet class="ma-0 ml-1 pa-0" style="opacity:.75;margin-right:1px !important":bet="bet"/>
-          <!-- <v-row>
-            <img
-              src="test.png"
-              alt="John"
-            >
-          </v-row> -->
+          <latest-bet class="ma-0 ml-1 pa-0" style="opacity:.75;margin-right:1px !important" :bet="bet"/>
         </v-row>
       </v-row>
     </v-row>
@@ -82,28 +74,21 @@
 
 <script>
   export default {
-    data() {
-      return {
-
-      }
-    },
-
-    computed: {
-      bets: function() {
-        var bets = this.$store.state.bets
-        return bets
-
-        //var byDate = bets.slice(0);
-        //  byDate.sort(function(a,b) {
-        //      return a.created - b.created;
-        //  });
-        //return byDate;
+    props: {
+      bets: {
+        type: Array,
+        default: () => ({}),
+      },
+      title: {
+        type: String,
+        default: '',
       }
     }
   }
 </script>
 
 <style lang="sass">
+  // Scrollbar
   .lbar::-webkit-scrollbar
     border-radius: 0 0px 0px 0 !important
     background-color: #1C1C1C !important
@@ -112,6 +97,4 @@
     background-color: #ccc !important
     border-radius: 45px !important
     border-color: #222 !important
-
-
 </style>

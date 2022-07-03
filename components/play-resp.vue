@@ -2,17 +2,9 @@
   <v-row
     style="background-color:#272727;height:35px;color:yellow"
     class="ma-0 pa-0"
-    :class="{ 'd-none': !showResponsably }"
+    :class="{ 'd-none': !this.$store.state.responsably }"
     align="center"
   >
-
-
-    <!-- <v-icon
-    x-small
-    color= "blue-grey darken-2"
-    >
-      mdi-comment-alert
-    </v-icon> -->
     <v-btn
       class="ma-0 ml-3 pa-0"
       small
@@ -186,7 +178,7 @@
     }),
     methods:{
       responsablyOut(){
-        this.showResponsably = false
+        this.$store.commit('responsably_off')
       },
       respo(){
         var data = { price: parseFloat(this.$store.state.bch_price) + 1 }
