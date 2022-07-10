@@ -1,12 +1,12 @@
 <template>
   <v-row
-    class="ma-0 pa-0"
+    class="ma-0 pa-0 box"
     style="min-height:76px;width:100%;border-radius:2px;inset:-3px;background-color:rgba(0, 148, 107,1) !important"
   >
     <subtitle
       class="ma-0 mt-1 pa-0"
       :title="title"
-      style="height:100%;color:#ccc"
+      style="height:100%;color:white"
     />
     <v-row
       class="ma-0 mx-1 pa-0 lbar"
@@ -97,4 +97,8 @@
     background-color: #ccc !important
     border-radius: 45px !important
     border-color: #222 !important
+
+  .box
+    -webkit-filter: drop-shadow(0px 0px 15px rgba(0, 148, 107, 0.4))
+    filter: drop-shadow(0px 0px 15px rgba(0, 148, 107, 0.4))
 </style>

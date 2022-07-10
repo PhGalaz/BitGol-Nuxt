@@ -71,7 +71,7 @@
         v-for="(fixture,index) in $store.state.fixtures"  :key="fixture.fixture_id"
         justify="center"
       >
-        <next-fixture class="ma-0 ml-1 pa-0" style="margin-right:1px !important;opacity:.75":fixture="fixture"/>
+        <next-fixture class="ma-0 ml-1 pa-0" style="margin-right:1px !important;opacity:.75" :fixture="fixture"/>
       </v-row>
     </v-row>
   </v-row>
@@ -109,6 +109,9 @@
     background-size: 100% 100% !important
     // background-image: linear-gradient(45deg, rgba(12, 85, 99,.5) 0%, rgba(157, 161, 17,.5) 50%, rgba(0,166,82,.5) 100%) !important
     background-color: rgba(2, 121, 138,1) !important
+  .titulo
+    -webkit-filter: drop-shadow(0px 0px 15px rgba(2, 121, 138, 0.4))
+    filter: drop-shadow(0px 0px 15px rgba(2, 121, 138, 0.4))
   .ops:hover
     cursor: pointer
     color: white !important

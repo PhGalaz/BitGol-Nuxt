@@ -9,7 +9,7 @@
   >
     <v-row
       class="ma-0 pa-0 main-line"
-      style="max-width:100%;max-height:55px;min-height:55px;background-color:transparent;margin-top:2px"
+      style="max-width:100%;height:55px;background-color:transparent;margin-top:2px"
       align="center"
     >
       <!-- left -->
@@ -45,7 +45,7 @@
       <!-- center -->
 
       <v-row
-        class="ma-0 ml-1 pa-0"
+        class="ma-0 pa-0"
         style="max-width:18%;height:100%;border-radius:2px;font-weight:bold"
         justify="center"
       >
@@ -53,9 +53,11 @@
           class="ma-0 pa-0"
           style="width:100%;min-height:100%"
           justify="center"
+          align="center"
         >
           <v-row
-            class="ma-0 pa-0 factor"
+            class="ma-0 mx-1 pa-0 factor"
+            style="background-color:#222;max-height:60%;border-radius:3px"
             :style="factor_style(bet.home_factor.toFixed(2))"
             justify="center"
             align="center"
@@ -63,17 +65,18 @@
             {{bet.home_factor.toFixed(2)}}
           </v-row>
           <v-row
-            class="ma-0 pa-0 factor"
+            class="ma-0 mx-1 pa-0 factor"
             :style="factor_style(bet.draw_factor.toFixed(2))"
-            style="min-height:100%"
+            style="background-color:#222;max-height:60%;border-radius:3px"
             justify="center"
             align="center"
           >
             {{bet.draw_factor.toFixed(2)}}
           </v-row>
           <v-row
-            class="ma-0 pa-0 factor"
+            class="ma-0 mx-1 pa-0 factor"
             :style="factor_style(bet.away_factor.toFixed(2))"
+            style="background-color:#222;max-height:60%;border-radius:3px"
             justify="center"
             align="center"
           >
@@ -1408,5 +1411,35 @@
     font-weight: bold !important
 
 
+
+
+  // Slider  
+
+  .v-slider__track-container
+    height: 8px !important
+
+  .v-slider__track-fill
+    border-radius: 45px !important
+
+  .v-slider__track-background
+    border-radius: 0px 45px 45px 0px !important
+
+  .v-slider__thumb
+    height: 12px !important
+    width: 12px !important
+    background-color: #ccc !important
+
+
+  .v-slider__thumb::before
+    color: #ccc !important
+
+
+  .v-slider__thumb::after
+    color: #ccc !important
+    
+
+  .v-slider__thumb-container
+    max-height: 10px !important
+    background-color: #ccc !important
 
 </style>

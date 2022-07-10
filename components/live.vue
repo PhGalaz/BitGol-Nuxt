@@ -3,11 +3,12 @@
     class="ma-0 pa-0"
     justify="center"
     align="center"
-    style="width:100%;background-color:#191919;border-radius:2px"
+    style="width:100%;border-radius:2px"
   >
     <v-col
       class="ma-0 my-1 pa-0"
-      style=""
+      style="height:100%"
+      @click="$router.push(`/fixture/${fixture.fixture_id}`)"
     >
       <v-row
         class="ma-0 pa-0"

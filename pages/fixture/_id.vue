@@ -48,7 +48,7 @@
           </v-row>
         </v-col>
         <v-col
-          class="ma-0 pa-0 col-md-8"
+          class="ma-0 pa-0 col-12 col-md-8"
           style=""
         >
           <latest-bets
@@ -79,8 +79,7 @@
   export default {
     data () {
       return {
-        fixture: [],
-        bets: []
+        fixture: []
       }
     },
     async fetch() {
@@ -88,8 +87,7 @@
     },
     computed: {
       open_bets(){
-        let bets = this.$store.state.bets.filter(bet => bet.fixture_id == this.$route.params.id)
-        return bets
+        return this.$store.state.bets.filter(bet => bet.fixture_id == this.$route.params.id)
       }
     },
     mounted(){

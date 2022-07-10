@@ -9,6 +9,9 @@ export default {
     BASE_URL: 'https://bitgol.cash/',
     LOCAL: 'http://localhost:3000/'
   },
+  server: {
+    host: '0' // default: localhost
+  },
   privateRuntimeConfig: {},
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -36,8 +39,16 @@ export default {
   plugins: [
     { src: '~plugins/native-websocket.js', ssr: false },
     // { src: '~plugins/calendar.js', ssr: false },
-    '~plugins/sharing.js'
+    '~plugins/sharing.js',
+    "~/plugins/signalrHub.js",
+    "~/plugins/b2trader_auth.js"
   ],
+  // proxy: {
+  //   "/hub": {
+  //     target: "https://b2t-api-cmc-staging-5.flexprotect.org/",
+  //     ws: true,
+  //   }, // signalr endpoint
+  // },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
