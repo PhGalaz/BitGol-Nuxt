@@ -1,7 +1,7 @@
 <template>
   <v-row
     class="ma-0 pa-0 box"
-    style="min-height:76px;width:100%;border-radius:2px;inset:-3px;background-color:rgba(0, 148, 107,1) !important"
+    style="min-height:76px;width:100%;border-radius:2px;inset:-3px;background-color:rgba(154,205,50,0.75)"
   >
     <subtitle
       class="ma-0 mt-1 pa-0"
@@ -99,6 +99,6 @@
     border-color: #222 !important
 
   .box
-    -webkit-filter: drop-shadow(0px 0px 15px rgba(0, 148, 107, 0.4))
-    filter: drop-shadow(0px 0px 15px rgba(0, 148, 107, 0.4))
+    // -webkit-filter: drop-shadow(0px 0px 15px rgba(154,205,50,.2))
+    // filter: drop-shadow(0px 0px 15px rgba(154,205,50,.2))
 </style>

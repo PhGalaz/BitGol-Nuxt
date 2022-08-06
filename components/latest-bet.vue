@@ -46,7 +46,7 @@
 
       <v-row
         class="ma-0 pa-0"
-        style="max-width:18%;height:100%;border-radius:2px;font-weight:bold"
+        style="max-width:38%;height:100%;border-radius:2px;font-weight:bold"
         justify="center"
       >
         <v-row
@@ -1262,7 +1262,7 @@
       },
       factor_style(factor) {
         if(factor > 1.00){
-          return "height:100%;font-size:12px;color:#26D895"
+          return "height:100%;font-size:12px;color:#9acd32"
         }else if(factor == 1.00){
           return "height:100%;font-size:12px;color:#ccc"
         }else if(factor < 1.00){
@@ -1378,7 +1378,8 @@
 
     // background: linear-gradient(90deg, rgba(0, 155, 96,.2) 0%, rgba(0, 155, 96,.1) 40%, rgba(0, 155, 96,.1) 60%, rgba(0, 155, 96,.2) 100%) !important
     background-color: #353535 !important
-    .factor
+  .factor
+    width: 80px !important
       // color: #ccc !important
 
 
@@ -1415,14 +1416,14 @@
 
   // Slider  
 
-  .v-slider__track-container
-    height: 8px !important
+  // .v-slider__track-container
+  //   height: 8px !important
 
   .v-slider__track-fill
-    border-radius: 45px !important
+    border-radius: 2px !important
 
   .v-slider__track-background
-    border-radius: 0px 45px 45px 0px !important
+    border-radius: 0px 2px 2px 0px !important
 
   .v-slider__thumb
     height: 12px !important
@@ -1431,6 +1432,8 @@
 
 
   .v-slider__thumb::before
+    height: 13px !important
+    width: 13px !important
     color: #ccc !important
 
 

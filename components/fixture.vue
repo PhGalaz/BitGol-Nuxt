@@ -140,7 +140,7 @@
                 <template v-slot:activator="{ on, attrs }">
                   <v-row
                     class="ma-0 pa-0 button"
-                    style="transition:.2s !important;max-width:300px;height:40%;color:rgba(0, 148, 107,1);font-size:16px;border-radius:3px;border:3px solid rgba(0, 148, 107,.2);background-color:rgba(0, 148, 107,.1)"
+                    style="transition:.2s !important;max-width:300px;height:40%;color:rgba(154,205,50,1);font-size:16px;border-radius:3px;border:3px solid rgba(154,205,50,1);background-color:rgba(173,255,47,.1)"
                     justify="center"
                     align="center"
                     v-bind="attrs"
@@ -266,8 +266,8 @@
   .button:hover
     cursor: pointer
     color: white !important
-    border-color: rgba(0, 148, 107,1) !important
-    background-color: rgba(0, 148, 107,.4) !important
-    -webkit-filter: drop-shadow(0px 0px 15px rgba(0, 148, 107,1))
-    filter: drop-shadow(0px 0px 15px rgba(0, 148, 107,1)) brightness(1.2)
+    border: 0px !important
+    background-color: rgba(154,205,50,0.75) !important
+    -webkit-filter: drop-shadow(0px 0px 200px rgba(0, 148, 107,1))
+    filter: drop-shadow(0px 0px 200px rgba(0, 148, 107,1)) brightness(1.2)
 </style>

@@ -6,7 +6,23 @@
       align="center"
     >
 
-      <ticle title='LIVE GAMES'/>
+      <v-row
+        class="ma-0 pa-0"
+        align="center"
+        style="width:100%;height:35px;border-radius:3px;font-weight:bold"
+      >
+        <v-row
+          class="ma-0 ml-5 pa-0"
+          style="background-color:#FC2C3B;border-radius:3px;max-width:70px;max-height:65%"
+          justify="center"
+          align="center"
+        >
+          <h3 
+            class="ma-0 pa-0"
+            style="margin-top:-2px !important"
+          >LIVE</h3>
+        </v-row>
+      </v-row>
       <v-row
         class="ma-0 mx-1 mt-4 pa-0"
         v-if="leagues.length > 0"

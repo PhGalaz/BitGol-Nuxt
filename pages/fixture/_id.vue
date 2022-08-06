@@ -96,7 +96,7 @@
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
   .v-application
     -webkit-touch-callout: none
     -webkit-user-select: none
