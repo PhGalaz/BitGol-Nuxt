@@ -83,7 +83,7 @@
       }
     },
     async fetch() {
-      this.fixture = await this.$axios.$get(`http://localhost:3000/fixture/${this.$route.params.id}`)
+      this.fixture = await this.$axios.$get(`http://localhost:3002/api/v2/data/fixture?id=${this.$route.params.id}`)
     },
     computed: {
       open_bets(){

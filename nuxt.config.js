@@ -3,11 +3,11 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   env: {
     BASE_URL: 'https://bitgol.cash/',
-    LOCAL: 'http://localhost:3000/'
+    LOCAL: 'http://localhost:3002/'
   },
   publicRuntimeConfig: {
     BASE_URL: 'https://bitgol.cash/',
-    LOCAL: 'http://localhost:3000/'
+    LOCAL: 'http://localhost:3002/'
   },
   server: {
     host: '0' // default: localhost
@@ -39,9 +39,7 @@ export default {
   plugins: [
     { src: '~plugins/native-websocket.js', ssr: false },
     // { src: '~plugins/calendar.js', ssr: false },
-    '~plugins/sharing.js',
-    "~/plugins/signalrHub.js",
-    "~/plugins/b2trader_auth.js"
+    '~plugins/sharing.js'
   ],
   // proxy: {
   //   "/hub": {

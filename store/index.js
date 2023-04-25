@@ -32,10 +32,10 @@ export const mutations = {
   SOCKET_ONMESSAGE(state, cont) {
     cont = JSON.parse(cont.data)
     if(cont[0].event == "bchinfo") {
-      // state.bch_price = cont[0].data.price.toFixed(2)
+      state.bch_price = cont[0].data.price.toFixed(2)
     }
     if(cont[0].event == "lives") {
-      // state.lives = cont[0].data
+      state.lives = cont[0].data
     }
   },
   SET_FIXTURES(state, fixtures) {
@@ -68,15 +68,15 @@ export const mutations = {
     state.countries = data.countries
   },
   getbets(state, data) {
-    state.bets = data.bets
-    console.log('1',state.bets['0'])
-    console.log('2',state.bets['0'].bet_id)
+    state.bets = data
+    // console.log('1',state.bets['0'])
+    // console.log('2',state.bets['0'].bet_id)
   },
   getteams(state, data) {
     state.teams = data.teams
   },
   getlives(state, data) {
-    state.lives = data.livegames
+    state.lives = data
   },
   setshowleagues(state, value){
     state.showleagues = value
@@ -166,8 +166,8 @@ export const actions = {
     commit('SET_MESSAGE', chatMessageFmt)
   },
   async loadFixtures({ commit }) {
-    let response = await axios.get('http://localhost:3000/fixtures');
-    commit('SET_FIXTURES', response.data.fixtures);
+    let response = await axios.get('http://localhost:3002/api/v2/data/fixtures');
+    commit('SET_FIXTURES', response.data);
   }
 }
 

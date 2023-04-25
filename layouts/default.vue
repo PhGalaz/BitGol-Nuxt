@@ -370,16 +370,15 @@
         }
       },
       async initdata() {
-        const info = await this.$axios.$get('http://localhost:3000/bch')
-        var data = info.info[0]
-        this.$store.commit('bchprice', data);
+        const info = await this.$axios.$get('http://localhost:3002/api/v2/index/bch')
+        this.$store.commit('bchprice', info[0]);
         // const leagues = await this.$axios.$get('http://localhost:3000/leagues')
         // this.$store.commit('getleagues', leagues);
         // const countries = await this.$axios.$get('http://localhost:3000/countries')
         // this.$store.commit('getcountries', countries);
         // const teams = await this.$axios.$get('http://localhost:3000/teams')
         // this.$store.commit('getteams', teams);
-        const bets = await this.$axios.$get('http://localhost:3000/bets')
+        const bets = await this.$axios.$get('http://localhost:3002/api/v2/data/bets')
         this.$store.commit('getbets', bets);
       },
       getMessage() {

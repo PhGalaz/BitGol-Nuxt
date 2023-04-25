@@ -54,7 +54,7 @@
                             class="ma-0 pa-0" 
                             max-height="100" 
                             max-width="100"
-                            :src="fixture.fixture.homeTeam[0].logo"
+                            :src="fixture.homeTeam[0].logo"
                         ></v-img>
                     </v-row>
                     <v-row 
@@ -139,7 +139,7 @@
                             class="ma-0 pa-0" 
                             max-height="100" 
                             max-width="100"
-                            :src="fixture.fixture.awayTeam[0].logo"
+                            :src="fixture.awayTeam[0].logo"
                         ></v-img>
                     </v-row>
                 </v-row>

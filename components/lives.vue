@@ -136,7 +136,7 @@
     },
     methods: {
       async initdata() {
-          const lives = await this.$axios.$get('http://localhost:3000/lives')
+          const lives = await this.$axios.$get('http://localhost:3002/api/v2/data/lives')
           this.$store.commit('getlives', lives);
       },
       method(data){

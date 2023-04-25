@@ -32,7 +32,7 @@
               class="ma-0 pa-0 logo_team"
               max-height="240"
               max-width="240"
-              :src="fixture.fixture.homeTeam[0].logo"
+              :src="fixture.homeTeam[0].logo"
             ></v-img>
           </v-row>
           <v-row
@@ -46,7 +46,7 @@
               style="max-width:250px;color:grey;line-height:35px"
               justify="center"
             >
-              {{ fixture.fixture.homeTeam[0].name }}
+              {{ fixture.homeTeam[0].name }}
             </v-row>
           </v-row>
         </v-row>
@@ -64,8 +64,8 @@
               class="ma-0 my-2 ml-2 pa-0"
               style=""
             >
-              {{ fixture.fixture.league[0].name }} <br>
-              {{ fixture.fixture.league[0].round }}
+              {{ fixture.league[0].name }} <br>
+              {{ fixture.league[0].round }}
             </v-row>
             <v-row
               class="ma-0 mb-1 mr-2 pa-0 text-right"
@@ -73,7 +73,7 @@
               justify="end"
               align="center"
             >
-              {{ formatDate(this.fixture.fixture.event_date) }}
+              {{ formatDate(this.fixture.event_date) }}
             </v-row>
           </v-row>
           <v-row
@@ -85,7 +85,7 @@
               style="width:100%;height:90%;color:#ccc"
               justify="center"
             >
-              {{ this.fixture.fixture.status[0].long }}
+              {{ this.fixture.status[0].long }}
               <v-row
                 class="ma-0 pa-0"
                 style="width:100%"
@@ -178,7 +178,7 @@
               class="ma-0 pa-0 logo_team"
               max-height="240"
               max-width="240"
-              :src="fixture.fixture.awayTeam[0].logo"
+              :src="fixture.awayTeam[0].logo"
             ></v-img>
           </v-row>
           <v-row
@@ -192,7 +192,7 @@
               style="max-width:250px;color:grey;line-height:35px"
               justify="center"
             >
-              {{ fixture.fixture.awayTeam[0].name }}
+              {{ fixture.awayTeam[0].name }}
             </v-row>
           </v-row>
         </v-row>
@@ -213,15 +213,9 @@
       now: Math.trunc((new Date()).getTime() / 1000),
       dialog: false
     }),
-    // async fetch() {
-    //   this.fixture = await this.$axios.$get(`http://localhost:3000/fixture/${this.$route.params.id}`)
-
-    //   // var fixtures = this.$store.state.fixtures
-    //   // this.fixture = fixtures.filter(fixture => fixture.fixture_id == this.$route.params.id)
-    // },
     computed: {
       dateInMilliseconds() {
-        var kickoff = this.fixture.fixture.event_timestamp;
+        var kickoff = this.fixture.event_timestamp;
         return kickoff
       },
       seconds() {
