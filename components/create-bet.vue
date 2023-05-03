@@ -1,308 +1,363 @@
 <template>
     <v-row 
         class="ma-0 pa-0 card" 
-        style="height:80vh;width:100%;border:4px solid #303030;border-radius:3px;background-color:#222"
-        justify="center"
+        style="width:100%;border-radius:3px;background-color:#222"
+        justify="left"
     >   
-        <v-row 
-            class="ma-0 mt-n1 pa-0"
-            style="width:100%;height:40px;color:#ccc;font-weight:600;font-size:20px;background-color:#303030" 
-            align="center" 
-            @click="$emit('close-dialog')"
+        <v-row
+            class="ma-0 pa-0 col-12"
+            style="height:40px;width:100%;border-radius:3px;background-color:#222"
+            justify="center"
+            align="center"
         >
-            <p
-                class="ma-0 ml-5 pa-0"
-                align="center"
-            >PLACE A BET ON THE MARKET</p>
+            <v-spacer></v-spacer>
+            <v-btn
+                x-small
+                icon
+                color= "#ccc"
+                class="ml-3 mr-3"
+            >
+                <v-icon
+                    x-medium
+                    @click="responsablyOut()"
+                >mdi-close</v-icon>
+            </v-btn>
         </v-row>
         <v-row
-            class="ma-0 pa-0 col-12 col-md-9"
-            style="min-height:calc(100% - 40px);max-height:calc(100% - 40px);overflow:auto;border-radius:3px"
+            class="ma-0 mx-10 pa-0"
+            style="vertical-align:middle !important;font-size:medium"
+            justify="left"
+        >
+            <p style="font-size:large">
+                Create the bet you would like to take<br>
+                <span
+                    style="color:grey"
+                >
+                    At least one factor must be
+                    <span 
+                        class="pl-2 pr-1" 
+                        style="color:#9ACD32;font-size:large;font-size:small;vertical-align: middle !important;background-color:rgba(154,205,50,0.25);border-radius:3px"
+                    >
+                        greater than 1
+                    </span>
+                </span>
+                <span
+                    class="ml-1"
+                    style="color:grey"
+                >
+                    . At least one factor must be
+                    <span 
+                        class="pl-2 pr-1 mr-1" 
+                        style="color:#FC2C3B;font-size:large;font-size:small;vertical-align: middle !important;background-color:rgba(252,44,59,0.25);border-radius:3px"
+                    >
+                        equal to 0
+                    </span>
+                    .
+                </span>
+                <!-- <span
+                    class="ml-1"
+                    style="color:grey"
+                >
+                    . Remaining factor can take any value.
+                </span> -->
+            </p>
+        </v-row>
+        <!--  -->
+        <v-row
+            class="ma-0 pa-0 col-12"
             justify="center"
         >
             <v-row 
-                class="ma-4 pa-0 col-11"
-                style="min-height:25%;max-height:25%;border-radius:3px" 
+                class="mx-3 mt-3 mb-1 pa-0"
+                style="display:block;border-radius:3px;background-color:#262626" 
                 justify="center" 
                 align="center"
             >
                 <v-row
-                    class="ma-0 pa-0"
+                    class="ma-0 mt-3"
                     justify="center"
-                    style="height:40px;border-radius:3px"
-                    align="center"
-                >
-                    <p
-                        class="ma-0 pa-0 text-uppercase"
-                        style="color:rgba(255,255,255,.6);font-size:14px;font-weight:600"
-                    >The bet you're taking</p>
-                </v-row>
-                <v-row 
-                    class="ma-0 pa-0" 
-                    style="height:80%;width:100%" 
-                    justify="center"
-                    align="center"
                 >
                     <v-row 
-                        class="ma-0 mr-5 pa-0" 
-                        style="width:100px" 
-                        justify="end" 
+                        class="ma-0 my-2 pa-0"
+                        style="max-width:140px"
+                        justify="center" 
                         align="center"
                     >
                         <v-img 
                             contain 
                             class="ma-0 pa-0" 
-                            max-height="100" 
-                            max-width="100"
+                            max-height="60" 
+                            max-width="60"
                             :src="fixture.homeTeam[0].logo"
                         ></v-img>
                     </v-row>
                     <v-row 
-                        class="ma-0 pa-0"  
-                        style="max-width:200px;height:100px;border-radius:3px;background-color:"
+                        class="ma-0 mx-2 my-2 pa-0"
+                        style="max-width:140px;color:grey;font-weight:bold;letter-spacing:1px;font-size:medium"
+                        justify="center" 
+                        align="center"
                     >
-                        <v-row 
-                            class="ma-0 pa-0" 
-                            style="width:100%;height:100%" 
-                            align="center" 
-                            justify="center"
-                        >
-                            <v-row class="ma-0 pa-0"
-                                style="max-width:80%;min-width:80%;font-size:25px;color:#CCC;font-weight:bold"
-                                justify="center" align="center"
-                            >
-                                HOME
-                            </v-row>
-                            <v-row class="ma-0 pa-0 factor_case"
-                                :style="factor_color(this.home_factor)"
-                                justify="center" 
-                                align="center"
-                            >
-                                {{ home_factor }}
-                            </v-row>
-                        </v-row>
+                        DRAW
                     </v-row>
                     <v-row 
-                        class="ma-0 pa-0" 
-                        style="max-width:200px;height:100px;border-radius:3px"
-                    >
-                        <v-row 
-                            class="ma-0 pa-0"  
-                            style="width:100%;height:100%" 
-                            align="center" 
-                            justify="center"
-                        >
-                            <v-row class="ma-0 pa-0"
-                                style="max-width:80%;min-width:80%;font-size:25px;color:#CCC;font-weight:bold"
-                                justify="center" 
-                                align="center"
-                            >
-                                DRAW
-                            </v-row>
-                            <v-row class="ma-0 pa-0 factor_case"
-                                :style="factor_color(this.draw_factor)"
-                                justify="center" 
-                                align="center"
-                            >
-                                {{ draw_factor }}
-                            </v-row>
-                        </v-row>
-                    </v-row>
-                    <v-row class="ma-0 pa-0" style="max-width:200px;height:100px;border-radius:3px">
-                        <v-row 
-                            class="ma-0 pa-0" 
-                            style="width:60%;height:100%" 
-                            align="center" 
-                            justify="center"
-                        >
-                            <v-row class="ma-0 pa-0"
-                                style="max-width:80%;min-width:80%;font-size:25px;color:#CCC;font-weight:bold"
-                                justify="center" align="center">
-                                AWAY
-                            </v-row>
-                            <v-row class="ma-0 pa-0 factor_case"
-                                :style="factor_color(this.away_factor)"
-                                justify="center" 
-                                align="center"
-                            >
-                                {{ away_factor }}
-                            </v-row>
-                        </v-row>
-                    </v-row>
-                    <v-row 
-                        class="ma-0 ml-5 pa-0" 
-                        style="width:100px;height: 100%;" 
+                        class="ma-0 my-2 pa-0"
+                        style="max-width:140px"
+                        justify="center" 
                         align="center"
                     >
                         <v-img 
                             contain 
                             class="ma-0 pa-0" 
-                            max-height="100" 
-                            max-width="100"
+                            max-height="60" 
+                            max-width="60"
                             :src="fixture.awayTeam[0].logo"
                         ></v-img>
                     </v-row>
                 </v-row>
-            </v-row>
-            <v-row
-                class="ma-0 mb-8 pa-0 col-11"
-                style="border-radius:3px;min-height:25%;max-height:25%" 
-                justify="center"
-                align="center"
-            >
                 <v-row
-                    class="ma-0 pa-0 col-12 col-md-7"
-                    style="height:100%;max-width:100%"
-                    align="center"
+                    class="ma-0"
                     justify="center"
                 >
-                    <v-row
-                        class="ma-0 pa-0 col-12"
-                        style="width:100%"
-                        justify="center"
+                    <v-row class="ma-0 mt-2 mb-4 pa-0 factor_case"
+                        :style="factor_color(this.home_factor)"
+                        justify="center" 
+                        align="center"
                     >
-                        <v-row 
-                            class="ma-0 pa-0 test" 
-                        >
-                            <v-row 
-                                class="ma-0 pa-0"
-                                style="max-width:65px"
-                                align="center"
-                            >HOME</v-row>
-                            <v-slider 
-                                v-model="home_slider_value" 
-                                min="-1000" 
-                                max="1000" 
-                                :color="color" 
-                                :track-color="home_track_color"
-                                :track-fill-color="home_track_fill_color" 
-                                dense 
-                            >
-                                <template v-slot:prepend>
-                                    <v-icon
-                                        @click="decrement('home')"
-                                    >
-                                        mdi-minus
-                                    </v-icon>
-                                </template>
-                                <template v-slot:append>
-                                    <v-icon
-                                        @click="increment('home')"
-                                    >
-                                        mdi-plus
-                                    </v-icon>
-                                </template>
-                            </v-slider>
-                        </v-row>
+                        {{ home_factor }}
                     </v-row>
-                    <v-row
-                        class="ma-0 pa-0"
-                        style="width:100%"
-                        justify="center"
+                    <v-row class="ma-0 mt-2 mb-4 mx-2 pa-0 factor_case"
+                        :style="factor_color(this.draw_factor)"
+                        justify="center" 
+                        align="center"
                     >
-                        <v-row 
-                            class="ma-0 pa-0 test"
-                        >
-                            <v-row 
-                                class="ma-0 pa-0"
-                                style="max-width:65px"
-                                align="center"
-                            >DRAW</v-row>
-                            <v-slider 
-                                v-model="draw_slider_value" 
-                                min="-1000" 
-                                max="1000" 
-                                :color="color" 
-                                :track-color="draw_track_color"
-                                :track-fill-color="draw_track_fill_color" 
-                                dense 
-                            >
-                                <template v-slot:prepend>
-                                    <v-icon
-                                        @click="decrement('draw')"
-                                    >
-                                        mdi-minus
-                                    </v-icon>
-                                </template>
-                                <template v-slot:append>
-                                    <v-icon
-                                        @click="increment('draw')"
-                                    >
-                                        mdi-plus
-                                    </v-icon>
-                                </template>
-                            </v-slider>
-                        </v-row>
+                        {{ draw_factor }}
                     </v-row>
-                    <v-row
-                        class="ma-0 pa-0"
-                        style="width:100%"
-                        justify="center"
+                    <v-row class="ma-0 mt-2 mb-4 pa-0 factor_case"
+                        :style="factor_color(this.away_factor)"
+                        justify="center" 
+                        align="center"
                     >
-                        <v-row 
-                            class="ma-0 pa-0 test"
-                        >
-                            <v-row 
-                                class="ma-0 pa-0"
-                                style="max-width:65px"
-                                align="center"
-                            >AWAY</v-row>
-                            <v-slider 
-                                v-model="away_slider_value" 
-                                min="-1000" 
-                                max="1000" 
-                                :color="color" 
-                                :track-color="away_track_color"
-                                :track-fill-color="away_track_fill_color" 
-                                dense 
-                            >
-                                <template v-slot:prepend>
-                                    <v-icon
-                                        @click="decrement('away')"
-                                    >
-                                        mdi-minus
-                                    </v-icon>
-                                </template>
-                                <template v-slot:append>
-                                    <v-icon
-                                        @click="increment('away')"
-                                    >
-                                        mdi-plus
-                                    </v-icon>
-                                </template>
-                            </v-slider>
-                        </v-row>
+                        {{ away_factor }}
                     </v-row>
                 </v-row>
             </v-row>
+            <!--  -->
             <v-row
-                class="ma-0 mb-8 pa-0 col-7"
-                style="min-height:30%;max-height:30%"
-                justify="center"
+                class="ma-0 pa-0 mt-4 col-12"
             >
-                <v-row
-                    class="ma-0 pa-0 col-12"
-                    style="height:100%;border-radius:3px"
+                <v-row 
+                    class="mx-3 pa-0"
+                    style="display:block;border-radius:3px;background-color:#262626;width:100%;height:50px" 
+                    justify="center" 
                     align="center"
-                    justify="center"
                 >
-                    <v-row
-                        class="ma-0 pa-0"
+                    <v-row 
+                        class="ma-0 pa-0 test"
+                        style="min-height:50px;max-height:50px;scale:0.75"
+                        align="center"
                         justify="center"
+                    >
+                        <v-row 
+                            class="ma-0 my-2 pa-0"
+                            style="max-width:140px;color:grey;font-weight:bold;letter-spacing:1px;font-size:medium"
+                            justify="center" 
+                            align="center"
+                        >
+                            HOME
+                        </v-row>
+                        <v-slider 
+                            class="ma-0 pa-0"
+                            v-model="home_slider_value" 
+                            min="-1000" 
+                            max="1000" 
+                            :color="color" 
+                            :track-color="home_track_color"
+                            :track-fill-color="home_track_fill_color" 
+                            track-size="1"
+                        >
+                            <template v-slot:prepend>
+                                <v-icon
+                                    @click="decrement('home')"
+                                >
+                                    mdi-minus
+                                </v-icon>
+                            </template>
+                            <template v-slot:append>
+                                <v-icon
+                                    @click="increment('home')"
+                                >
+                                    mdi-plus
+                                </v-icon>
+                            </template>
+                        </v-slider>
+                        <v-row 
+                            class="ma-0 my-2 pa-0"
+                            style="max-width:140px"
+                            justify="center" 
+                            align="center"
+                        >
+                        
+                        </v-row>
+                    </v-row>
+                </v-row>
+                <v-row 
+                    class="mx-3 mt-5 pa-0"
+                    style="display:block;border-radius:3px;background-color:#262626;width:100%;height:50px" 
+                    justify="center" 
+                    align="center"
+                >
+                    <v-row 
+                        class="ma-0 pa-0 test"
+                        style="min-height:50px;max-height:50px;scale:0.75"
+                        align="center"
+                        justify="center"
+                    >
+                        <v-row 
+                            class="ma-0 my-2 pa-0"
+                            style="max-width:140px;color:grey;font-weight:bold;letter-spacing:1px;font-size:medium"
+                            justify="center" 
+                            align="center"
+                        >
+                            DRAW
+                        </v-row>
+                        <v-slider 
+                            class="ma-0 pa-0"
+                            v-model="draw_slider_value" 
+                            min="-1000" 
+                            max="1000" 
+                            :color="color" 
+                            :track-color="draw_track_color"
+                            :track-fill-color="draw_track_fill_color" 
+                            track-size="1"
+                        >
+                            <template v-slot:prepend>
+                                <v-icon
+                                    @click="decrement('draw')"
+                                >
+                                    mdi-minus
+                                </v-icon>
+                            </template>
+                            <template v-slot:append>
+                                <v-icon
+                                    @click="increment('draw')"
+                                >
+                                    mdi-plus
+                                </v-icon>
+                            </template>
+                        </v-slider>
+                        <v-row 
+                            class="ma-0 my-2 pa-0"
+                            style="max-width:140px;color:grey;font-weight:bold;letter-spacing:1px;font-size:medium"
+                            justify="center" 
+                            align="center"
+                        >
+                            DRAW
+                        </v-row>
+                    </v-row>
+                </v-row>
+                <v-row 
+                    class="mx-3 mt-5 mb-3 pa-0"
+                    style="display:block;border-radius:3px;background-color:#262626;width:100%;height:50px" 
+                    justify="center" 
+                    align="center"
+                >
+                    <v-row 
+                        class="ma-0 pa-0 test"
+                        style="min-height:50px;max-height:50px;scale:0.75"
+                        align="center"
+                        justify="center"
+                    >
+                        <v-row 
+                            class="ma-0 my-2 pa-0"
+                            style="max-width:140px;color:grey;font-weight:bold;letter-spacing:1px;font-size:medium"
+                            justify="center" 
+                            align="center"
+                        >
+                        </v-row>
+                        <v-slider 
+                            class="ma-0 pa-0"
+                            v-model="away_slider_value" 
+                            min="-1000" 
+                            max="1000" 
+                            :color="color" 
+                            :track-color="away_track_color"
+                            :track-fill-color="away_track_fill_color" 
+                            track-size="1"
+                        >
+                            <template v-slot:prepend>
+                                <v-icon
+                                    @click="decrement('away')"
+                                >
+                                    mdi-minus
+                                </v-icon>
+                            </template>
+                            <template v-slot:append>
+                                <v-icon
+                                    @click="increment('away')"
+                                >
+                                    mdi-plus
+                                </v-icon>
+                            </template>
+                        </v-slider>
+                        <v-row 
+                            class="ma-0 my-2 pa-0"
+                            style="max-width:140px;color:grey;font-weight:bold;letter-spacing:1px;font-size:medium"
+                            justify="center" 
+                            align="center"
+                        >
+                            AWAY
+                        </v-row>
+                    </v-row>
+                </v-row>
+                <v-row
+                    class="ma-0 mx-10 mt-4 pa-0"
+                    style="vertical-align:middle !important;font-size:medium"
+                    justify="left"
+                >
+                    <p style="font-size:large">
+                        The bet you're openning for the market<br>
+                    </p>
+                </v-row>
+                <v-row 
+                    class="mx-3 mb-3 pa-0"
+                    style="display:block;border-radius:3px;background-color:#262626;width:100%;height:50px" 
+                    justify="center" 
+                    align="center"
+                >
+                    <v-row 
+                        class="ma-0 pa-0 test"
+                        style="min-height:50px;max-height:50px;scale:0.75"
+                        align="center"
+                        justify="center"
+                    >
 
-                    > 
-                        Hola
+                    </v-row>
+                </v-row>
+                <v-row
+                    class="ma-0 mx-10 mt-4 pa-0"
+                    style="vertical-align:middle !important;font-size:medium"
+                    justify="left"
+                >
+                    <p style="font-size:large">
+                        Simulate an amount<br>
+                    </p>
+                </v-row>
+                <v-row 
+                    class="mx-3 mb-3 pa-0"
+                    style="display:block;border-radius:3px;background-color:#262626;width:100%;height:50px" 
+                    justify="center" 
+                    align="center"
+                >
+                    <v-row 
+                        class="ma-0 pa-0 test"
+                        style="min-height:50px;max-height:50px;scale:0.75"
+                        align="center"
+                        justify="center"
+                    >
+
                     </v-row>
                 </v-row>
             </v-row>
-        </v-row>
-        <v-row
-            class="ma-0 pa-0 col-md-3"
-            style="background-color:#151515"
-            justify="center"
-            align="center"
-        > 
-            Hola
         </v-row>
     </v-row>
 </template>
@@ -551,10 +606,9 @@
             background-color: #ccc !important
     
     .factor_case
-        max-width: 160px
-        min-width: 160px
-        height: 45%
+        max-width: 140px
+        min-width: 140px
         border-radius: 3px
         background-color: #151515
-        font-size: 30px
+        font-size: 20px
 </style>

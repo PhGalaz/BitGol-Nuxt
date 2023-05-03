@@ -161,8 +161,7 @@
       class="ml-3 mr-3"
     >
       <v-icon
-        x-small
-        style="background-color:#444;border-radius:45px"
+        x-medium
         @click="responsablyOut()"
       >mdi-close</v-icon>
     </v-btn>

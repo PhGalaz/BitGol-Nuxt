@@ -39,7 +39,8 @@ export default {
   plugins: [
     { src: '~plugins/native-websocket.js', ssr: false },
     // { src: '~plugins/calendar.js', ssr: false },
-    '~plugins/sharing.js'
+    '~plugins/sharing.js',
+    '~plugins/services.js'
   ],
   // proxy: {
   //   "/hub": {

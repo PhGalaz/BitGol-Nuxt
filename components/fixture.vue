@@ -133,8 +133,7 @@
             >
               <v-dialog
                 v-model="dialog"
-                width="100vw"
-                min-height="100vh"
+                width="50vw"
                 persistent
               >
                 <template v-slot:activator="{ on, attrs }">

@@ -82,7 +82,7 @@
               class="font-weight-black ma-1 mt-1"
               style="color:white;font-size:13px"
             >
-              ${{ $store.state.bch_price }}
+              <span class="mr-1" style="font-size:11px;color:grey">$</span>{{ $store.state.bch_price }}
             </p>
             <v-spacer></v-spacer>
 
