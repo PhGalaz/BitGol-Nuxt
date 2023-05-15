@@ -1,7 +1,7 @@
 <template>
     <v-row 
         class="ma-0 pa-0 card" 
-        style="width:100%;border-radius:3px;background-color:#272727;box-shadow: "
+        style="width:100%;border-radius:3px;background-color:#272727"
         
     >   
         <v-row
@@ -14,7 +14,6 @@
             <v-btn
                 x-small
                 icon
-                color= "#ccc"
                 class="ml-3 mr-3"
             >
                 <v-icon
@@ -407,6 +406,7 @@
                 flat
                 clearable
                 type="number"
+                :disabled="!valid"
             ></v-text-field>
             <v-checkbox
                 :ripple="false"
@@ -414,13 +414,14 @@
                 class="ma-0 ml-7 mb-10 mt-n2 pa-0 no-hover"
                 color="#9ACD32"
                 style="width:100%"
+                :disabled="!valid"
             >
                 <template v-slot:label>
                     <span id="checkboxLabel">Use it as the actual bet's amount</span>
                 </template>
             </v-checkbox>
             <v-row 
-                class="ma-0 mt-5 pa-0"
+                class="ma-0 mt-4 pa-0"
                 style="border-radius:3px;width:100%;opacity:.75;font-weight:bold;letter-spacing:1px;font-size:medium;background-color:#212121" 
                 justify="center" 
                 align="center"
@@ -458,23 +459,15 @@
                         justify="center"
                         align="center"
                     > 
-                        <p
-                            class="ma-0 mr-5 pa-0"
-                        >
-                                YOUR PRICE
-                        </p>
+                        YOUR PRICE
                     </v-row>
                     <v-row
-                        class="ma-0 ml-2 pa-0"
+                        class="ma-0 pa-0"
                         style="height:100%;border-radius:3px;font-size:small;color:grey"
                         justify="center"
                         align="center"
                     > 
-                        <p
-                            class="ma-0 mr-5 pa-0"
-                        >
-                            RIVAL PRICE
-                        </p>
+                        RIVAL PRICE
                     </v-row>  
                 </v-row>
                 <v-row 
@@ -485,7 +478,7 @@
                 >
                     <v-row 
                         class="ma-0 mx-2 mb-2 pa-0"
-                        style="position:relative;border-radius:3px;width:100%;height:35px;font-weight:bold;letter-spacing:0px;font-size:medium" 
+                        style="position:relative;border-radius:3px;width:100%;height:35px;font-weight:bold;letter-spacing:0px;font-size:medium;background-color:#333" 
                         justify="center" 
                         align="center"
                     >
@@ -497,7 +490,7 @@
                         </v-row>
                         <v-row
                             class="ma-0 mr-2 pa-0"
-                            style="max-width:80px;height:100%;border-radius:3px;background-color:#333"
+                            style="position:relative;max-width:80px;height:100%;border-radius:3px"
                             justify="center"
                             align="center"
                         >
@@ -524,12 +517,18 @@
                         </v-row>
                         <v-row
                             class="ma-0 pa-0"
-                            style="height:100%;border-radius:3px;color:#FC2C3B;font-size:large;background-color:#171717"
+                            style="position:relative;height:100%;border-radius:3px;color:#FC2C3B;font-size:large;background-color:#272727"
                             justify="center"
                             align="center"
                         > 
+                            <v-row
+                                class="ma-0 pa-0"
+                                style="position:absolute;border-radius:3px;width:100%;height:100%;background-color:rgba(252,44,59,0.075)"
+                            >
+
+                            </v-row>
                             <p
-                                class="ma-0 mr-5 pa-0"
+                                class="ma-0 pa-0"
                             >
                                     0.00000000
                             </p>
@@ -541,7 +540,7 @@
                             align="center"
                         > 
                             <p
-                                class="ma-0 mr-5 pa-0"
+                                class="ma-0 pa-0"
                             >
                                 0.02454575
                             </p>
@@ -549,13 +548,13 @@
                     </v-row>
                     <v-row 
                         class="ma-0 mx-2 mb-2 pa-0"
-                        style="border-radius:3px;width:100%;height:35px;opacity:.75;font-weight:bold;letter-spacing:0px;font-size:medium" 
+                        style="border-radius:3px;width:100%;height:35px;opacity:.75;font-weight:bold;letter-spacing:0px;font-size:medium;background-color:#333" 
                         justify="center" 
                         align="center"
                     >
                         <v-row
                             class="ma-0 mr-2 pa-0"
-                            style="max-width:80px;height:100%;border-radius:3px;background-color:#333;font-size:small"
+                            style="max-width:80px;height:100%;border-radius:3px;font-size:small"
                             justify="center"
                             align="center"
                         >
@@ -563,7 +562,7 @@
                         </v-row>
                         <v-row
                             class="ma-0 mr-2 pa-0"
-                            style="max-width:80px;height:100%;border-radius:3px;background-color:#333"
+                            style="max-width:80px;height:100%;border-radius:3px"
                             justify="center"
                             align="center"
                         >
@@ -576,24 +575,24 @@
                         </v-row>
                         <v-row
                             class="ma-0 pa-0"
-                            style="height:100%;border-radius:3px;font-size:large;background-color:#272727"
+                            style="height:100%;border-radius:3px;font-size:large"
                             justify="center"
                             align="center"
                         > 
                             <p
-                                class="ma-0 mr-5 pa-0"
+                                class="ma-0 pa-0"
                             >
                                     0.85600030
                             </p>
                         </v-row>
                         <v-row
                             class="ma-0 ml-2 pa-0"
-                            style="height:100%;border-radius:3px;font-size:large;color:grey;background-color:#333"
+                            style="height:100%;border-radius:3px;font-size:large;color:grey"
                             justify="center"
                             align="center"
                         > 
                             <p
-                                class="ma-0 mr-5 pa-0"
+                                class="ma-0 pa-0"
                             >
                                 0.02454575
                             </p>
@@ -601,19 +600,19 @@
                     </v-row>
                     <v-row 
                         class="ma-0 mx-2 mb-2 pa-0"
-                        style="position:relative;border-radius:3px;width:100%;height:35px;font-weight:bold;letter-spacing:0px;font-size:medium;background-color:#272727" 
+                        style="position:relative;border-radius:3px;width:100%;height:35px;font-weight:bold;letter-spacing:0px;font-size:medium;background-color:#333" 
                         justify="center" 
                         align="center"
                     >
                         <v-row
                             class="ma-0 pa-0"
-                            style="position:absolute;border-radius:3px;width:100%;height:100%;background-color:rgba(154,205,50,0.15)"
+                            style="position:absolute;border-radius:3px;width:100%;height:100%;background-color:rgba(154,205,50,0.075)"
                         >
 
                         </v-row>
                         <v-row
                             class="ma-0 mr-2 pa-0"
-                            style="max-width:80px;height:100%;border-radius:3px;background-color:#333"
+                            style="max-width:80px;height:100%;border-radius:3px"
                             justify="center"
                             align="center"
                         >
@@ -627,7 +626,7 @@
                         </v-row>
                         <v-row
                             class="ma-0 mr-2 pa-0"
-                            style="max-width:80px;height:100%;border-radius:3px;opacity:.75;color:grey;background-color:#333"
+                            style="max-width:80px;height:100%;border-radius:3px;opacity:.75;color:grey"
                             justify="center"
                             align="center"
                         >
@@ -640,12 +639,18 @@
                         </v-row>
                         <v-row
                             class="ma-0 pa-0"
-                            style="height:100%;border-radius:3px;font-size:large;background-color:rgba(154,205,50,0.05);color:#9ACD32"
+                            style="position:relative;height:100%;border-radius:3px;font-size:large;background-color:#333;color:#9ACD32"
                             justify="center"
                             align="center"
                         > 
+                            <v-row
+                                class="ma-0 pa-0"
+                                style="position:absolute;border-radius:3px;width:100%;height:100%;background-color:rgba(154,205,50,0.01)"
+                            >
+
+                            </v-row>
                             <p
-                                class="ma-0 mr-5 pa-0"
+                                class="ma-0 pa-0"
                             >
                                     2.00789410
                             </p>
@@ -657,7 +662,7 @@
                             align="center"
                         > 
                             <p
-                                class="ma-0 mr-5 pa-0"
+                                class="ma-0 pa-0"
                             >
                                 0.00000000
                             </p>
@@ -666,13 +671,72 @@
                 </v-row>
             </v-row>
             <v-row
+                class="ma-0 mt-5 mb-2 pa-0"
+                justify="center"
+                align="center"
+            >
+                <v-row
+                    class="ma-0 pa-0 cancel"
+                    style="max-width:150px;border-radius:3px;transition:.1s ease-in-out"
+                >
+                    <v-btn
+                        class="ma-0 pa-0"
+                        block
+                        large
+                        text
+                        flat
+                        color="#00AAAA"
+                        style="min-height:100%;font-weight: bold !important;transition:.1s ease-in-out"
+                    > 
+                        Cancel
+                    </v-btn>
+                </v-row>
+                <v-row
+                    class="ma-0 mx-2 pa-0"
+                    :class="valid ? 'cabled' : 'discabled'"
+                    style="border-radius:3px;transition:.1s ease-in-out"
+                >
+                    <v-btn     
+                        class="ma-0 pa-0"
+                        block
+                        large
+                        text
+                        :loading=false
+                        flat
+                        :disabled="!valid"
+                        color="#9ACD32"
+                        style="font-size:large;transition:.1s ease-in-out"
+                    > 
+                        bet now
+                    </v-btn>
+                </v-row>
+                <v-row
+                    class="ma-0 pa-0"
+                    :class="valid ? 'cabled' : 'discabled'"
+                    style="border-radius:3px;max-width:150px;transition:.1s ease-in-out"
+                >
+                    <v-btn
+                        class="ma-0 pa-0"
+                        block
+                        large
+                        text
+                        color="#9ACD32"
+                        prepend-icon="mdi-check-circle"
+                        :disabled="!valid"
+                        flat
+                    > 
+                        add to cart
+                    </v-btn>
+                </v-row>
+            </v-row>
+            <!-- <v-row
                 class="ma-0 mx-2 mt-1 mb-1 pa-0"
                 style="min-height:50px"
                 justify="center"
                 align="center"
             >
                 Hola
-            </v-row>
+            </v-row> -->
         </v-row>
     </v-row>
 </template>
@@ -695,7 +759,7 @@
         computed: {
             home_track_color () {
                 if (this.home_slider_value > 0) {
-                    return '#595A59'
+                    return '#212121'
                 } else if (this.home_slider_value < 0) {
                     return '#FC2C3B'
                 } else {
@@ -706,14 +770,14 @@
                 if (this.home_slider_value > 0) {
                     return '#9ACD32'
                 } else if (this.home_slider_value < 0) {
-                    return '#595A59'
+                    return '#212121'
                 } else {
                     return '#595A59'
                 }
             },
             draw_track_color () {
                 if (this.draw_slider_value > 0) {
-                    return '#595A59'
+                    return '#212121'
                 } else if (this.draw_slider_value < 0) {
                     return '#FC2C3B'
                 } else {
@@ -724,14 +788,14 @@
                 if (this.draw_slider_value > 0) {
                     return '#9ACD32'
                 } else if (this.draw_slider_value < 0) {
-                    return '#595A59'
+                    return '#212121'
                 } else {
                     return '#595A59'
                 }
             },
             away_track_color () {
                 if (this.away_slider_value > 0) {
-                    return '#595A59'
+                    return '#212121'
                 } else if (this.away_slider_value < 0) {
                     return '#FC2C3B'
                 } else {
@@ -742,7 +806,7 @@
                 if (this.away_slider_value > 0) {
                     return '#9ACD32'
                 } else if (this.away_slider_value < 0) {
-                    return '#595A59'
+                    return '#212121'
                 } else {
                     return '#595A59'
                 }
@@ -797,6 +861,19 @@
                     let factor = 1 + this.away_slider_value / 1000
                     return factor.toFixed(2)
                 }
+            },
+            valid () {
+                const set = [this.home_slider_value, this.draw_slider_value, this.away_slider_value]
+                const zero = set.some((item) => {
+                    return item === -1000
+                })
+                const positive = set.some((item) => {
+                    return item > 0
+                })
+                if (zero && positive) {
+                    return true
+                }
+                return false
             }
         },
         methods: {
@@ -973,4 +1050,19 @@
         transform: rotate(-30deg) !important
         color: #9ACD32 !important
         border-radius: 45px !important
+
+    .discabled
+        background-color: #212121 !important
+
+    .cabled
+        background-color: #333 !important
+        color: #9ACD32 !important
+        :hover
+            color: white !important
+            background-color: transparent !important
+
+    .cancel
+        background-color: #333 !important
+        :hover
+            background-color: rgba(252,200,59,0.25) !important
 </style>

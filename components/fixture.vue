@@ -151,7 +151,7 @@
 
                 <v-card
                   class="ma-0 pa-0"
-                  style="background-color:transparent;border-radius:3px"
+                  style="background-color:transparent;border-radius:3px;height:100%"
                 >
                   <create-bet
                     v-on:close-dialog="closeDialog"

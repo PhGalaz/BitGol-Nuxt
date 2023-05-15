@@ -19,7 +19,7 @@
         >
           <h3 
             class="ma-0 pa-0"
-            style="margin-top:-2px !important"
+            style="margin-top:-2px !important;color:#272727"
           >LIVE</h3>
         </v-row>
       </v-row>
