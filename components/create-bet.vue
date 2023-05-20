@@ -5,25 +5,7 @@
         
     >   
         <v-row
-            class="ma-0 pa-0 col-12"
-            style="height:40px;width:100%;border-radius:3px"
-            justify="center"
-            align="center"
-        >
-            <v-spacer></v-spacer>
-            <v-btn
-                x-small
-                icon
-                class="ml-3 mr-3"
-            >
-                <v-icon
-                    size="25"
-                    @click="closeDialog()"
-                >mdi-close</v-icon>
-            </v-btn>
-        </v-row>
-        <v-row
-            class="ma-0 mx-10 pa-0"
+            class="ma-0 pa-0"
             style="font-size:medium"
             
         >
@@ -37,7 +19,7 @@
                         class="pl-2 pr-1" 
                         style="color:#9ACD32;font-size:large;font-size:small;vertical-align: middle !important;background-color:rgba(154,205,50,0.25);border-radius:3px"
                     >
-                        greater than 1.
+                        greater than 1.00 
                     </span>
                 </span>
                 <span
@@ -46,18 +28,12 @@
                 >
                     At least one factor must be
                     <span 
-                        class="pl-2 pr-1 mr-1" 
+                        class="pl-2 pr-1 mr-4" 
                         style="color:#FC2C3B;font-size:large;font-size:small;vertical-align: middle !important;background-color:rgba(252,44,59,0.25);border-radius:3px"
                     >
-                        equal to 0.
+                        equal to 0.00&nbsp;
                     </span>
                 </span>
-                <!-- <span
-                    class="ml-1"
-                    style="color:grey"
-                >
-                    . Remaining factor can take any value.
-                </span> -->
             </p>
         </v-row>
         <!--  -->
@@ -66,7 +42,7 @@
             justify="center"
         >
             <v-row 
-                class="mx-2 mt-3 mb-3 pa-0"
+                class="mt-3 mb-3 pa-0"
                 style="display:block;border-radius:3px;background-color:#212121" 
                 justify="center" 
                 align="center"
@@ -91,7 +67,7 @@
                     </v-row>
                     <v-row 
                         class="ma-0 mx-2 my-2 pa-0"
-                        style="max-width:140px;color:grey;font-weight:bold;letter-spacing:1px;font-size:medium"
+                        style="max-width:140px;font-weight:bold;letter-spacing:1px;font-size:medium"
                         justify="center" 
                         align="center"
                     >
@@ -303,8 +279,8 @@
                         </v-row>
                     </v-row>
                     <v-row 
-                        class="mx-2 mt-5 mb-3 pa-0"
-                        style="display:none;border-radius:3px;background-color:#303030;width:100%;height:50px;filter: grayscale(0%)" 
+                        class="mx-2 mt-1 mb-3 pa-0"
+                        style="border-radius:3px;background-color:#303030;width:100%;height:50px;filter: grayscale(0%)" 
                         justify="center" 
                         align="center"
                     >
@@ -315,15 +291,15 @@
                             justify="center"
                         >
                             <v-row
-                                class="ma-0 mt-1 pa-0"
+                                class="ma-0 pa-0"
                                 style=""
                                 
                             >
                                 <p 
                                     class="ma-0 mt-n2 pa-0"
-                                    style="font-size:larger;color:grey"
+                                    style="font-size:21px;color:grey;font-weight:bold"
                                 >
-                                    Your offer for the Market<br>
+                                    Offer for your rival<br>
                                 </p>
                             </v-row>
                             <v-row 
@@ -341,7 +317,8 @@
                                 ></v-img>
                             </v-row>
                             <v-row
-                                class="ma-0 mt-3"
+                                class="ma-0 mt-2"
+                                style="font-weight:bold"
                                 justify="center"
                             >
                                 <v-row class="ma-0 mb-4 pa-0 factor_case_rival"
@@ -349,21 +326,21 @@
                                     justify="center" 
                                     align="center"
                                 >
-                                    {{ home_factor }}
+                                    {{ valid ? inverse[0].toFixed(2) : '-' }}
                                 </v-row>
                                 <v-row class="ma-0 mb-4 mx-2 pa-0 factor_case_rival"
                                     :style="factor_color_rival(this.draw_factor)"
                                     justify="center" 
                                     align="center"
                                 >
-                                    {{ draw_factor }}
+                                    {{ valid ? inverse[1].toFixed(2) : '-' }}
                                 </v-row>
                                 <v-row class="ma-0 mb-4 pa-0 factor_case_rival"
                                     :style="factor_color_rival(this.away_factor)"
                                     justify="center" 
                                     align="center"
                                 >
-                                    {{ away_factor }}
+                                    {{ valid ? inverse[2].toFixed(2) : '-' }}
                                 </v-row>
                             </v-row>
                             <v-row 
@@ -386,24 +363,24 @@
             </v-row>
         </v-row>
         <v-row
-            class="ma-0 mx-2 mt-1 mb-1 pa-0"
+            class="ma-0 mt-1 mb-3 pa-0"
             style="width:100%"
             
         >
             <p 
-                class="ma-0 ml-8 pa-0"
+                class="ma-0 pa-0"
                 style="font-size:large"
                 align="center"
             >
-                Enter an amount to simulate bet results<br>
+                Enter an amount to simulate bet's results<br>
             </p>
             <v-text-field
                 class="ma-0 ml-5 mt-n1 pa-0 amount"
+                v-model="amount"
                 solo
                 color="#9ACD32"
                 prepend-inner-icon="mdi-bitcoin"
                 style="z-index:100;max-width:250px;position:relative"
-                flat
                 clearable
                 type="number"
                 :disabled="!valid"
@@ -411,7 +388,7 @@
             <v-checkbox
                 :ripple="false"
                 v-model="checkbox"
-                class="ma-0 ml-7 mb-10 mt-n2 pa-0 no-hover"
+                class="ma-0 ml-n1 mt-n5 pa-0 no-hover"
                 color="#9ACD32"
                 style="width:100%"
                 :disabled="!valid"
@@ -420,29 +397,124 @@
                     <span id="checkboxLabel">Use it as the actual bet's amount</span>
                 </template>
             </v-checkbox>
+        </v-row>
+        <v-row 
+            class="mt-5 pa-0"
+            v-if="valid ? amount ? true : false : false"
+            style="border-radius:3px;letter-spacing:1px;font-size:medium;background-color:#212121" 
+            justify="center" 
+            align="center"
+        >
             <v-row 
-                class="ma-0 mt-4 pa-0"
-                style="border-radius:3px;width:100%;opacity:.75;font-weight:bold;letter-spacing:1px;font-size:medium;background-color:#212121" 
+                class="ma-0 mx-2 pa-0"
+                style="border-radius:3px;width:100%;height:35px;font-weight:bold;letter-spacing:0px;font-size:medium;color:grey" 
                 justify="center" 
                 align="center"
             >
+                <v-row
+                    class="ma-0 pa-0"
+                    style="max-width:80px;height:100%;border-radius:3px;font-size:small"
+                    justify="center"
+                    align="center"
+                >
+                    RESULT
+                </v-row>
+                <v-row
+                class="ma-0 pa-0"
+                    style="height:100%;border-radius:3px;font-size:small"
+                    justify="center"
+                    align="center"
+                > 
+                    YOUR PRIZE
+                </v-row>
+                <v-row
+                    class="ma-0 pa-0"
+                    style="height:100%;border-radius:3px;font-size:small"
+                    justify="center"
+                    align="center"
+                > 
+                    RIVAL PRIZE
+                </v-row>  
+                <v-row
+                    class="ma-0 pa-0"
+                    style="max-width:100px;height:100%;border-radius:3px;font-size:small"
+                    justify="center"
+                    align="center"
+                >
+                    <p
+                        class="ma-0 pa-0 text-center"
+                        style="min-width:100%"
+                    >
+                            ODDS
+                    </p>
+                </v-row>
+            </v-row>
+            <v-row 
+                class="ma-0 pa-0"
+                style="border-radius:3px;background-color:#212121" 
+                align="center"
+                justify="center"
+            >
                 <v-row 
-                    class="ma-0 mx-2 pa-0"
-                    style="border-radius:3px;width:100%;height:35px;opacity:.75;font-weight:bold;letter-spacing:0px;font-size:medium" 
+                    class="ma-0 mx-2 mb-2 pa-0"
+                    style="position:relative;border-radius:3px;width:100%;height:35px;letter-spacing:0px;font-size:medium" 
                     justify="center" 
                     align="center"
                 >
                     <v-row
-                        class="ma-0 mr-2 pa-0"
-                        style="max-width:80px;height:100%;border-radius:3px;font-size:small;color:grey"
+                        class="ma-0 pa-0"
+                        style="position:absolute;border-radius:3px;width:100%;height:100%;background-color:rgba(255,255,255,0.02)"
+                    >
+
+                    </v-row>
+                    <v-row
+                        class="ma-0 pa-0"
+                        style="position:relative;max-width:80px;height:100%;border-radius:3px"
                         justify="center"
                         align="center"
                     >
-                        WINNER
+                        <v-img 
+                            contain 
+                            class="ma-0 pa-0" 
+                            max-height="25" 
+                            max-width="25"
+                            :src="fixture.homeTeam[0].logo"
+                        ></v-img>
                     </v-row>
                     <v-row
-                        class="ma-0 mr-2 pa-0"
-                        style="max-width:80px;height:100%;border-radius:3px;font-size:small;color:grey"
+                        class="ma-0 pa-0"
+                        style="font-size:medium"
+                    >
+
+                        <v-row
+                            class="ma-0 pa-0"
+                            style="width:50%;position:relative;height:100%"
+                            :style="Number(simulation.home) == Number(amount) ? '' : Number(simulation.home) > Number(amount) ? 'color:#9ACD32' : 'color:#FC2C3B'"
+                            justify="center"
+                            align="center"
+                        > 
+                            <p
+                                class="ma-0 pa-0"
+                            >
+                                {{ valid ? simulation.home : '-' }}
+                            </p>
+                        </v-row>
+                        <v-row
+                            class="ma-0 pa-0"
+                            style="width:50%;height:100%"
+                            justify="center"
+                            align="center"
+                        > 
+                            <p
+                                class="ma-0 pa-0"
+                            >
+                                {{ valid ? simulation.home_rival : '-' }}
+                            </p>
+                        </v-row>  
+                    </v-row>
+                    <v-row
+                        class="ma-0 pa-0"
+                        style="max-width:100px;height:100%;border-radius:3px"
                         justify="center"
                         align="center"
                     >
@@ -450,294 +522,175 @@
                             class="ma-0 pa-0 text-center"
                             style="min-width:100%"
                         >
-                                ODDS
+                                35.2
                         </p>
                     </v-row>
-                    <v-row
-                        class="ma-0 pa-0"
-                        style="height:100%;border-radius:3px;font-size:small"
-                        justify="center"
-                        align="center"
-                    > 
-                        YOUR PRICE
-                    </v-row>
-                    <v-row
-                        class="ma-0 pa-0"
-                        style="height:100%;border-radius:3px;font-size:small;color:grey"
-                        justify="center"
-                        align="center"
-                    > 
-                        RIVAL PRICE
-                    </v-row>  
                 </v-row>
                 <v-row 
-                    class="ma-0 pa-0"
-                    style="width:100%;border-radius:3px;background-color:#212121" 
+                    class="ma-0 mx-2 mb-2 pa-0"
+                    style="position:relative;border-radius:3px;width:100%;height:35px;letter-spacing:0px;font-size:medium" 
+                    justify="center" 
                     align="center"
-                    justify="center"
                 >
-                    <v-row 
-                        class="ma-0 mx-2 mb-2 pa-0"
-                        style="position:relative;border-radius:3px;width:100%;height:35px;font-weight:bold;letter-spacing:0px;font-size:medium;background-color:#333" 
-                        justify="center" 
-                        align="center"
+                    <v-row
+                        class="ma-0 pa-0"
+                        style="position:absolute;border-radius:3px;width:100%;height:100%;background-color:rgba(255,255,255,0.02)"
                     >
-                        <v-row
-                            class="ma-0 pa-0"
-                            style="position:absolute;border-radius:3px;width:100%;height:100%;background-color:rgba(252,44,59,0.075)"
-                        >
 
-                        </v-row>
-                        <v-row
-                            class="ma-0 mr-2 pa-0"
-                            style="position:relative;max-width:80px;height:100%;border-radius:3px"
-                            justify="center"
-                            align="center"
-                        >
-                            <v-img 
-                                contain 
-                                class="ma-0 pa-0" 
-                                max-height="25" 
-                                max-width="25"
-                                :src="fixture.homeTeam[0].logo"
-                            ></v-img>
-                        </v-row>
-                        <v-row
-                            class="ma-0 mr-2 pa-0"
-                            style="max-width:80px;height:100%;border-radius:3px;background-color:#333"
-                            justify="center"
-                            align="center"
-                        >
-                            <p
-                                class="ma-0 pa-0 text-center"
-                                style="min-width:100%;color:grey"
-                            >
-                                    35.2
-                            </p>
-                        </v-row>
-                        <v-row
-                            class="ma-0 pa-0"
-                            style="position:relative;height:100%;border-radius:3px;color:#FC2C3B;font-size:large;background-color:#272727"
-                            justify="center"
-                            align="center"
-                        > 
-                            <v-row
-                                class="ma-0 pa-0"
-                                style="position:absolute;border-radius:3px;width:100%;height:100%;background-color:rgba(252,44,59,0.075)"
-                            >
-
-                            </v-row>
-                            <p
-                                class="ma-0 pa-0"
-                            >
-                                    0.00000000
-                            </p>
-                        </v-row>
-                        <v-row
-                            class="ma-0 ml-2 pa-0"
-                            style="height:100%;border-radius:3px;font-size:large;color:grey;background-color:#333"
-                            justify="center"
-                            align="center"
-                        > 
-                            <p
-                                class="ma-0 pa-0"
-                            >
-                                0.02454575
-                            </p>
-                        </v-row>  
                     </v-row>
-                    <v-row 
-                        class="ma-0 mx-2 mb-2 pa-0"
-                        style="border-radius:3px;width:100%;height:35px;opacity:.75;font-weight:bold;letter-spacing:0px;font-size:medium;background-color:#333" 
-                        justify="center" 
+                    <v-row
+                        class="ma-0 pa-0"
+                        style="position:relative;max-width:80px;height:100%;border-radius:3px"
+                        justify="center"
                         align="center"
                     >
                         <v-row
-                            class="ma-0 mr-2 pa-0"
-                            style="max-width:80px;height:100%;border-radius:3px;font-size:small"
+                            class="ma-0 pa-0"
+                            style="max-width:80px;height:100%;border-radius:3px;font-size:small;font-weight:bold"
                             justify="center"
                             align="center"
                         >
                             DRAW
                         </v-row>
-                        <v-row
-                            class="ma-0 mr-2 pa-0"
-                            style="max-width:80px;height:100%;border-radius:3px"
-                            justify="center"
-                            align="center"
-                        >
-                            <p
-                                class="ma-0 pa-0 text-center"
-                                style="min-width:100%;color:grey"
-                            >
-                                    35.2
-                            </p>
-                        </v-row>
-                        <v-row
-                            class="ma-0 pa-0"
-                            style="height:100%;border-radius:3px;font-size:large"
-                            justify="center"
-                            align="center"
-                        > 
-                            <p
-                                class="ma-0 pa-0"
-                            >
-                                    0.85600030
-                            </p>
-                        </v-row>
-                        <v-row
-                            class="ma-0 ml-2 pa-0"
-                            style="height:100%;border-radius:3px;font-size:large;color:grey"
-                            justify="center"
-                            align="center"
-                        > 
-                            <p
-                                class="ma-0 pa-0"
-                            >
-                                0.02454575
-                            </p>
-                        </v-row>  
                     </v-row>
-                    <v-row 
-                        class="ma-0 mx-2 mb-2 pa-0"
-                        style="position:relative;border-radius:3px;width:100%;height:35px;font-weight:bold;letter-spacing:0px;font-size:medium;background-color:#333" 
-                        justify="center" 
-                        align="center"
+                    <v-row
+                        class="ma-0 pa-0"
+                        style="font-size:medium"
                     >
-                        <v-row
-                            class="ma-0 pa-0"
-                            style="position:absolute;border-radius:3px;width:100%;height:100%;background-color:rgba(154,205,50,0.075)"
-                        >
 
-                        </v-row>
-                        <v-row
-                            class="ma-0 mr-2 pa-0"
-                            style="max-width:80px;height:100%;border-radius:3px"
-                            justify="center"
-                            align="center"
-                        >
-                            <v-img 
-                                contain 
-                                class="ma-0 pa-0" 
-                                max-height="25" 
-                                max-width="25"
-                                :src="fixture.awayTeam[0].logo"
-                            ></v-img>
-                        </v-row>
-                        <v-row
-                            class="ma-0 mr-2 pa-0"
-                            style="max-width:80px;height:100%;border-radius:3px;opacity:.75;color:grey"
-                            justify="center"
-                            align="center"
-                        >
-                            <p
-                                class="ma-0 pa-0 text-center"
-                                style="min-width:100%"
-                            >
-                                    35.2
-                            </p>
-                        </v-row>
                         <v-row
                             class="ma-0 pa-0"
-                            style="position:relative;height:100%;border-radius:3px;font-size:large;background-color:#333;color:#9ACD32"
+                            style="width:50%;position:relative;height:100%"
+                            :style="Number(simulation.draw) == Number(amount) ? '' : Number(simulation.draw) > Number(amount) ? 'color:#9ACD32' : 'color:#FC2C3B'"
                             justify="center"
                             align="center"
                         > 
                             <v-row
                                 class="ma-0 pa-0"
-                                style="position:absolute;border-radius:3px;width:100%;height:100%;background-color:rgba(154,205,50,0.01)"
+                                style="position:absolute;width:100%;height:100%"
                             >
 
                             </v-row>
                             <p
                                 class="ma-0 pa-0"
                             >
-                                    2.00789410
+                                {{ valid ? simulation.draw : '-' }}
                             </p>
                         </v-row>
                         <v-row
-                            class="ma-0 ml-2 pa-0"
-                            style="height:100%;border-radius:3px;font-size:large;color:grey;background-color:#333"
+                            class="ma-0 pa-0"
+                            style="width:50%;height:100%"
                             justify="center"
                             align="center"
                         > 
                             <p
                                 class="ma-0 pa-0"
                             >
-                                0.00000000
+                                {{ valid ? simulation.draw_rival : '-' }}
                             </p>
                         </v-row>  
                     </v-row>
+                    <v-row
+                        class="ma-0 pa-0"
+                        style="max-width:100px;height:100%;border-radius:3px"
+                        justify="center"
+                        align="center"
+                    >
+                        <p
+                            class="ma-0 pa-0 text-center"
+                            style="min-width:100%"
+                        >
+                                35.2
+                        </p>
+                    </v-row>
+                </v-row>
+                <v-row 
+                    class="ma-0 mx-2 mb-2 pa-0"
+                    style="position:relative;border-radius:3px;width:100%;height:35px;letter-spacing:0px;font-size:medium" 
+                    justify="center" 
+                    align="center"
+                >
+                    <v-row
+                        class="ma-0 pa-0"
+                        style="position:absolute;border-radius:3px;width:100%;height:100%;background-color:rgba(255,255,255,0.02)"
+                    >
+
+                    </v-row>
+                    <v-row
+                        class="ma-0 pa-0"
+                        style="position:relative;max-width:80px;height:100%;border-radius:3px"
+                        justify="center"
+                        align="center"
+                    >
+                        <v-img 
+                            contain 
+                            class="ma-0 pa-0" 
+                            max-height="25" 
+                            max-width="25"
+                            :src="fixture.awayTeam[0].logo"
+                        ></v-img>
+                    </v-row>
+                    <v-row
+                        class="ma-0 pa-0"
+                        style="font-size:medium"
+                    >
+
+                        <v-row
+                            class="ma-0 pa-0"
+                            style="width:50%;position:relative;height:100%"
+                            :style="Number(simulation.away) == Number(amount) ? '' : Number(simulation.away) > Number(amount) ? 'color:#9ACD32' : 'color:#FC2C3B'"
+                            justify="center"
+                            align="center"
+                        > 
+                            <v-row
+                                class="ma-0 pa-0"
+                                style="position:absolute;width:100%;height:100%"
+                            >
+
+                            </v-row>
+                            <p
+                                class="ma-0 pa-0"
+                            >
+                                {{ valid ? simulation.away : '-' }}
+                            </p>
+                        </v-row>
+                        <v-row
+                            class="ma-0 pa-0"
+                            style="width:50%;height:100%"
+                            justify="center"
+                            align="center"
+                        > 
+                            <p
+                                class="ma-0 pa-0"
+                            >
+                                {{ valid ? simulation.away_rival : '-' }}
+                            </p>
+                        </v-row>  
+                    </v-row>
+                    <v-row
+                        class="ma-0 pa-0"
+                        style="max-width:100px;height:100%;border-radius:3px"
+                        justify="center"
+                        align="center"
+                    >
+                        <p
+                            class="ma-0 pa-0 text-center"
+                            style="min-width:100%"
+                        >
+                                35.2
+                        </p>
+                    </v-row>
                 </v-row>
             </v-row>
-            <v-row
-                class="ma-0 mt-5 mb-2 pa-0"
-                justify="center"
-                align="center"
-            >
-                <v-row
-                    class="ma-0 pa-0 cancel"
-                    style="max-width:150px;border-radius:3px;transition:.1s ease-in-out"
-                >
-                    <v-btn
-                        class="ma-0 pa-0"
-                        block
-                        large
-                        text
-                        flat
-                        color="#00AAAA"
-                        style="min-height:100%;font-weight: bold !important;transition:.1s ease-in-out"
-                    > 
-                        Cancel
-                    </v-btn>
-                </v-row>
-                <v-row
-                    class="ma-0 mx-2 pa-0"
-                    :class="valid ? 'cabled' : 'discabled'"
-                    style="border-radius:3px;transition:.1s ease-in-out"
-                >
-                    <v-btn     
-                        class="ma-0 pa-0"
-                        block
-                        large
-                        text
-                        :loading=false
-                        flat
-                        :disabled="!valid"
-                        color="#9ACD32"
-                        style="font-size:large;transition:.1s ease-in-out"
-                    > 
-                        bet now
-                    </v-btn>
-                </v-row>
-                <v-row
-                    class="ma-0 pa-0"
-                    :class="valid ? 'cabled' : 'discabled'"
-                    style="border-radius:3px;max-width:150px;transition:.1s ease-in-out"
-                >
-                    <v-btn
-                        class="ma-0 pa-0"
-                        block
-                        large
-                        text
-                        color="#9ACD32"
-                        prepend-icon="mdi-check-circle"
-                        :disabled="!valid"
-                        flat
-                    > 
-                        add to cart
-                    </v-btn>
-                </v-row>
-            </v-row>
-            <!-- <v-row
-                class="ma-0 mx-2 mt-1 mb-1 pa-0"
-                style="min-height:50px"
-                justify="center"
-                align="center"
-            >
-                Hola
-            </v-row> -->
         </v-row>
+        <v-dialog
+            v-model="confirmation"
+            fullscreen
+            persistent
+            scrollable
+        >
+            <createConfirmation/>
+        </v-dialog>
     </v-row>
 </template>
 
@@ -753,7 +706,10 @@
             return {
                 home_slider_value: 0,
                 draw_slider_value: 0,
-                away_slider_value: 0
+                away_slider_value: 0,
+                amount: null,
+                checkbox: false,
+                confirmation: false
             }
         },
         computed: {
@@ -874,7 +830,24 @@
                     return true
                 }
                 return false
+            },
+            inverse () {
+                return this.$getInverse(parseFloat(this.home_factor), parseFloat(this.draw_factor), parseFloat(this.away_factor))
+            },
+            simulation () {
+                if (this.valid && this.amount) {
+                    return this.$getSimulation(
+                        [parseFloat(this.home_factor), parseFloat(this.draw_factor), parseFloat(this.away_factor)],
+                        [parseFloat(this.inverse[0]), parseFloat(this.inverse[1]), parseFloat(this.inverse[2])],
+                        this.amount
+                    )
+                }
             }
+        },
+        watch: {
+            valid (val) {
+                this.$store.commit('setvalid', val);
+            },
         },
         methods: {
             resetHomeFactor () {
@@ -955,17 +928,23 @@
                 }
             },
             factor_color_rival (pos) {
-                if (pos > 1) {
-                    return 'color:#FC2C3B'
-                } else if (pos < 1) {
-                    return 'color:#9ACD32'
-                } else {
-                    return 'color:grey'
+                if (this.valid) {
+                    if (pos > 1) {
+                        return 'color:#FC2C3B'
+                    } else if (pos < 1) {
+                        return 'color:#9ACD32'
+                    } else {
+                        return 'color:grey'
+                    }
                 }
+                return 'color:grey'
             },
             getFlooredFixed(v, d) {
                 return (Math.floor(v * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d);
             }
+        },
+        created() {
+            this.$nuxt.$on('open-bet', () => this.confirmation = true)
         },
         beforeDestroy () {
             
@@ -975,8 +954,8 @@
 
 <style lang="sass">
     .card
-        backdrop-filter: blur(15.2px)
-        -webkit-backdrop-filter: blur(15.2px)
+        backdrop-filter: blur(2px)
+        -webkit-backdrop-filter: blur(2px)
 
     .slaider
         // .v-slider__track-container
@@ -1015,6 +994,7 @@
         border-radius: 3px
         background-color: #272727
         font-size: x-large
+        height: 35px
     
     .factor_case_rival
         max-width: 140px
@@ -1022,6 +1002,7 @@
         border-radius: 3px
         background-color: #222
         font-size: 20px
+        height: 35px
 
     #checkboxLabel
         color: grey
@@ -1043,7 +1024,7 @@
         margin-top: 2px !important
 
     .amount .v-icon.mdi-close
-        color: #333 !important
+        color: #CCC !important
         size: 10 !important
 
     .mdi-bitcoin
@@ -1053,13 +1034,14 @@
 
     .discabled
         background-color: #212121 !important
+        color: #212121 !important
 
     .cabled
         background-color: #333 !important
         color: #9ACD32 !important
         :hover
             color: white !important
-            background-color: transparent !important
+            background-color: #9ACD32 !important
 
     .cancel
         background-color: #333 !important

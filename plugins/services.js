@@ -1,6 +1,6 @@
 import fixtureService from '~/services/fixture.service'
 
-export default ({}, inject) => {
+export default ({ $axios }, inject) => {
   const allMethods = {
     ...fixtureService()
     // import another service here

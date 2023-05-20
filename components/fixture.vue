@@ -135,6 +135,7 @@
                 v-model="dialog"
                 width="50vw"
                 persistent
+                scrollable
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-row
@@ -151,12 +152,83 @@
 
                 <v-card
                   class="ma-0 pa-0"
-                  style="background-color:transparent;border-radius:3px;height:100%"
+                  style="background-color:#272727"
                 >
-                  <create-bet
-                    v-on:close-dialog="closeDialog"
-                    :fixture="fixture" 
-                  />
+                  <v-card-title
+                    class="ma-0 pa-0"
+                  >
+                    <v-row
+                        class="ma-0 pa-0 col-12"
+                        style="height:20px;width:100%;border-radius:3px"
+                        justify="center"
+                        align="center"
+                    >
+                        <v-spacer></v-spacer>
+                        <v-btn
+                            x-small
+                            icon
+                            class="mt-3 mr-3"
+                        >
+                            <v-icon
+                                size="25"
+                                @click="closeDialog()"
+                            >mdi-close</v-icon>
+                        </v-btn>
+                    </v-row>
+                  </v-card-title>
+                  <v-card-text
+                    class="mt-5"
+                  >
+                    <create-bet
+                      class="mt-3"
+                      v-on:close-dialog="closeDialog"
+                      :fixture="fixture" 
+                    />
+                  </v-card-text>
+                  <v-card-actions
+                    class="ma-0 my-5 pa-0"
+                    align="center"
+                  >
+                    <v-row
+                        class="ma-0 pa-0"
+                        justify="center"
+                        align="center"
+                    >
+                        <v-row
+                            class="ma-0 mr-2 pa-0"
+                            :class="$store.state.valid ? 'cabled' : 'discabled'"
+                            style="border-radius:3px;;max-width:300px;transition:.1s ease-in-out"
+                        >
+                            <v-btn     
+                                class="ma-0 pa-0"
+                                block
+                                large
+                                text
+                                :loading="loading"
+                                :disabled="!$store.state.valid"
+                                @click="$nuxt.$emit('open-bet'); loading = true"
+                            > 
+                                bet now
+                            </v-btn>
+                        </v-row>
+                        <v-row
+                            class="ma-0 pa-0"
+                            style="border-radius:3px;max-width:150px;transition:.1s ease-in-out"
+                            :class="$store.state.valid ? 'cabled' : 'discabled'"
+                        >
+                            <v-btn
+                                class="ma-0 pa-0"
+                                block
+                                large
+                                text
+                                prepend-icon="mdi-check-circle"
+                                :disabled="!$store.state.valid"
+                            > 
+                                add to cart
+                            </v-btn>
+                        </v-row>
+                    </v-row>
+                  </v-card-actions>
                 </v-card>
               </v-dialog>
             </v-row>
@@ -210,7 +282,8 @@
     },
     data: () => ({
       now: Math.trunc((new Date()).getTime() / 1000),
-      dialog: false
+      dialog: false,
+      loading: false
     }),
     computed: {
       dateInMilliseconds() {

@@ -19,10 +19,15 @@ export const state = () => ({
   teams: [],
   lives: [],
   bets: [],
-  fixtures: []
+  fixtures: [],
+
+  valid: false
 })
 
 export const mutations = {
+  setvalid(state, value) {
+    state.valid = value
+  },
   switch_units(state) {
     state.currency = !state.currency
   },
