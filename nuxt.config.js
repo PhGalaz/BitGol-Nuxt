@@ -50,7 +50,12 @@ export default {
   // },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  components: {
+    dirs: [
+      '~/components',
+      '~/components/base/foo'
+    ]
+  },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -62,6 +67,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
     // 'nuxt-socket-io',
     // '~/modules/ws'
     // '~/io'
@@ -81,7 +87,54 @@ export default {
   // },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    // baseURL: 'https://bitgol.cash/',
+    baseURL: 'http://localhost:3002/api/v2/'
+  },
+
+  /*
+  ** Auth module configuration
+  */
+  auth: {
+    redirect: {
+      login: '/login',
+      logout: '/',
+      home: '/profile'
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: "users/login",
+            method: "post",
+            propertyName: false // Disable default token handling
+          },
+          logout: {
+            url: "users/logout",
+            method: "delete"
+          },
+          user: {
+            url: "users/current",
+            method: "get"
+          }
+        },
+        autoFetchUser: false,
+        user: {
+          property: false // Disable default user property handling
+        },
+        session: {
+          enabled: true,
+          propertyName: 'connect.sid', // Set the cookie name
+          autoFetch: true,
+        }
+      },
+    },
+  },
+  
+
+  router: {
+    middleware: ['session']
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {

@@ -15,7 +15,7 @@
         :style="{ 
           backgroundImage: `url(${require('@/static/stadium1.webp')})`,
           backgroundSize: 'cover'
-       }"
+        }"
       >
         <v-row
           class="ma-0 pa-0"
@@ -121,7 +121,7 @@
 
           <v-row
             class="ma-0 pa-0"
-            style="width:100%;height:150px;border-radius:3px;transform: scaleX(1.05);background-color:rgba(0,0,0,0)"
+            style="width:100%;height:150px;border-radius:3px;transform: scaleX(1.05)"
             justify="center"
             align="center"
           >
@@ -131,11 +131,22 @@
               justify="center"
               align="end"
             >
+              <v-row
+                class="ma-0 pa-0 button"
+                style="transition:.2s !important;max-width:300px;height:40%;color:rgba(154,205,50,1);font-size:16px;border-radius:3px;border:3px solid rgba(154,205,50,1);background-color:rgba(173,255,47,.1)"
+                justify="center"
+                align="center"
+                @click="test = true"
+              >
+                OPEN NEW BET
+              </v-row>
               <v-dialog
                 v-model="dialog"
                 width="50vw"
                 persistent
                 scrollable
+                overlay-color="#121212"
+                overlay-opacity=".95"
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-row
@@ -269,6 +280,14 @@
         </v-row>
       </v-row>
     </v-row>
+    <v-dialog
+        v-model="test"
+        fullscreen
+        persistent
+        scrollable
+    >
+        <Create-betSetBet/>
+    </v-dialog>
   </v-row>
 </template>
 
@@ -283,7 +302,8 @@
     data: () => ({
       now: Math.trunc((new Date()).getTime() / 1000),
       dialog: false,
-      loading: false
+      loading: false,
+      test: false
     }),
     computed: {
       dateInMilliseconds() {

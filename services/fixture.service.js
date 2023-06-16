@@ -1,4 +1,4 @@
-export default ($axios) => {
+export default () => {
     return {
         getInverse: (...args) => {
             const max = Math.max(...args)

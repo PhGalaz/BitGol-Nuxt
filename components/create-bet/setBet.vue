@@ -9,7 +9,7 @@
             class="ma-0 pa-0"
             style="background-color:#9ACD32;min-height:750px;max-width:25vw;border-radius:3px"
         >
-            Create Confirmation
+            Set Bet
         </v-row>
     </v-row>
 </template>

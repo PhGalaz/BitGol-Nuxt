@@ -101,6 +101,7 @@
               x-small
               dark
               class="mx-2 appbar0"
+              @click="$router.push(`/`)"
             >
               cancel bet
             </v-btn>
@@ -110,6 +111,7 @@
               x-small
               dark
               class="mx-2 mr-2 appbar0"
+              @click="loginDialog = true"
             >
               sign in
             </v-btn>
@@ -290,6 +292,19 @@
       </v-list>
     </v-navigation-drawer>
 
+    <v-dialog
+        v-model="loginDialog"
+        width="100vw"
+        fullscreen
+        persistent
+        scrollable
+        transition="none"
+    >
+        <AuthLogin
+          @close-signin="loginDialog = false"
+        ></AuthLogin>
+    </v-dialog>
+
 
   </v-app>
 </template>
@@ -317,7 +332,8 @@
         miniVariant: false,
         right: true,
         rightDrawer: false,
-        title: 'Vuetify.js'
+        title: 'Vuetify.js',
+        loginDialog: false
       }
     },
     // async fetch() {
@@ -336,13 +352,6 @@
     //     return this.$store.getters['getCurrentPrice']
     //   }
     // },
-    mounted () {
-        window.addEventListener('scroll', this.onScroll)
-        this.$options.sockets.onmessage = (data) => this.mess(data)
-      },
-    beforeDestroy () {
-      window.removeEventListener('scroll', this.onScroll)
-    },
     created() {
       this.initdata()
 
@@ -359,6 +368,13 @@
       //   // socket.io-client opts:
       //   reconnection: false
       // })
+    },
+    mounted () {
+        window.addEventListener('scroll', this.onScroll)
+        this.$options.sockets.onmessage = (data) => this.mess(data)
+      },
+    beforeDestroy () {
+      window.removeEventListener('scroll', this.onScroll)
     },
     methods: {
       mess(data){

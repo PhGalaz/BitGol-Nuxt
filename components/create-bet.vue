@@ -947,7 +947,7 @@
             this.$nuxt.$on('open-bet', () => this.confirmation = true)
         },
         beforeDestroy () {
-            
+            console.log('before destroyed');
         }
     }
 </script>

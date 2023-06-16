@@ -1,8 +1,10 @@
 import fixtureService from '~/services/fixture.service'
+import serverApiService from '~/services/serverApi.service'
 
 export default ({ $axios }, inject) => {
   const allMethods = {
-    ...fixtureService()
+    ...fixtureService(),
+    ...serverApiService($axios)
     // import another service here
   }
   const methods = Object.keys(allMethods)
