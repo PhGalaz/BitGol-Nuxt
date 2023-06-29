@@ -6,7 +6,9 @@ export default ($axios) => {
             return login;
         },
         currentUser: async () => {
-            return await $axios.$get('users/current')
+            const current = await $axios.get('users/current-user');
+            console.log(current);
+            return current;
         }
     }
 }

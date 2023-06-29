@@ -1,6 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
+  ssr: true,
   env: {
     BASE_URL: 'https://bitgol.cash/',
     LOCAL: 'http://localhost:3002/'
@@ -40,7 +41,8 @@ export default {
     { src: '~plugins/native-websocket.js', ssr: false },
     // { src: '~plugins/calendar.js', ssr: false },
     '~plugins/sharing.js',
-    '~plugins/services.js'
+    '~plugins/services.js',
+    { src: '~plugins/forward-set-cookies.js', mode: 'server' }
   ],
   // proxy: {
   //   "/hub": {
@@ -67,7 +69,8 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/auth',
+    '@nuxtjs/auth-next',
+    'cookie-universal-nuxt'
     // 'nuxt-socket-io',
     // '~/modules/ws'
     // '~/io'
@@ -96,41 +99,28 @@ export default {
   ** Auth module configuration
   */
   auth: {
-    redirect: {
-      login: '/login',
-      logout: '/',
-      home: '/profile'
-    },
     strategies: {
-      local: {
+      cookie: {
+        scheme: 'cookie',
         endpoints: {
-          login: {
-            url: "users/login",
-            method: "post",
-            propertyName: false // Disable default token handling
-          },
-          logout: {
-            url: "users/logout",
-            method: "delete"
-          },
-          user: {
-            url: "users/current",
-            method: "get"
+          login: { url: '/users/login', method: 'post', propertyName: 'user' },
+          // user: { url: '/users/current-user', method: 'get', propertyName: false },
+          user: false
+        },
+        cookie: {
+          name: 'connect.sid',
+          options: {
+            secure: process.env.NODE_ENV === 'production', // Set to true if using HTTPS in production
+            required: true,
+            httpOnly: true
           }
         },
-        autoFetchUser: false,
         user: {
-          property: false // Disable default user property handling
-        },
-        session: {
-          enabled: true,
-          propertyName: 'connect.sid', // Set the cookie name
-          autoFetch: true,
+          property: 'data.user' // Set the property path to access the user data
         }
-      },
-    },
+      }
+    }
   },
-  
 
   router: {
     middleware: ['session']

@@ -92,8 +92,9 @@
               x-small
               dark
               class="mx-2 appbar0"
+              @click="signin = true; authDialog = true"
             >
-              help
+              help {{ $auth.loggedIn ? $auth.user.email : 'not logged in' }}
             </v-btn>
             <v-btn
               style="text-transform: none;font-size:11px"
@@ -293,19 +294,22 @@
     </v-navigation-drawer>
 
     <v-dialog
-        v-model="loginDialog"
+        v-model="authDialog"
         width="100vw"
         fullscreen
         persistent
         scrollable
-        transition="none"
+        transition="scroll-x-transition"
     >
-        <AuthLogin
-          @close-signin="loginDialog = false"
-        ></AuthLogin>
+        <Auth
+          @close-signin="signin = false; authDialog = false"
+          @close-signup="signup = false; authDialog = false"
+          @signup-now="inup"
+          @signin-now="upin"
+          :signin="signin"
+          :signup="signup"
+        ></Auth>
     </v-dialog>
-
-
   </v-app>
 </template>
 
@@ -333,7 +337,9 @@
         right: true,
         rightDrawer: false,
         title: 'Vuetify.js',
-        loginDialog: false
+        authDialog: false,
+        signin: false,
+        signup: false
       }
     },
     // async fetch() {
@@ -422,6 +428,14 @@
           // }
           // this.showNavbar = currentScrollPosition < this.lastScrollPosition
           // this.lastScrollPosition = currentScrollPosition
+      },
+      inup () {
+          this.signin = !this.signin;
+          setTimeout(() => {  this.signup = !this.signup; }, 350);
+      },
+      upin () {
+          this.signup = !this.signup;
+          setTimeout(() => {  this.signin = !this.signin; }, 350);
       }
     }
   }
@@ -451,7 +465,6 @@
 
   .v-text-field .v-input__control .v-input__slot
     min-height: auto !important
-    display: flex !important
     align-items: center !important
 
   .shrinked

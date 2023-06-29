@@ -1,20 +1,20 @@
 import axios from 'axios'
 import VuexPersistence from 'vuex-persist'
 
-// function getPlugins() {
-//   const plugins = []
+function getPlugins() {
+  const plugins = []
 
-//   if (process.browser) {
-//     const vuexLocal = new VuexPersistence({
-//       storage: window.localStorage,
-//     })
+  if (process.browser) {
+    const vuexLocal = new VuexPersistence({
+      storage: window.localStorage,
+    })
 
-//     plugins.push(vuexLocal.plugin)
-//   }
-//   return plugins
-// }
+    plugins.push(vuexLocal.plugin)
+  }
+  return plugins
+}
 
-// export const plugins = getPlugins()
+export const plugins = getPlugins()
 
 export const state = () => ({
   min_bet: 36000,
@@ -37,7 +37,7 @@ export const state = () => ({
   bets: [],
   fixtures: [],
 
-  // userDetails: [],
+  userDetails: [],
 
   valid: false
 })

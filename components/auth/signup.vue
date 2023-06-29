@@ -1,6 +1,6 @@
 <template>
         <v-col
-            class="ma-0 pa-0 col-10 col-md-8 col-lg-4 align-center signin"
+            class="ma-0 pa-0 col-10 col-md-8 col-lg-4 align-center signup"
             style="overflow:hidden;border-radius:3px"
         >
             <v-row
@@ -8,10 +8,10 @@
             >
                 <v-spacer></v-spacer>
                 <v-btn
-                    class="close-signin ma-0 pa-0"
+                    class="close-signup ma-0 pa-0"
                     icon
-                    :ripple="false"
-                    @click="$emit('close-signin')"
+                    :ripple=false
+                    @click="$emit('close-signup')"
                     style="opacity:0.7"
                 >
                     <v-icon
@@ -22,7 +22,7 @@
             <v-card
                 justify="center"
                 class="elevation-12"
-                style="background-color:#212121;border-bottom:2px solid #9ACD32;border-left:2px solid #9ACD32;border-right:2px solid #9ACD32"
+                style="background-color:#212121;border-bottom:2px solid #00A99C;border-left:2px solid #00A99C;border-right:2px solid #00A99C"
             >
                 <v-toolbar
                     flat
@@ -33,7 +33,7 @@
                 >
                     <v-row
                         class="ma-0 pa-0"
-                        style="width:100%;height:100%;background-color:rgba(154,205,50,0.25);border-radius: 3px 3px 0 0;border-top:2px solid #9ACD32"
+                        style="width:100%;height:100%;background-color:rgba(15,155,190,0.35);border-radius: 3px 3px 0 0;border-top:2px solid #00A99C"
                         align="center"
                     >
                         <v-toolbar-title
@@ -41,31 +41,32 @@
                             style="font-size:17px;min-width:100%;color:#aaa"
                             justify="center"
                         >
-                            Not registered?
+                            Already registered?
                             <span
                                 class="signup-link"
                                 style="font-weight:bold;color:white"
-                                @click="$emit('signup-now')"
+                                @click="$emit('signin-now')"
                             >
-                                Sign Up now!
+                                Sign In now!
                             </span>
                         </v-toolbar-title>
                     </v-row>
                 </v-toolbar>
                 <v-card-text
                     class="ma-0 pa-0"
+                    justify="center"
                 >
                     <v-toolbar-title
                         class="ma-0 mt-10 mb-5 pa-0"
                         align="center"
-                        style="min-height:50px;line-height:22px;font-size:xx-large;color:#9ACD32"
+                        style="min-height:50px;line-height:22px;font-size:xx-large;color:#00A99C"
                     >
-                        Sign In
+                        Sign Up
                         <p
                             class="ma-0 my-3 pa-0 text-center"
                             style="font-size:small;color:#aaa;white-space:normal;width:300px"
                         >
-                            Signing in is not required to play, but to save your bets and stats.
+                            Open an account is not required to play, but to save and track your bets and reports.
                         </p>
                     </v-toolbar-title>
                     <v-row
@@ -85,8 +86,36 @@
                                 class="ma-0 mb-5 pa-0"
                                 solo
                                 flat
-                                color="#9ACD32"
-                                background-color="rgba(154,205,50,0.25)"
+                                color="#00A99C"
+                                background-color="rgba(15,155,190,0.35)"
+                                id="name"
+                                name="name"
+                                label="Name"
+                                type="text"
+                                v-model="name"
+                                :rules="[rules.required, rules.email]"
+                                style="height:40px"
+                            ></v-text-field>
+                            <v-text-field
+                                class="ma-0 mb-5 pa-0"
+                                solo
+                                flat
+                                color="#00A99C"
+                                background-color="rgba(15,155,190,0.35)"
+                                id="lastName"
+                                name="lastName"
+                                label="Last name"
+                                type="text"
+                                v-model="lastName"
+                                :rules="[rules.required, rules.email]"
+                                style="height:40px"
+                            ></v-text-field>
+                            <v-text-field
+                                class="ma-0 mb-5 pa-0"
+                                solo
+                                flat
+                                color="#00A99C"
+                                background-color="rgba(15,155,190,0.35)"
                                 id="email"
                                 name="email"
                                 label="Email"
@@ -96,10 +125,11 @@
                                 style="height:40px"
                             ></v-text-field>
                             <v-text-field
+                                class="ma-0 mb-5 pa-0"
                                 solo
                                 flat
-                                color="#9ACD32"
-                                background-color="rgba(154,205,50,0.25)"
+                                color="#00A99C"
+                                background-color="rgba(15,155,190,0.35)"
                                 v-model="password"
                                 :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
                                 :rules="[rules.required, rules.min]"
@@ -108,22 +138,51 @@
                                 label="Password"
                                 hint="At least 8 characters"
                                 @click:append="show1 = !show1"
-                                label-placement="bottom"
-                                style="height:32px"
+                                style="height:40px"
+                            ></v-text-field>
+                            <v-text-field
+                                solo
+                                flat
+                                color="#00A99C"
+                                background-color="rgba(15,155,190,0.35)"
+                                v-model="confirmedPassword"
+                                :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
+                                :rules="[rules.required, rules.min]"
+                                :type="show2 ? 'text' : 'password'"
+                                name="input-10-1"
+                                label="Confirm password"
+                                hint="At least 8 characters"
+                                @click:append="show2 = !show2"
+                                style="height:40px"
                             ></v-text-field>
                         </v-form>
                     </v-row>
                     <v-row
-                        class="ma-0 pa-0"
+                        class="ma-0 mt-5 mb-7 pa-0"
                         justify="center"
-                        align="center"
-                        style="height:70px;color:#aaa"
                     >
-                        <p
-                            class="ma-0 pa-0 forgot"
+                        <v-row
+                            class="ma-0 pa-0"
+                            style="max-width:50%"
+                            justify="center"
                         >
-                            Forgot your password?
-                        </p>
+                            <v-checkbox
+                                :ripple=false
+                                v-model="checkbox"
+                                class="ma-0 pa-0"
+                                color="#00A99C"
+                            ></v-checkbox>
+                            <p
+                                class="ma-0 pa-0"
+                                justify="center"
+                            >
+                                I agree to the 
+                                <span 
+                                    class="terms-link forgot"
+                                    style="font-weight:bold"
+                                >Terms of Service</span>.
+                            </p>
+                        </v-row>
                     </v-row>
                     <v-card-actions
                         class="ma-0 pa-0 justify-center"
@@ -133,20 +192,12 @@
                             class="ma-0 pa-0 mb-10"
                             height="40px"
                             variant="tonal"
-                            color="#9ACD32" 
+                            color="#00A99C"
                             style="width:50%"
-                            :disabled="!valid"
-                            @click="signin"
+                            :disabled="!valid || !checkbox"
                         >
-                            Sign In
+                            Sign Up
                         </v-btn>
-                        <span
-                            class="ma-0 pa-0"
-                            @click="current"
-                        >
-                            current {{ $auth.loggedIn }}
-                            {{ $auth.user }}
-                        </span>
                     </v-card-actions>
                 </v-card-text>
             </v-card>
@@ -158,9 +209,13 @@
         data () {
             return {
                 show1: false,
-                show2: true,
+                show2: false,
                 password: '',
+                confirmedPassword: '',
                 email: '',
+                name: '',
+                lastName: '',
+                checkbox: false,
                 rules: {
                     required: value => !!value || 'Required',
                     min: v => v.length >= 8 || 'Min 8 characters',
@@ -171,78 +226,50 @@
                 },
                 valid: false
             }
-        },
-        methods: {
-            async signin () {
-                console.log('signin', this.email, this.password);
-                console.log('app.cookies: ', app.$cookies);
-                try {
-                    const response = await this.$auth.loginWith('cookie', {
-                        data: {
-                            email: this.email,
-                            password: this.password
-                        }
-                    })
-                    console.log('Login response:', response)
-                    console.log('Logged in:', this.$auth.loggedIn)
-                    console.log('User logged in:', this.$auth.user.name)
-                    console.log('app.cookies: ', app.$cookies);
-                } catch (err) {
-                    console.error('Login failed:', err)
-                }
-                // this.$login({
-                //     email: this.email,
-                //     password: this.password
-                // })
-            },
-            current () {
-                console.log('app.cookies: ', app.$cookies);
-                this.$currentUser()
-            }
         }
     }
 </script>
 
 <style lang="sass">
-    .signin .v-text-field__details
+    .signup .v-text-field__details
         position: absolute !important
         display: block !important
         margin-top: 36px !important
         margin-left: -8px !important
 
-    .signin .forgot:hover
-        color: #9ACD32 !important
+    .signup .forgot:hover
+        color: #00A99C !important
         cursor: pointer !important
 
-    .signin .v-text-field input
-        color: #9ACD32 !important
+    .signup .v-text-field input
+        color: #00A99C !important
     
-    .signin .v-messages__message
-        color: rgba(154,205,50,0.25) !important
+    .signup .v-messages__message
+        color: rgba(15,155,190,0.35) !important
 
-    .signin .v-text-field .v-icon::before
+    .signup .v-text-field .v-icon::before
         color: #212121 !important
 
-    .signin input::placeholder
-        color: #9ACD32 !important
+    .signup input::placeholder
+        color: #00A99C !important
 
-    .signin .v-label
+    .signup .v-label
         color: #212121 !important
         font-weight: bold !important
 
-    .signin .v-btn--disabled
+    .signup .v-btn--disabled
         background-color: #DDE5ED !important
         color: black !important
 
-    .signin .v-btn__content
+    .signup .v-btn__content
         color: #212121 !important
         font-weight: bold !important
 
-    .signin .signup-link:hover
-        color: #9ACD32 !important
+    .signup-link:hover
+        color: #00A99C !important
         cursor: pointer !important
 
-    .close-signin:hover
+    .signup .close-signup:hover
         cursor: pointer !important
         opacity: 1 !important
 </style>
